@@ -1,4 +1,5 @@
-﻿using System;
+﻿using codibook.MVVM.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace codibook
         public MainWindow()
         {
             InitializeComponent();
+
+            this.Mainframe.Navigate(new ItemViewPage());
         }
 
         // 타이틀바 드래그
@@ -55,5 +58,7 @@ namespace codibook
         {
             this.Close();
         }
+
+
     }
 }

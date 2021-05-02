@@ -31,21 +31,24 @@
 
                 </Rectangle>
 
-                <DockPanel HorizontalAlignment="Right" Margin="0, 0, 5, 0" VerticalAlignment="Center">
+                <DockPanel HorizontalAlignment="Right" Margin="0, 0, 5, 0">
                     <Button x:Name="ToMiniButton" 
                         Click="ToMiniButton_Click"
-                        Width="25"
-                        Height="30"
+                        Width="20"
+                        Height="20"
+                        Margin="0, 1, 2, 0"
                         Style="{StaticResource yellowRoundButtonStyle}"></Button>
                     <Button x:Name="ToMaxButton" 
                         Click="ToMaxOrNormalButton_Click"
-                        Width="25"
-                        Height="30"
+                        Width="20"
+                        Height="20"
+                        Margin="0, 1, 2, 0"
                         Style="{StaticResource greenRoundButtonStyle}"></Button>
                     <Button x:Name="CloseButton" 
                         Click="CloseButton_Click"
-                        Width="25"
-                        Height="30"
+                        Width="20"
+                        Height="20"
+                        Margin="0, 1, 2, 0"
                         Style="{StaticResource redRoundButtonStyle}"></Button>
                 </DockPanel>
 
@@ -73,12 +76,19 @@
                 </Grid>
                 <!-- 화면 메인 -->
                 <Grid Grid.Row="1">
-                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column ="1">
+                        <Frame x:Name="Mainframe" NavigationUIVisibility="Hidden">
+
+                        </Frame>
+                    </Grid>
                 </Grid>
             </Grid>
-
         </Grid>
     </Border>
-
 </Window>
 
