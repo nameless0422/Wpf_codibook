@@ -4,9 +4,66 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:codibook"
+        WindowStyle="None" 
+        AllowsTransparency="True"
+        BorderThickness="1" 
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        ResizeMode="CanResizeWithGrip"
+        Background="Transparent"
+        Title="MainWindow" Height="720" Width="1280"
+        MinHeight="550" MinWidth="600"
+        >
+
+    <Border Background="#F5F5F5" CornerRadius="15">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- 타이틀바 -->
+            <Grid Grid.Row="0">
+
+                <Rectangle MouseLeftButtonDown="Rectangle_MouseDown" 
+                       Fill="#F5F5F5"
+                           RadiusX="15" RadiusY="15"
+                           >
+
+                </Rectangle>
+
+                <DockPanel HorizontalAlignment="Right" Margin="0, 0, 5, 0" VerticalAlignment="Center">
+                    <Button x:Name="ToMiniButton" 
+                        Click="ToMiniButton_Click"
+                        Width="25"
+                        Height="30"
+                        Style="{StaticResource yellowRoundButtonStyle}"></Button>
+                    <Button x:Name="ToMaxButton" 
+                        Click="ToMaxOrNormalButton_Click"
+                        Width="25"
+                        Height="30"
+                        Style="{StaticResource greenRoundButtonStyle}"></Button>
+                    <Button x:Name="CloseButton" 
+                        Click="CloseButton_Click"
+                        Width="25"
+                        Height="30"
+                        Style="{StaticResource redRoundButtonStyle}"></Button>
+                </DockPanel>
+
+            </Grid>
+
+            <!-- 화면의 콘텐츠 -->
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                    
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </Border>
+
 </Window>
+
