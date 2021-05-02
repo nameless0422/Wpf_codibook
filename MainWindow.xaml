@@ -54,9 +54,24 @@
             <!-- 화면의 콘텐츠 -->
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="60" />
+                    <RowDefinition Height="80" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
+                <!-- 화면 상단 -->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.25*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="0.25*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                <!-- 화면 메인 -->
                 <Grid Grid.Row="1">
                     
                 </Grid>
