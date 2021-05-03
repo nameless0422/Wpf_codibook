@@ -59,6 +59,9 @@ namespace codibook
             this.Close();
         }
 
-
+        private void NavigateToLookBook_Click(object sender, RoutedEventArgs e)
+        {
+            this.Mainframe.Navigate(new LookBookPage());
+        }
     }
 }
