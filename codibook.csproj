@@ -84,6 +84,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MVVM\Model\ItemModel.cs" />
+    <Compile Include="MVVM\Model\LookBookModel.cs" />
+    <Compile Include="MVVM\Model\WetherModel.cs" />
+    <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
     <Compile Include="MVVM\View\ItemViewPage.xaml.cs">
       <DependentUpon>ItemViewPage.xaml</DependentUpon>
     </Compile>
@@ -110,6 +114,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\BMJUA_ttf.ttf" />
+    <Resource Include="Fonts\TmoneyRoundWindExtraBold.ttf" />
+    <Resource Include="Fonts\TmoneyRoundWindRegular.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -121,10 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes\" />
-    <Folder Include="Fonts\" />
     <Folder Include="Images\" />
-    <Folder Include="MVVM\Model\" />
-    <Folder Include="MVVM\ViewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
