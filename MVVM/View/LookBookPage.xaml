@@ -46,7 +46,7 @@
 								   HorizontalAlignment="Left"
 								   VerticalAlignment="Center"
 								   Content="lookbook list"
-								   Style="{StaticResource AdobeClean-Regular}"
+								   FontFamily="AdobeClean-Regular"
 								   FontSize="25"
 								   Foreground="#626262"/>
 						</Grid>
