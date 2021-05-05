@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="MVVM\Model\ItemModel.cs" />
     <Compile Include="MVVM\Model\LookBookModel.cs" />
+    <Compile Include="MVVM\Model\UserModel.cs" />
     <Compile Include="MVVM\Model\WetherModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
     <Compile Include="MVVM\View\ItemViewPage.xaml.cs">
