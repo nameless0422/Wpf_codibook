@@ -117,6 +117,7 @@
     <Resource Include="Fonts\BMJUA_ttf.ttf" />
     <Resource Include="Fonts\TmoneyRoundWindExtraBold.ttf" />
     <Resource Include="Fonts\TmoneyRoundWindRegular.ttf" />
+    <Resource Include="Fonts\AdobeClean-Regular.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

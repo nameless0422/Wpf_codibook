@@ -5,8 +5,55 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:codibook.MVVM.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+			 Background="Transparent"
+             d:DesignHeight="720" d:DesignWidth="1280"
+			 MinHeight="550" MinWidth="600">
+
+	<Border Background="#F5F5F5" CornerRadius="15">
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="30"/>
+				<RowDefinition Height="80"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+
+			<!-- 화면 메인 -->
+			<Grid Grid.Row="2">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="120"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="120"/>
+				</Grid.ColumnDefinitions>
+				
+				<!-- 메인 프레임 -->
+				<Grid Grid.Column="1">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="80"/>
+						<RowDefinition Height="*"/>
+					</Grid.RowDefinitions>
+
+					<!-- label & add list button -->
+					<Grid Grid.Row="0">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="80"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="80"/>
+						</Grid.ColumnDefinitions>
+
+						<Grid Grid.Column="1">
+							<Label x:Name="lookbookList"
+								   Grid.Column="1"
+								   HorizontalAlignment="Left"
+								   VerticalAlignment="Center"
+								   Content="lookbook list"
+								   Style="{StaticResource AdobeClean-Regular}"
+								   FontSize="25"
+								   Foreground="#626262"/>
+						</Grid>
+					</Grid>
+				</Grid>
+			</Grid>
+
+		</Grid>
+	</Border>
 </UserControl>
