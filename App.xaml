@@ -191,5 +191,31 @@
             <Setter Property="FontFamily" Value="{StaticResource TmonyBold}"></Setter>
         </Style>
 
+        <Style x:Key="ArrowButton" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Image Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image.Source>
+                                <DrawingImage x:Name="ArrowButton_Image">
+                                    <DrawingImage.Drawing>
+                                        <DrawingGroup ClipGeometry="M0,0 V500 H500 V0 H0 Z">
+                                            <DrawingGroup Opacity="1">
+                                                <GeometryDrawing Brush="#FFFFFFFF">
+                                                    <GeometryDrawing.Geometry>
+                                                        <EllipseGeometry RadiusX="250" RadiusY="250" Center="250,250" />
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+                                                <GeometryDrawing Brush="#FF000000" Geometry="F1 M500,500z M0,0z M358.139,241.197L201.413,84.8335C196.278,79.7135 187.965,79.7221 182.838,84.86 177.716,89.9973 177.729,98.3193 182.865,103.443L330.262,250.501 182.859,397.557C177.725,402.682 177.711,410.999 182.833,416.137 185.403,418.712 188.769,420 192.136,420 195.494,420 198.847,418.721 201.413,416.163L358.139,259.803C360.612,257.342 362,253.991 362,250.501 362,247.01 360.608,243.664 358.139,241.197z" />
+                                            </DrawingGroup>
+                                        </DrawingGroup>
+                                    </DrawingImage.Drawing>
+                                </DrawingImage>
+                            </Image.Source>
+                        </Image>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>
