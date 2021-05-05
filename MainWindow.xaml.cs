@@ -87,5 +87,15 @@ namespace codibook
         {
             
         }
+
+        private void BookMarkButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UserButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

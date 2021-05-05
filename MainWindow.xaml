@@ -67,10 +67,10 @@
                         <ColumnDefinition Width="1.5*"/>
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="0.125*"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="0.25*"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
                         <ColumnDefinition Width="1.5*"/>
                         <ColumnDefinition Width="0.25*"/>
                     </Grid.ColumnDefinitions>
@@ -138,12 +138,16 @@
                         </Button>
                     </Grid>
                     <Grid Grid.Column="6">
-                        <Button Margin="5,15">
+                        <Button Margin="5,15"
+                                Style="{StaticResource BookMark}"
+                                Click="BookMarkButton_Click">
 
                         </Button>
                     </Grid>
                     <Grid Grid.Column="7">
-                        <Button Margin="5,15">
+                        <Button Margin="5,15"
+                                Style="{StaticResource UserButton}"
+                                Click="UserButton_Click">
 
                         </Button>
                     </Grid>
