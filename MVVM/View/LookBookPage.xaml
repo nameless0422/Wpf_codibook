@@ -6,51 +6,156 @@
              xmlns:local="clr-namespace:codibook.MVVM.View"
              mc:Ignorable="d" 
 			 Background="Transparent"
-             d:DesignHeight="720" d:DesignWidth="1280"
+             d:DesignHeight="608" d:DesignWidth="1052"
 			 MinHeight="550" MinWidth="600">
 
 	<Border Background="#F5F5F5" CornerRadius="15">
 		<Grid>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="30"/>
 				<RowDefinition Height="80"/>
-				<RowDefinition Height="*"/>
+				<RowDefinition/>
 			</Grid.RowDefinitions>
+			
+			<!-- 라벨 & 추가 버튼 -->
+			<Grid Grid.Row="0">
+				<Label x:Name="lookbookList"
+                       HorizontalAlignment="Left"
+					   VerticalAlignment="Bottom"
+					   Content="lookbook list"
+					   FontFamily="AdobeClean-Bold"
+					   FontSize="22"
+					   Foreground="#626262"
+					   Margin="70,0,0,10"/>
 
-			<!-- 화면 메인 -->
-			<Grid Grid.Row="2">
+				<Button x:Name="addListButton"
+						Margin="10"
+						HorizontalAlignment="Right"
+						VerticalAlignment="Bottom"
+						Style="{StaticResource AddButton}"
+						Click="addListButton_Click"/>
+
+				<Label x:Name="addList"
+					   HorizontalAlignment="Right"
+					   VerticalAlignment="Bottom"
+					   Content="add list"
+					   FontFamily="AdobeClean-Regular"
+					   FontSize="18"
+					   Foreground="#626262"
+					   Margin="0,0,25,0"/>
+			</Grid>
+			
+			<!-- 룩북 리스트 -->
+			<Grid Grid.Row="1" Margin="0,0,0,40">
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="120"/>
-					<ColumnDefinition Width="*"/>
-					<ColumnDefinition Width="120"/>
+					<ColumnDefinition Width="0.4*"/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition Width="0.4*"/>
 				</Grid.ColumnDefinitions>
 				
 				<!-- 메인 프레임 -->
-				<Grid Grid.Column="1">
+				<Grid Grid.Column="1" Margin="15">
 					<Grid.RowDefinitions>
-						<RowDefinition Height="80"/>
-						<RowDefinition Height="*"/>
+						<RowDefinition/>
+						<RowDefinition Height="2*"/>
+						<RowDefinition Height="2*"/>
+						<RowDefinition Height="2*"/>
+						<RowDefinition/>
+						<RowDefinition/>
 					</Grid.RowDefinitions>
-
-					<!-- label & add list button -->
-					<Grid Grid.Row="0">
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="80"/>
-							<ColumnDefinition Width="*"/>
-							<ColumnDefinition Width="80"/>
-						</Grid.ColumnDefinitions>
-
-						<Grid Grid.Column="1">
-							<Label x:Name="lookbookList"
-								   Grid.Column="1"
-								   HorizontalAlignment="Left"
-								   VerticalAlignment="Center"
-								   Content="lookbook list"
-								   FontFamily="AdobeClean-Regular"
-								   FontSize="25"
-								   Foreground="#626262"/>
-						</Grid>
+				
+					<!-- 처음 리스트 -->
+					<Grid Grid.Row="0" Margin="5">
+						<Border x:Name="listName"
+								Background="White"
+								CornerRadius="10, 10, 0, 0"/>
 					</Grid>
+					
+					<!-- width 정사각형으로 조절 어떻게 할지 -->
+					<Grid Grid.Row="1" Margin="5">
+						<Border x:Name="listItem1"
+								Background="White">
+							<Border x:Name="listItemImage1"
+									Background="#626262"
+									Width="92"
+									HorizontalAlignment="Left">
+								<TextBlock x:Name="listItemInfo1"
+										   Style="{StaticResource lookbookList_textblock}"
+										   FontSize="14">
+									<TextBlock x:Name="listItemTag1"
+											   Style="{StaticResource lookbookList_textblock}"
+											   FontSize="11">
+									</TextBlock>
+								</TextBlock>
+							</Border>
+						</Border>
+					</Grid>
+
+					<Grid Grid.Row="2" Margin="5">
+						<Border x:Name="listItem2"
+								Background="White">
+							<Border x:Name="listItemImage2"
+									Background="#626262"
+									Width="92"
+									HorizontalAlignment="Left">
+								<TextBlock x:Name="listItemInfo2"
+										   Style="{StaticResource lookbookList_textblock}"
+										   FontSize="14">
+									<TextBlock x:Name="listItemTag2"
+											   Style="{StaticResource lookbookList_textblock}"
+											   FontSize="11">
+									</TextBlock>
+								</TextBlock>
+							</Border>
+						</Border>
+					</Grid>
+
+					<Grid Grid.Row="3" Margin="5">
+						<Border x:Name="listItem3"
+								Background="White">
+							<Border x:Name="listItemImage3"
+									Background="#626262"
+									Width="92"
+									HorizontalAlignment="Left">
+								<TextBlock x:Name="listItemInfo3"
+										   Style="{StaticResource lookbookList_textblock}"
+										   FontSize="14">
+									<TextBlock x:Name="listItemTag3"
+											   Style="{StaticResource lookbookList_textblock}"
+											   FontSize="11">
+									</TextBlock>
+								</TextBlock>
+							</Border>
+						</Border>
+					</Grid>
+
+					<Grid Grid.Row="4" Margin="5">
+						<Button x:Name="moreButton"
+								Style="{StaticResource MoreButton}"
+								Click="moreButton_Click"/>
+					</Grid>
+
+					<Grid Grid.Row="5" Margin="5">
+						<Border x:Name="listItemPrice"
+								Background="White"
+								CornerRadius="0, 0, 10, 10">
+							<TextBlock x:Name="totalPrice"
+									   VerticalAlignment="Center"
+									   HorizontalAlignment="Center"
+									   Style="{StaticResource lookbookList_textblock}"
+									   FontSize="14"
+									   
+									   Text="Total 30,000won"/>
+						</Border>
+					</Grid>
+				</Grid>
+
+				<Grid Grid.Column="4">
+					<ScrollViewer IsDeferredScrollingEnabled="True"
+								  MinWidth="10">
+
+					</ScrollViewer>
 				</Grid>
 			</Grid>
 

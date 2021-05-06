@@ -196,34 +196,37 @@
 		</Style>
 		<FontFamily x:Key="AdobeClean-Bold">\codibook;component\Fonts\#Adobeclean-Bold</FontFamily>
 		<FontFamily x:Key="AdobeClean-Light">\codibook;component\Fonts\#Adobeclean-Light</FontFamily>
+		<Style x:Key="lookbookList_textblock" TargetType="TextBlock">
+			<Setter Property="FontFamily" Value="{StaticResource AdobeClean-Regular}"/>
+			<Setter Property="Foreground" Value="#FF535353"/>
+		</Style>
 		<Style x:Key="ArrowButton" TargetType="Button">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Image Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Image.Source>
-                                <DrawingImage x:Name="ArrowButton_Image">
-                                    <DrawingImage.Drawing>
-                                        <DrawingGroup ClipGeometry="M0,0 V500 H500 V0 H0 Z">
-                                            <DrawingGroup Opacity="1">
-                                                <GeometryDrawing Brush="#FFFFFFFF">
-                                                    <GeometryDrawing.Geometry>
-                                                        <EllipseGeometry RadiusX="250" RadiusY="250" Center="250,250" />
-                                                    </GeometryDrawing.Geometry>
-                                                </GeometryDrawing>
-                                                <GeometryDrawing Brush="#FF000000" Geometry="F1 M500,500z M0,0z M358.139,241.197L201.413,84.8335C196.278,79.7135 187.965,79.7221 182.838,84.86 177.716,89.9973 177.729,98.3193 182.865,103.443L330.262,250.501 182.859,397.557C177.725,402.682 177.711,410.999 182.833,416.137 185.403,418.712 188.769,420 192.136,420 195.494,420 198.847,418.721 201.413,416.163L358.139,259.803C360.612,257.342 362,253.991 362,250.501 362,247.01 360.608,243.664 358.139,241.197z" />
-                                            </DrawingGroup>
-                                        </DrawingGroup>
-                                    </DrawingImage.Drawing>
-                                </DrawingImage>
-                            </Image.Source>
-                        </Image>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="{x:Type Button}" x:Key="BookMark">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Image Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center">
+							<Image.Source>
+								<DrawingImage x:Name="ArrowButton_Image">
+									<DrawingImage.Drawing>
+										<DrawingGroup ClipGeometry="M0,0 V500 H500 V0 H0 Z">
+											<DrawingGroup Opacity="1">
+												<GeometryDrawing Brush="#FFFFFFFF">
+													<GeometryDrawing.Geometry>
+														<EllipseGeometry RadiusX="250" RadiusY="250" Center="250,250" />
+													</GeometryDrawing.Geometry>
+												</GeometryDrawing>
+												<GeometryDrawing Brush="#FF000000" Geometry="F1 M500,500z M0,0z M358.139,241.197L201.413,84.8335C196.278,79.7135 187.965,79.7221 182.838,84.86 177.716,89.9973 177.729,98.3193 182.865,103.443L330.262,250.501 182.859,397.557C177.725,402.682 177.711,410.999 182.833,416.137 185.403,418.712 188.769,420 192.136,420 195.494,420 198.847,418.721 201.413,416.163L358.139,259.803C360.612,257.342 362,253.991 362,250.501 362,247.01 360.608,243.664 358.139,241.197z" />
+											</DrawingGroup>
+										</DrawingGroup>
+									</DrawingImage.Drawing>
+								</DrawingImage>
+							</Image.Source>
+						</Image>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style TargetType="{x:Type Button}" x:Key="BookMark">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -283,5 +286,76 @@
                 </Setter.Value>
             </Setter>
         </Style>
+		<Style TargetType="{x:Type Button}" x:Key="AddButton">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<Image Width="15" Height="15">
+								<Image.Source>
+									<DrawingImage x:Name="addDrawingImage">
+										<DrawingImage.Drawing>
+											<DrawingGroup ClipGeometry="M0,0 V512 H512 V0 H0 Z">
+												<DrawingGroup Opacity="1">
+													<DrawingGroup Opacity="1">
+														<GeometryDrawing Brush="#FF535353" Geometry="F1 M512,512z M0,0z M256,0C114.84,0 0,114.84 0,256 0,397.16 114.84,512 256,512 397.16,512 512,397.16 512,256 512,114.84 397.16,0 256,0z M256,475.429C135.003,475.429 36.571,376.997 36.571,256 36.571,135.003 135.003,36.571 256,36.571 376.997,36.571 475.429,135.003 475.429,256 475.429,376.997 376.997,475.429 256,475.429z" />
+													</DrawingGroup>
+												</DrawingGroup>
+												<DrawingGroup Opacity="1">
+													<DrawingGroup Opacity="1">
+														<GeometryDrawing Brush="#FF535353" Geometry="F1 M512,512z M0,0z M256,134.095C245.9,134.095,237.714,142.281,237.714,152.381L237.714,359.619C237.714,369.719 245.9,377.905 256,377.905 266.1,377.905 274.286,369.719 274.286,359.619L274.286,152.381C274.286,142.281,266.1,134.095,256,134.095z" />
+													</DrawingGroup>
+												</DrawingGroup>
+												<DrawingGroup Opacity="1">
+													<DrawingGroup Opacity="1">
+														<GeometryDrawing Brush="#FF535353" Geometry="F1 M512,512z M0,0z M359.619,237.714L152.381,237.714C142.281,237.714 134.095,245.9 134.095,256 134.095,266.1 142.281,274.286 152.381,274.286L359.619,274.286C369.719,274.286 377.905,266.1 377.905,256 377.905,245.9 369.719,237.714 359.619,237.714z" />
+													</DrawingGroup>
+												</DrawingGroup>
+											</DrawingGroup>
+										</DrawingImage.Drawing>
+									</DrawingImage>
+								</Image.Source>
+							</Image>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style TargetType="{x:Type Button}" x:Key="MoreButton">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<Image Width="20" Height="20">
+								<Image.Source>
+									<DrawingImage x:Name="moreDrawingImage">
+										<DrawingImage.Drawing>
+											<DrawingGroup ClipGeometry="M0,0 V512 H512 V0 H0 Z">
+												<DrawingGroup Opacity="1">
+													<DrawingGroup Opacity="1">
+														<GeometryDrawing Brush="#FF535353" Geometry="F1 M512,512z M0,0z M436.742,180.742C395.245,180.742 361.484,214.503 361.484,256 361.484,297.497 395.239,331.258 436.742,331.258 478.239,331.258 512,297.503 512,256 512,214.503 478.239,180.742 436.742,180.742z M436.742,294.246C415.651,294.246 398.496,277.091 398.496,256 398.496,234.909 415.651,217.754 436.742,217.754 457.833,217.754 474.988,234.909 474.988,256 474.988,277.091 457.833,294.246 436.742,294.246z" />
+													</DrawingGroup>
+												</DrawingGroup>
+												<DrawingGroup Opacity="1">
+													<DrawingGroup Opacity="1">
+														<GeometryDrawing Brush="#FF535353" Geometry="F1 M512,512z M0,0z M256,180.742C214.503,180.742 180.742,214.503 180.742,256 180.742,297.497 214.503,331.258 256,331.258 297.503,331.258 331.258,297.503 331.258,256 331.258,214.503 297.503,180.742 256,180.742z M256,294.246C234.909,294.246 217.754,277.091 217.754,256 217.754,234.909 234.909,217.754 256,217.754 277.091,217.754 294.246,234.909 294.246,256 294.246,277.091 277.091,294.246 256,294.246z" />
+													</DrawingGroup>
+												</DrawingGroup>
+												<DrawingGroup Opacity="1">
+													<DrawingGroup Opacity="1">
+														<GeometryDrawing Brush="#FF535353" Geometry="F1 M512,512z M0,0z M75.258,180.742C33.761,180.742 0,214.503 0,256 0,297.503 33.761,331.258 75.258,331.258 116.755,331.258 150.516,297.503 150.516,256 150.516,214.503 116.755,180.742 75.258,180.742z M75.258,294.246C54.167,294.246 37.012,277.091 37.012,256 37.012,234.909 54.167,217.754 75.258,217.754 96.349,217.754 113.504,234.909 113.504,256 113.504,277.091 96.342,294.246 75.258,294.246z" />
+													</DrawingGroup>
+												</DrawingGroup>
+											</DrawingGroup>
+										</DrawingImage.Drawing>
+									</DrawingImage>
+								</Image.Source>
+							</Image>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		
     </Application.Resources>
 </Application>

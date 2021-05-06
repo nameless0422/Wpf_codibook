@@ -29,5 +29,20 @@ namespace codibook.MVVM.View
         {
 
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void addListButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void moreButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
