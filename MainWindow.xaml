@@ -158,10 +158,44 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
-
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Height="20" Width="15" Margin="10,0,0,0">
+                                        <Image.Source>
+                                            <DrawingImage x:Name="placeholderDrawingImage">
+                                                <DrawingImage.Drawing>
+                                                    <DrawingGroup ClipGeometry="M0,0 V512 H512 V0 H0 Z">
+                                                        <DrawingGroup Opacity="1">
+                                                            <DrawingGroup Opacity="1">
+                                                                <GeometryDrawing Brush="#FF535353" Geometry="F1 M512,512z M0,0z M256,0C133.64,0 34.093,95.521 34.093,212.935 34.093,372.283 237.697,503.68 246.37,509.195 249.307,511.067 252.65,512 256,512 259.344,512 262.693,511.061 265.63,509.195 274.303,503.68 477.907,372.283 477.907,212.935 477.907,95.521 378.366,0 256,0z M255.994,472.392C216.583,444.95 69.981,334.612 69.981,212.935 69.981,115.308 153.426,35.888 256,35.888 358.574,35.888 442.019,115.308 442.019,212.935 442.019,334.415 295.387,444.914 255.994,472.392z" />
+                                                            </DrawingGroup>
+                                                        </DrawingGroup>
+                                                        <DrawingGroup Opacity="1">
+                                                            <DrawingGroup Opacity="1">
+                                                                <GeometryDrawing Brush="#FF535353" Geometry="F1 M512,512z M0,0z M256,97.501C200.26,97.501 154.916,142.845 154.916,198.585 154.916,254.319 200.26,299.663 256,299.663 311.74,299.663 357.084,254.319 357.084,198.585 357.084,142.852 311.74,97.501 256,97.501z M256,263.77C220.052,263.77 190.804,234.527 190.804,198.58 190.804,162.632 220.053,133.384 256,133.384 291.948,133.384 321.196,162.627 321.196,198.58 321.196,234.527 291.948,263.77 256,263.77z" />
+                                                            </DrawingGroup>
+                                                        </DrawingGroup>
+                                                    </DrawingGroup>
+                                                </DrawingImage.Drawing>
+                                            </DrawingImage>
+                                        </Image.Source>
+                                    </Image>
+                                    <TextBlock Margin="0,3,0,0"
+                                               FontSize="15" 
+                                               Foreground="#FF535353"
+                                               FontFamily="{StaticResource AdobeClean-Bold}"
+                                               FontWeight="DemiBold"
+                                               Text="{Binding }">
+                                    </TextBlock>
+                                </StackPanel>
                             </Grid>
                             <Grid Grid.Row="1">
-                                
+                                <TextBlock Margin="10,3,0,0"
+                                               FontSize="15" 
+                                               Foreground="#FF535353"
+                                               FontFamily="{StaticResource AdobeClean-Bold}"
+                                               FontWeight="Bold"
+                                               Text="{Binding }">
+                                </TextBlock>
                             </Grid>
                         </Grid>
                     </Grid>
