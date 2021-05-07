@@ -1,4 +1,5 @@
 ﻿using codibook.MVVM.View;
+using codibook.MVVM.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,9 @@ namespace codibook.MVVM.View
         public MainWindow()
         {
             InitializeComponent();
+
+            KakaoLocal kakaoLocal = new KakaoLocal();
+            kakaoLocal.kakao("전북대학교");
 
             this.Mainframe.Navigate(new ItemViewPage());            
         }

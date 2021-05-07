@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace codibook.MVVM.Model
 {
-    class WetherModel
+    public class WetherModel
     {
+
     }
 }

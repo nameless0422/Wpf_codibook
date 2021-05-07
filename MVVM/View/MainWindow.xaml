@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:codibook.MVVM.View"
+        xmlns:vm ="clr-namespace:codibook.MVVM.ViewModel"
         WindowStyle="None" 
         AllowsTransparency="True"
         BorderThickness="1" 
@@ -16,7 +17,7 @@
 
 
     <Window.Resources>
-        
+        <vm:MainViewModel x:Key="MainViewModel"/>
     </Window.Resources>
     
     <Border Background="#F5F5F5" CornerRadius="15">
@@ -217,7 +218,6 @@
                     <!-- 메인 프레임 -->
                     <Grid Grid.Column ="1">
                         <Frame x:Name="Mainframe" NavigationUIVisibility="Hidden">
-
                         </Frame>
                     </Grid>
                     <!-- 페이지 체인지 버튼-->
