@@ -487,6 +487,35 @@
             <Setter Property="FontFamily" Value="{StaticResource AdobeClean-Regular}"/>
             <Setter Property="Foreground" Value="#FF535353"/>
         </Style>
-        
+        <Style x:Key="myclotheslist_textblock" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource AdobeClean-Regular}"/>
+            <Setter Property="Foreground" Value="#FF535353"/>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="HeartButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Image Width="15" Height="15">
+                                <Image.Source>
+                                    <DrawingImage x:Name="HeartbtnImage">
+                                        <DrawingImage.Drawing>
+                                            <DrawingGroup ClipGeometry="M0,0 V512 H512 V0 H0 Z">
+                                                <DrawingGroup Opacity="1">
+                                                    <DrawingGroup Opacity="1">
+                                                        <GeometryDrawing Brush="#FF000000" Geometry="F1 M512,512z M0,0z M466.706,66.173C437.097,36.564 397.482,20.259 355.146,20.259 318.698,20.259 284.27,32.347 256.503,54.601 228.337,32.347 193.866,20.259 157.774,20.259 115.242,20.259 75.5220000000001,36.571 45.9140000000001,66.173 16.305,95.776 0,135.398 0,177.727 0,220.062 16.305,259.678 45.914,289.28L242.979,486.345C246.57,489.943 251.285,491.741 256,491.741 260.703,491.741 265.405,489.948 269.003,486.369L466.227,289.746C495.75,259.561 512,219.89 512,178.034 512,135.791 495.965,96.12 466.706,66.173z M440.056,263.821L256.018,447.294 71.956,263.238C49.309,240.585 36.834,210.215 36.834,177.727 36.834,145.239 49.309,114.869 71.956,92.216 94.609,69.569 125.084,57.094 157.774,57.094 189.943,57.094 220.479,69.624 243.74,92.363 250.947,99.417 262.507,99.355 269.635,92.216 292.288,69.569 322.652,57.094 355.146,57.094 387.64,57.094 418.004,69.569 440.504,92.068 462.856,114.936 475.165,145.466 475.165,178.034 475.165,210.209 462.642,240.738 440.056,263.821z" />
+                                                    </DrawingGroup>
+                                                </DrawingGroup>
+                                            </DrawingGroup>
+                                        </DrawingImage.Drawing>
+                                    </DrawingImage>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Application.Resources>
 </Application>
