@@ -356,6 +356,43 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
-		
+        <Style TargetType="{x:Type Button}" x:Key="CategoryButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Image Width="15" Height="15">
+                                <Image.Source>
+                                    <DrawingImage x:Name="CategorybtnImage">
+                                        <DrawingImage.Drawing>
+                                            <DrawingGroup ClipGeometry="M0,0 V512.01 H512.01 V0 H0 Z">
+                                                <DrawingGroup.Transform>
+                                                    <TranslateTransform X="0.00029599704430438578" Y="0" />
+                                                </DrawingGroup.Transform>
+                                                <DrawingGroup Opacity="1">
+                                                    <DrawingGroup Opacity="1">
+                                                        <GeometryDrawing Brush="#FF000000" Geometry="F1 M512.01,512.01z M0,0z M506.426,273.018L254.873,21.465C251.913,18.505,248.07,16.599,243.922,16.046L125.132,0.165C119.231,-0.604,113.329,1.385,109.13,5.584L5.587,109.127C1.382,113.326,-0.619000000000001,119.246,0.168,125.129L16.049,243.918C16.608,248.066,18.507,251.916,21.468,254.869L273.021,506.422C276.743,510.144 281.616,512.006 286.494,512.006 291.366,512.006 296.245,510.145 299.974,506.416L506.426,299.964C513.871,292.526,513.871,280.457,506.426,273.018z M286.495,466.003L52.976,232.484 39.197,129.423 129.42,39.207 232.474,52.985 466,286.498 286.495,466.003z" />
+                                                    </DrawingGroup>
+                                                </DrawingGroup>
+                                                <DrawingGroup Opacity="1">
+                                                    <DrawingGroup Opacity="1">
+                                                        <GeometryDrawing Brush="#FF000000" Geometry="F1 M512.01,512.01z M0,0z M203.412,104.693C195.973,97.248,183.904,97.248,176.465,104.693L109.13,172.028C101.685,179.467 101.685,191.536 109.13,198.975 112.846,202.697 117.725,204.559 122.603,204.559 127.475,204.559 132.354,202.698 136.076,198.975L203.411,131.64C210.857,124.201,210.857,112.132,203.412,104.693z" />
+                                                    </DrawingGroup>
+                                                </DrawingGroup>
+                                            </DrawingGroup>
+                                        </DrawingImage.Drawing>
+                                    </DrawingImage>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="recommend_textblock" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource AdobeClean-Regular}"/>
+            <Setter Property="Foreground" Value="#FF535353"/>
+        </Style>
+        
     </Application.Resources>
 </Application>
