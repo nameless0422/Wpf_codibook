@@ -74,23 +74,36 @@
 					
 					<!-- width 정사각형으로 조절 어떻게 할지 -->
 					<Grid Grid.Row="1" Margin="5">
-						<Border x:Name="listItem1"
+                        <StackPanel Orientation="Horizontal" Background="White">
+                            <Border x:Name="listItem1"
 								Background="White">
-							<Border x:Name="listItemImage1"
+                                <Border x:Name="listItemImage1"
 									Background="#626262"
 									Width="92"
 									HorizontalAlignment="Left">
-								<TextBlock x:Name="listItemInfo1"
+
+                                </Border>
+                            </Border>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock x:Name="listItemInfo1"
+                                           Grid.Row="0"
 										   Style="{StaticResource lookbookList_textblock}"
 										   FontSize="14">
-									<TextBlock x:Name="listItemTag1"
+                                    가나다라
+                                </TextBlock>
+                                <TextBlock x:Name="listItemTag1"
+                                           Grid.Row="1"
 											   Style="{StaticResource lookbookList_textblock}"
 											   FontSize="11">
-									</TextBlock>
-								</TextBlock>
-							</Border>
-						</Border>
-					</Grid>
+                                    마바사
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
 
 					<Grid Grid.Row="2" Margin="5">
 						<Border x:Name="listItem2"

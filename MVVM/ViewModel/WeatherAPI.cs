@@ -121,13 +121,14 @@ namespace codibook.MVVM.ViewModel
 
             string lname = docs[0]["place_name"];
 
-            string x = docs[0]["x"];
+            string x = string.Format("{0:0.#####}", double.Parse(docs[0]["x"]));
 
-            string y = docs[0]["y"];
+            string y = string.Format("{0:0.#####}", double.Parse(docs[0]["y"]));
 
             Console.WriteLine("{0},{1},{2}", lname, x, y);
             lonlatconverter = new LonLatConverter();
             Dictionary<string, double> xy = lonlatconverter.dfs_xy_conf(double.Parse(x), double.Parse(y));
+            Console.WriteLine("{0}, {1}", xy["x"], xy["y"]);
 
         }
     }
@@ -141,12 +142,12 @@ namespace codibook.MVVM.ViewModel
         double SLAT2 = 60.0; // 투영 위도2(degree)
         double OLON = 126.0; // 기준점 경도(degree)
         double OLAT = 38.0; // 기준점 위도(degree)
-        double XO = 0.0; // 기준점 X좌표(GRID)
-        double YO = 0.0; // 기1준점 Y좌표(GRID)
+        double XO = 43.0; // 기준점 X좌표(GRID)
+        double YO = 136.0; // 기준점 Y좌표(GRID)
 
         public Dictionary<string, double> dfs_xy_conf(double v1, double v2)
         {
-            double DEGRAD = System.Math.PI / 180.0;
+            double DEGRAD = Math.PI / 180.0;
 
             double re = RE / GRID;
             double slat1 = SLAT1 * DEGRAD;
@@ -154,26 +155,29 @@ namespace codibook.MVVM.ViewModel
             double olon = OLON * DEGRAD;
             double olat = OLAT * DEGRAD;
 
-            double sn = System.Math.Tan((System.Math.PI * 0.25f + slat2 * 0.5f)) / System.Math.Tan(System.Math.PI * 0.25f + slat1 * 0.5f);
-            sn = System.Math.Log(System.Math.Cos(slat1) / System.Math.Cos(slat2)) / System.Math.Log(sn);
-            double sf = System.Math.Tan(System.Math.PI * 0.25f + slat1 * 0.5f);
-            sf = System.Math.Pow(sf, sn) * System.Math.Cos(slat1) / sn;
-            double ro = System.Math.Tan(System.Math.PI * 0.25f + olat * 0.5f);
-            ro = re * sf / System.Math.Pow(ro, sn);
+            double sn = Math.Tan((Math.PI * 0.25f + slat2 * 0.5f)) / Math.Tan(Math.PI * 0.25f + slat1 * 0.5f);
+            sn = Math.Log(Math.Cos(slat1) / Math.Cos(slat2)) / Math.Log(sn);
+            double sf = Math.Tan(Math.PI * 0.25f + slat1 * 0.5f);
+            sf = Math.Pow(sf, sn) * Math.Cos(slat1) / sn;
+            double ro = Math.Tan(Math.PI * 0.25f + olat * 0.5f);
+            ro = re * sf / Math.Pow(ro, sn);
 
             Dictionary<string, double> rs = new Dictionary<string, double>();
-            double ra, theta;
+            double theta;
 
             rs["lat"] = v1;
             rs["lng"] = v2;
-            ra = System.Math.Tan(System.Math.PI * 0.25f + (v1) * DEGRAD * 0.5f);
-            ra = re * sf / System.Math.Pow(ra, sn);
+            sn = Math.Round(sn, 5);
+            var ra = Math.Tan(Math.PI * 0.25f + (v1) * DEGRAD * 0.5f);
+            ra = Math.Round(ra, 5);
+            ra = (Math.Round(re,5) * Math.Round(sf,5) / Math.Pow(ra, sn)); // ra가 NaN 값이 됨 이거 해결해야됨
             theta = v2 * DEGRAD - olon;
-            if (theta > System.Math.PI) theta -= 2.0f * System.Math.PI;
-            if (theta < -System.Math.PI) theta += 2.0f * System.Math.PI;
+            theta = Math.Round(theta, 5);
+            if (theta > Math.PI) theta -= 2.0f * Math.PI;
+            if (theta < -Math.PI) theta += 2.0f * Math.PI;
             theta *= sn;
-            rs["x"] = System.Math.Floor(ra * System.Math.Sin(theta) + XO + 0.5f);
-            rs["y"] = System.Math.Floor(ro - ra * System.Math.Cos(theta) + YO + 0.5f);
+            rs["x"] = Math.Floor(ra * Math.Sin(theta) + XO + 0.5f);
+            rs["y"] = Math.Floor(ro - ra * Math.Cos(theta) + YO + 0.5f);
 
             return rs;
         }

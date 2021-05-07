@@ -12,7 +12,7 @@
         ResizeMode="CanResizeWithGrip"
         Background="Transparent"
         Title="MainWindow" Height="720" Width="1280"
-        MinHeight="550" MinWidth="600"
+        MinHeight="650" MinWidth="1180"
         >
 
 

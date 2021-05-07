@@ -68,6 +68,7 @@ namespace codibook.MVVM.View
         // 룩북 뷰 <---> 아이템 뷰
         private void NavigateToPage_Click(object sender, RoutedEventArgs e)
         {
+            this.Mainframe.Navigate(new LookBookPage());
         }
 
         private void SettingButton_Click(object sender, RoutedEventArgs e)
