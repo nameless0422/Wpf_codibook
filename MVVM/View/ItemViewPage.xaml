@@ -389,21 +389,21 @@
 										           Style="{StaticResource myclotheslist_textblock}"
 										           FontSize="15"
                                                    Margin="105, 5 0, 5">
-                                                   제발
+                                                   내가
                                     </TextBlock>
                                     <TextBlock x:Name="mcl2Name"
                                                    Grid.Row="1"
 										           Style="{StaticResource myclotheslist_textblock}"
 										           FontSize="15"
                                                    Margin="105, 5, 0, 5">
-                                                   날
+                                                   학과를
                                     </TextBlock>
                                     <TextBlock x:Name="mcl2Price"
                                                    Grid.Row="2"
 											       Style="{StaticResource myclotheslist_textblock}"
 											       FontSize="15"
                                                    Margin="105, 5, 0, 5">
-                                                   놓아줘
+                                                   잘못왔지
                                     </TextBlock>
                                     <TextBlock x:Name="mcl2Tag"
                                                    Grid.Row="2"
@@ -412,7 +412,7 @@
 											       Style="{StaticResource myclotheslist_textblock}"
 											       FontSize="15"
                                                    Margin="105, 5, 15, 5">
-                                                   #살려주세요 제발
+                                                   #자퇴마렵다
                                     </TextBlock>
                                 </Grid>
                             </Grid>
@@ -444,21 +444,21 @@
 										           Style="{StaticResource myclotheslist_textblock}"
 										           FontSize="15"
                                                    Margin="105, 5 0, 5">
-                                                   제발
+                                                   벌써 새벽 1시
                                     </TextBlock>
                                     <TextBlock x:Name="mcl3Name"
                                                    Grid.Row="1"
 										           Style="{StaticResource myclotheslist_textblock}"
 										           FontSize="15"
                                                    Margin="105, 5, 0, 5">
-                                                   날
+                                                   레포트 과제도 있는데
                                     </TextBlock>
                                     <TextBlock x:Name="mcl3Price"
                                                    Grid.Row="2"
 											       Style="{StaticResource myclotheslist_textblock}"
 											       FontSize="15"
                                                    Margin="105, 5, 0, 5">
-                                                   놓아줘
+                                                   그건 또 언제하냐
                                     </TextBlock>
                                     <TextBlock x:Name="mcl3Tag"
                                                    Grid.Row="2"
@@ -467,7 +467,7 @@
 											       Style="{StaticResource myclotheslist_textblock}"
 											       FontSize="15"
                                                    Margin="105, 5, 15, 5">
-                                                   #살려주세요 제발
+                                                   #죽는게 답이다
                                     </TextBlock>
                                 </Grid>
                             </Grid>
@@ -499,21 +499,21 @@
 										           Style="{StaticResource myclotheslist_textblock}"
 										           FontSize="15"
                                                    Margin="105, 5 0, 5">
-                                                   제발
+                                                   교수님
                                     </TextBlock>
                                     <TextBlock x:Name="mcl4Name"
                                                    Grid.Row="1"
 										           Style="{StaticResource myclotheslist_textblock}"
 										           FontSize="15"
                                                    Margin="105, 5, 0, 5">
-                                                   날
+                                                   진도가 너무
                                     </TextBlock>
                                     <TextBlock x:Name="mcl4Price"
                                                    Grid.Row="2"
 											       Style="{StaticResource myclotheslist_textblock}"
 											       FontSize="15"
                                                    Margin="105, 5, 0, 5">
-                                                   놓아줘
+                                                   빠릅니다
                                     </TextBlock>
                                     <TextBlock x:Name="mcl4Tag"
                                                    Grid.Row="2"
@@ -522,7 +522,7 @@
 											       Style="{StaticResource myclotheslist_textblock}"
 											       FontSize="15"
                                                    Margin="105, 5, 15, 5">
-                                                   #살려주세요 제발
+                                                   #어질어질하네
                                     </TextBlock>
                                 </Grid>
                             </Grid>
