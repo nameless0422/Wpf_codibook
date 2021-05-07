@@ -208,8 +208,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="120"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="55"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- 구현부 -->
@@ -307,8 +306,97 @@
                 </Grid>-->
                 
                 <!-- 스크롤바 -->
-                <ScrollViewer Grid.Column="2">
-                    <Grid Height="348"/>
+                <ScrollViewer Grid.Column="1">
+                    <StackPanel>
+                        <TextBlock>
+                            <Border x:Name="myclothseslist1"
+								   Background="White"
+                                   CornerRadius="15"
+                                    Margin="0, 5, 5, 10">
+                                <Border x:Name="myclothseslistImage1"
+									   Background="DimGray"
+                                       Width="100"
+									   HorizontalAlignment="Left"
+                                       CornerRadius="15, 0, 0, 15">
+                                    <TextBlock x:Name="myclothseslistInfo1"
+										       Style="{StaticResource recommend_textblock}"
+										       FontSize="14" Height="70">
+									    <TextBlock x:Name="myclothseslistTag1"
+											       Style="{StaticResource recommend_textblock}"
+											       FontSize="11">
+									    </TextBlock>
+								    </TextBlock>
+                                </Border>
+                            </Border>
+                        </TextBlock>
+                        
+                        <TextBlock>
+                            <Border x:Name="myclothseslist2"
+								   Background="White"
+                                   CornerRadius="15"
+                                    Margin="0, 5, 5, 10">
+                            <Border x:Name="myclothseslistImage2"
+									   Background="DimGray"
+                                       Width="100"
+									   HorizontalAlignment="Left"
+                                       CornerRadius="15, 0, 0, 15">
+                                <TextBlock x:Name="myclothseslistInfo2"
+										       Style="{StaticResource recommend_textblock}"
+										       FontSize="14" Height="70">
+									<TextBlock x:Name="myclothseslistTag2"
+											       Style="{StaticResource recommend_textblock}"
+											       FontSize="11">
+									</TextBlock>
+								</TextBlock>
+                            </Border>
+                        </Border>
+                        </TextBlock>
+                        
+                        <TextBlock>
+                            <Border x:Name="myclothseslist3"
+								   Background="White"
+                                   CornerRadius="15"
+                                    Margin="0, 5, 5, 10">
+                            <Border x:Name="myclothseslistImage3"
+									   Background="DimGray"
+                                       Width="100"
+									   HorizontalAlignment="Left"
+                                       CornerRadius="15, 0, 0, 15">
+                                <TextBlock x:Name="myclothseslistInfo3"
+										       Style="{StaticResource recommend_textblock}"
+										       FontSize="14" Height="70">
+									<TextBlock x:Name="myclothseslistTag3"
+											       Style="{StaticResource recommend_textblock}"
+											       FontSize="11">
+									</TextBlock>
+								</TextBlock>
+                            </Border>
+                        </Border>
+                        </TextBlock>
+                        
+                        <TextBlock>
+                            <Border x:Name="myclothseslist4"
+								   Background="White"
+                                   CornerRadius="15"
+                                    Margin="0, 5, 5, 10">
+                            <Border x:Name="myclothseslistImage4"
+									   Background="DimGray"
+                                       Width="100"
+									   HorizontalAlignment="Left"
+                                       CornerRadius="15, 0, 0, 15"
+                                        Height="70">
+                                <TextBlock x:Name="myclothseslistInfo4"
+										       Style="{StaticResource recommend_textblock}"
+										       FontSize="14">
+									<TextBlock x:Name="myclothseslistTag4"
+											       Style="{StaticResource recommend_textblock}"
+											       FontSize="11">
+									</TextBlock>
+								</TextBlock>
+                            </Border>
+                        </Border>
+                        </TextBlock>
+                    </StackPanel>
                 </ScrollViewer>
             </Grid>
             
