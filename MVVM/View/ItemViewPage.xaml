@@ -308,94 +308,94 @@
                 <!-- 스크롤바 -->
                 <ScrollViewer Grid.Column="1">
                     <StackPanel>
-                        <TextBlock>
+                        <Border Margin="0, 0, 25, 0">
                             <Border x:Name="myclothseslist1"
+								       Background="White"
+                                       CornerRadius="15"
+                                       Margin="0, 3, 0, 5">
+                                <Border x:Name="myclothseslistImage1"
+									       Background="DimGray"
+                                           Width="90"
+									       HorizontalAlignment="Left"
+                                           CornerRadius="15, 0, 0, 15">
+                                    <TextBlock x:Name="myclothseslistInfo1"
+										           Style="{StaticResource recommend_textblock}"
+										           FontSize="14" Height="75">
+									    <TextBlock x:Name="myclothseslistTag1"
+											           Style="{StaticResource recommend_textblock}"
+											           FontSize="11">
+									    </TextBlock>
+								    </TextBlock>
+                                </Border>
+                            </Border>
+                        </Border>
+                        
+                        <Border Margin="0, 0, 25, 0">
+                            <Border x:Name="myclothseslist2"
+								       Background="White"
+                                       CornerRadius="15"
+                                       Margin="0, 5, 0, 5">
+                                <Border x:Name="myclothseslistImage2"
+									       Background="DimGray"
+                                           Width="90"
+									       HorizontalAlignment="Left"
+                                           CornerRadius="15, 0, 0, 15">
+                                    <TextBlock x:Name="myclothseslistInfo2"
+										           Style="{StaticResource recommend_textblock}"
+										           FontSize="14" Height="75">
+									    <TextBlock x:Name="myclothseslistTag2"
+											           Style="{StaticResource recommend_textblock}"
+											           FontSize="11">
+									    </TextBlock>
+								    </TextBlock>
+                                </Border>
+                            </Border>
+                        </Border>
+
+                        <Border Margin="0, 0, 25, 0">
+                            <Border x:Name="myclothseslist3"
 								   Background="White"
                                    CornerRadius="15"
-                                    Margin="0, 3, 0, 5">
-                                <Border x:Name="myclothseslistImage1"
+                                    Margin="0, 5, 0, 5">
+                                <Border x:Name="myclothseslistImage3"
+									       Background="DimGray"
+                                           Width="90"
+									       HorizontalAlignment="Left"
+                                           CornerRadius="15, 0, 0, 15">
+                                    <TextBlock x:Name="myclothseslistInfo3"
+										           Style="{StaticResource recommend_textblock}"
+										           FontSize="14" Height="75">
+									    <TextBlock x:Name="myclothseslistTag3"
+											           Style="{StaticResource recommend_textblock}"
+											           FontSize="11">
+									    </TextBlock>
+								    </TextBlock>
+                                </Border>
+                            </Border>
+                        </Border>
+
+                        <Border Margin="0, 0, 25, 0">
+                            <Border x:Name="myclothseslist4"
+								        Background="White"
+                                        CornerRadius="15"
+                                        Margin="0, 5, 0, 5">
+                                <Border x:Name="myclothseslistImage4"
 									   Background="DimGray"
                                        Width="90"
 									   HorizontalAlignment="Left"
-                                       CornerRadius="15, 0, 0, 15">
-                                    <TextBlock x:Name="myclothseslistInfo1"
-										       Style="{StaticResource recommend_textblock}"
-										       FontSize="14" Height="75">
-									    <TextBlock x:Name="myclothseslistTag1"
+                                       CornerRadius="15, 0, 0, 15"
+                                       Height="75">
+                                    <TextBlock x:Name="myclothseslistInfo4"
+								  		       Style="{StaticResource recommend_textblock}"
+										       FontSize="14">
+									    <TextBlock x:Name="myclothseslistTag4"
 											       Style="{StaticResource recommend_textblock}"
 											       FontSize="11">
 									    </TextBlock>
 								    </TextBlock>
                                 </Border>
                             </Border>
-                        </TextBlock>
-                        
-                        <TextBlock>
-                            <Border x:Name="myclothseslist2"
-								   Background="White"
-                                   CornerRadius="15"
-                                    Margin="0, 5, 0, 5">
-                            <Border x:Name="myclothseslistImage2"
-									   Background="DimGray"
-                                       Width="90"
-									   HorizontalAlignment="Left"
-                                       CornerRadius="15, 0, 0, 15">
-                                <TextBlock x:Name="myclothseslistInfo2"
-										       Style="{StaticResource recommend_textblock}"
-										       FontSize="14" Height="75">
-									<TextBlock x:Name="myclothseslistTag2"
-											       Style="{StaticResource recommend_textblock}"
-											       FontSize="11">
-									</TextBlock>
-								</TextBlock>
-                            </Border>
                         </Border>
-                        </TextBlock>
-                        
-                        <TextBlock>
-                            <Border x:Name="myclothseslist3"
-								   Background="White"
-                                   CornerRadius="15"
-                                    Margin="0, 5, 0, 5">
-                            <Border x:Name="myclothseslistImage3"
-									   Background="DimGray"
-                                       Width="90"
-									   HorizontalAlignment="Left"
-                                       CornerRadius="15, 0, 0, 15">
-                                <TextBlock x:Name="myclothseslistInfo3"
-										       Style="{StaticResource recommend_textblock}"
-										       FontSize="14" Height="75">
-									<TextBlock x:Name="myclothseslistTag3"
-											       Style="{StaticResource recommend_textblock}"
-											       FontSize="11">
-									</TextBlock>
-								</TextBlock>
-                            </Border>
-                        </Border>
-                        </TextBlock>
-                        
-                        <TextBlock>
-                            <Border x:Name="myclothseslist4"
-								        Background="White"
-                                        CornerRadius="15"
-                                        Margin="0, 5, 0, 5">
-                            <Border x:Name="myclothseslistImage4"
-									   Background="DimGray"
-                                       Width="90"
-									   HorizontalAlignment="Left"
-                                       CornerRadius="15, 0, 0, 15"
-                                       Height="75">
-                                <TextBlock x:Name="myclothseslistInfo4"
-										       Style="{StaticResource recommend_textblock}"
-										       FontSize="14">
-									<TextBlock x:Name="myclothseslistTag4"
-											       Style="{StaticResource recommend_textblock}"
-											       FontSize="11">
-									</TextBlock>
-								</TextBlock>
-                            </Border>
-                        </Border>
-                        </TextBlock>
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
