@@ -1,4 +1,5 @@
-﻿using System;
+﻿using codibook.MVVM.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Windows.Input;
 
 namespace codibook.MVVM.ViewModel
 {
+
     public class MainViewModel : INotifyPropertyChanged
     {
         private string search_text;
@@ -32,5 +34,4 @@ namespace codibook.MVVM.ViewModel
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
 }

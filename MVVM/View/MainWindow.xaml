@@ -18,6 +18,7 @@
 
     <Window.Resources>
         <vm:MainViewModel x:Key="MainViewModel"/>
+        <vm:WeatherAPI x:Key="WeatherAPI"/>
     </Window.Resources>
     
     <Border Background="#F5F5F5" CornerRadius="15">

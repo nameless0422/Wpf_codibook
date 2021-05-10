@@ -70,6 +70,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MVVM\ViewModel\MainCommand.cs" />
     <Compile Include="MVVM\ViewModel\WeatherAPI.cs" />
     <Compile Include="MVVM\View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -92,7 +93,7 @@
     <Compile Include="MVVM\Model\ItemModel.cs" />
     <Compile Include="MVVM\Model\LookBookModel.cs" />
     <Compile Include="MVVM\Model\UserModel.cs" />
-    <Compile Include="MVVM\Model\WetherModel.cs" />
+    <Compile Include="MVVM\Model\WeatherModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
     <Compile Include="MVVM\View\ItemViewPage.xaml.cs">
       <DependentUpon>ItemViewPage.xaml</DependentUpon>
