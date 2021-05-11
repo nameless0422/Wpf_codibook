@@ -15,9 +15,9 @@ namespace codibook.MVVM.ViewModel
 {
     public class WeatherAPI : INotifyPropertyChanged
     {
-        public const string API_KEY = "d2wIDf8yoetktCQH1M68MZakZUgM5HSxP2%2BRyIxIcPEsCqYV81A9kYWkIKnA7m1B8jRAy2eDpvAgh%2BFPc7xWUw%3D%3D";
-        public const string BASE_URL = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?serviceKey={0}&pageNo=1&numOfRows=200&dataType=JSON&base_date={1}&base_time={2}&nx={3}&ny={4}";
-        protected KakaoLocal kakaoLocal;
+        private const string API_KEY = "d2wIDf8yoetktCQH1M68MZakZUgM5HSxP2%2BRyIxIcPEsCqYV81A9kYWkIKnA7m1B8jRAy2eDpvAgh%2BFPc7xWUw%3D%3D";
+        private const string BASE_URL = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?serviceKey={0}&pageNo=1&numOfRows=200&dataType=JSON&base_date={1}&base_time={2}&nx={3}&ny={4}";
+        private KakaoLocal kakaoLocal;
 
         private bool TimeTogle = false;
 
@@ -25,6 +25,8 @@ namespace codibook.MVVM.ViewModel
         public WeatherModel Weather_Model { get { return weather_Model; } set { weather_Model = value; OnPropertyChanged("Weather_Model"); } }
 
         private string name;
+
+        // cityname이 변화할때마다 WeatherModel 업데이트
         public string cityname
         {
             get { return name; }
@@ -60,7 +62,7 @@ namespace codibook.MVVM.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged(string propertyName)
+        private void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
             {
@@ -68,6 +70,10 @@ namespace codibook.MVVM.ViewModel
             }
         }
 
+        public void Changecityname(string name)
+        {
+            cityname = name;
+        }
 
         //공공 API 호출밑 WeatherModel 컨버트
         public WeatherModel GetWetherInformation(string cityname)

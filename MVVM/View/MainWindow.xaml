@@ -91,7 +91,8 @@
                         <Border Background="White"
                                 Margin="15,0,15,0"
                                 VerticalAlignment="Center"
-                                CornerRadius="15">
+                                CornerRadius="15"
+                                DataContext="{StaticResource MainViewModel}">
                             <StackPanel Margin="15,13,15,12"
                                 Orientation="Horizontal">
                                 <Image Height="20" Width="20">
@@ -114,12 +115,15 @@
                                         </DrawingImage>
                                     </Image.Source>
                                 </Image>
-                                <TextBox BorderThickness="0"
+                                <TextBox x:Name="Search_Box"
+                                         BorderThickness="0"
                                          FontSize="20"
                                          Style="{StaticResource TmonyBold_textbox}"
                                          Margin="10,0,0,0" Width="560"
                                          Foreground="#FF535353"
-                                         Text="{}"
+                                         AcceptsReturn="True"
+                                         KeyDown="TextBox_KeyDown"
+                                         Text="{Binding Search_Text, Mode=TwoWay}"
                                          >
                                             
                                 </TextBox>

@@ -4,9 +4,281 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:codibook.MVVM.View"
+             xmlns:ViewModel ="clr-namespace:codibook.MVVM.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+
+    <UserControl.Resources>
+        <ViewModel:MainViewModel x:Key="MainViewModel"/>
+    </UserControl.Resources>
+    <Border Background="Transparent" CornerRadius="15">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Search 라벨 -->
+            <Grid Grid.Row="0">
+                <Label x:Name="Search"
+                       HorizontalAlignment="Left"
+					   VerticalAlignment="Bottom"
+					   FontFamily="{StaticResource AdobeClean-Bold}"
+					   FontSize="25"
+					   Foreground="DimGray"
+					   Margin="50, 0, 0, 10"/>
+            </Grid>
+
+            <!-- Search -->
+
+            <Grid Grid.Row="1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,30,0">
+                    <Button x:Name="lookbook"
+                            Style="{StaticResource Search_LookBookButton}"  
+                            FontFamily="{StaticResource AdobeClean-Bold}"
+                            ></Button>
+                    <Button x:Name="item" 
+                            Style="{StaticResource Search_ItemButton}"
+                            FontFamily="{StaticResource AdobeClean-Bold}"
+                            ></Button>
+                </StackPanel>
+            </Grid>
             
-    </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- 스크롤바 -->
+                <ScrollViewer Grid.Column="1">
+                    <StackPanel>
+                        <Border CornerRadius="15" Background="Transparent" Margin="0, 3, 25, 5">
+                            <Grid>
+                                <Border x:Name="mcl1Item"
+								           Background="White"
+                                           CornerRadius="15">
+                                    <Border x:Name="mcl1Image"
+									           Background="DimGray"
+								 	           Width="92"
+									           HorizontalAlignment="Left"
+                                               CornerRadius="15, 0, 0, 15">
+                                        <Button Margin="65, 65, 8, 8"
+                                                    Style="{StaticResource HeartButton}">
+                                        </Button>
+                                    </Border>
+                                </Border>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock x:Name="mcl1Company"
+                                                   Grid.Row="0"
+										           Style="{StaticResource myclotheslist_textblock}"
+										           FontSize="15"
+                                                   Margin="105, 5 0, 5">
+                                                   
+                                    </TextBlock>
+                                    <TextBlock x:Name="mcl1Name"
+                                                   Grid.Row="1"
+										           Style="{StaticResource myclotheslist_textblock}"
+										           FontSize="15"
+                                                   Margin="105, 5, 0, 5">
+                                                   
+                                    </TextBlock>
+                                    <TextBlock x:Name="mcl1Price"
+                                                   Grid.Row="2"
+											       Style="{StaticResource myclotheslist_textblock}"
+											       FontSize="15"
+                                                   Margin="105, 5, 0, 5">
+                                                   
+                                    </TextBlock>
+                                    <TextBlock x:Name="mcl1Tag"
+                                                   Grid.Row="2"
+                                                   VerticalAlignment="Bottom"
+                                                   HorizontalAlignment="Right"
+											       Style="{StaticResource myclotheslist_textblock}"
+											       FontSize="15"
+                                                   Margin="105, 5, 15, 5">
+                                                  
+                                    </TextBlock>
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                        <Border CornerRadius="15" Background="Transparent" Margin="0, 0, 25, 5">
+                            <Grid>
+                                <Border x:Name="mcl2Item"
+								           Background="White"
+                                           CornerRadius="15">
+                                    <Border x:Name="mcl2Image"
+									           Background="DimGray"
+								 	           Width="92"
+									           HorizontalAlignment="Left"
+                                               CornerRadius="15, 0, 0, 15">
+                                        <Button Margin="65, 65, 8, 8"
+                                                    Style="{StaticResource HeartButton}">
+                                        </Button>
+                                    </Border>
+                                </Border>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock x:Name="mcl2Company"
+                                                   Grid.Row="0"
+										           Style="{StaticResource myclotheslist_textblock}"
+										           FontSize="15"
+                                                   Margin="105, 5 0, 5">
+                                                   
+                                    </TextBlock>
+                                    <TextBlock x:Name="mcl2Name"
+                                                   Grid.Row="1"
+										           Style="{StaticResource myclotheslist_textblock}"
+										           FontSize="15"
+                                                   Margin="105, 5, 0, 5">
+                                                   
+                                    </TextBlock>
+                                    <TextBlock x:Name="mcl2Price"
+                                                   Grid.Row="2"
+											       Style="{StaticResource myclotheslist_textblock}"
+											       FontSize="15"
+                                                   Margin="105, 5, 0, 5">
+                                                   
+                                    </TextBlock>
+                                    <TextBlock x:Name="mcl2Tag"
+                                                   Grid.Row="2"
+                                                   VerticalAlignment="Bottom"
+                                                   HorizontalAlignment="Right"
+											       Style="{StaticResource myclotheslist_textblock}"
+											       FontSize="15"
+                                                   Margin="105, 5, 15, 5">
+                                                   
+                                    </TextBlock>
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                        <Border CornerRadius="15" Background="Transparent" Margin="0, 0, 25, 5">
+                            <Grid>
+                                <Border x:Name="mcl3Item"
+								           Background="White"
+                                           CornerRadius="15">
+                                    <Border x:Name="mcl3Image"
+									           Background="DimGray"
+								 	           Width="92"
+									           HorizontalAlignment="Left"
+                                               CornerRadius="15, 0, 0, 15">
+                                        <Button Margin="65, 65, 8, 8"
+                                                    Style="{StaticResource HeartButton}">
+                                        </Button>
+                                    </Border>
+                                </Border>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock x:Name="mcl3Company"
+                                                   Grid.Row="0"
+										           Style="{StaticResource myclotheslist_textblock}"
+										           FontSize="15"
+                                                   Margin="105, 5 0, 5">
+                                                   
+                                    </TextBlock>
+                                    <TextBlock x:Name="mcl3Name"
+                                                   Grid.Row="1"
+										           Style="{StaticResource myclotheslist_textblock}"
+										           FontSize="15"
+                                                   Margin="105, 5, 0, 5">
+                                                   
+                                    </TextBlock>
+                                    <TextBlock x:Name="mcl3Price"
+                                                   Grid.Row="2"
+											       Style="{StaticResource myclotheslist_textblock}"
+											       FontSize="15"
+                                                   Margin="105, 5, 0, 5">
+                                                   
+                                    </TextBlock>
+                                    <TextBlock x:Name="mcl3Tag"
+                                                   Grid.Row="2"
+                                                   VerticalAlignment="Bottom"
+                                                   HorizontalAlignment="Right"
+											       Style="{StaticResource myclotheslist_textblock}"
+											       FontSize="15"
+                                                   Margin="105, 5, 15, 5">
+                                                   
+                                    </TextBlock>
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                        <Border CornerRadius="15" Background="Transparent" Margin="0, 0, 25, 5">
+                            <Grid>
+                                <Border x:Name="mcl4Item"
+								           Background="White"
+                                           CornerRadius="15">
+                                    <Border x:Name="mcl4Image"
+									           Background="DimGray"
+								 	           Width="92"
+									           HorizontalAlignment="Left"
+                                               CornerRadius="15, 0, 0, 15">
+                                        <Button Margin="65, 65, 8, 8"
+                                                    Style="{StaticResource HeartButton}">
+                                        </Button>
+                                    </Border>
+                                </Border>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock x:Name="mcl4Company"
+                                                   Grid.Row="0"
+										           Style="{StaticResource myclotheslist_textblock}"
+										           FontSize="15"
+                                                   Margin="105, 5 0, 5">
+                                                  
+                                    </TextBlock>
+                                    <TextBlock x:Name="mcl4Name"
+                                                   Grid.Row="1"
+										           Style="{StaticResource myclotheslist_textblock}"
+										           FontSize="15"
+                                                   Margin="105, 5, 0, 5">
+                                                   
+                                    </TextBlock>
+                                    <TextBlock x:Name="mcl4Price"
+                                                   Grid.Row="2"
+											       Style="{StaticResource myclotheslist_textblock}"
+											       FontSize="15"
+                                                   Margin="105, 5, 0, 5">
+                                                   
+                                    </TextBlock>
+                                    <TextBlock x:Name="mcl4Tag"
+                                                   Grid.Row="2"
+                                                   VerticalAlignment="Bottom"
+                                                   HorizontalAlignment="Right"
+											       Style="{StaticResource myclotheslist_textblock}"
+											       FontSize="15"
+                                                   Margin="105, 5, 15, 5">
+                                                   
+                                    </TextBlock>
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+
+        </Grid>
+    </Border>
 </UserControl>

@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static codibook.MVVM.ViewModel.MariaDB;
 
 namespace codibook.MVVM.View
 {
@@ -64,11 +65,11 @@ namespace codibook.MVVM.View
         // 룩북 뷰 <---> 아이템 뷰
         private void NavigateToPage_Click(object sender, RoutedEventArgs e)
         {
-            if(this.Mainframe.Content.GetType() == typeof(LookBookPage))
+            if(this.Mainframe.Content.GetType() == typeof(LookBookPage) || this.Mainframe.Content.GetType() == typeof(SearchViewPage))
             {
                 this.Mainframe.Navigate(new ItemViewPage());
             } 
-            else if(this.Mainframe.Content.GetType() == typeof(ItemViewPage))
+            else if(this.Mainframe.Content.GetType() == typeof(ItemViewPage) || this.Mainframe.Content.GetType() == typeof(SearchViewPage))
             {
                 this.Mainframe.Navigate(new LookBookPage());
             }
@@ -76,17 +77,30 @@ namespace codibook.MVVM.View
 
         private void SettingButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            PopUp.SettingPopUp settingPopUp = new PopUp.SettingPopUp();
+            settingPopUp.Show();
         }
 
         private void BookMarkButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Mainframe.Navigate(new SearchViewPage());
         }
 
         private void UserButton_Click(object sender, RoutedEventArgs e)
         {
+            PopUp.UserPopUp userPopUp = new PopUp.UserPopUp();
+            userPopUp.Show();
+        }
 
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            MariaDbAccess mariaDbAccess = new MariaDbAccess();
+            if (e.Key == Key.Return)
+            {
+                if (!Search_Box.Text.Equals(string.Empty)){
+                    mariaDbAccess.MariaDB_Select(Search_Box.Text);
+                } 
+            }
         }
     }
 }
