@@ -19,15 +19,43 @@ namespace codibook.MVVM.ViewModel
         public const string BASE_URL = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?serviceKey={0}&pageNo=1&numOfRows=200&dataType=JSON&base_date={1}&base_time={2}&nx={3}&ny={4}";
         protected KakaoLocal kakaoLocal;
 
-        WeatherModel Weather_Model;
+        private bool TimeTogle = false;
 
-        string cityname = "";
+        private WeatherModel weather_Model;
+        public WeatherModel Weather_Model { get { return weather_Model; } set { weather_Model = value; OnPropertyChanged("Weather_Model"); } }
+
+        private string name;
+        public string cityname
+        {
+            get { return name; }
+            set
+            {
+                name = value;
+                OnPropertyChanged("cityname");
+                Weather_Model = new WeatherModel();
+                Weather_Model = GetWetherInformation(name);
+                Weather_Model = OrganizeWeatherModel(Weather_Model);
+            }
+        }
+
+
+        private string pop = " ";
+        private string tmx = " ";
+        private string tmn = " ";
+        private string t3h = " ";
+        private string sky = " ";
+        private string pty = " ";
+        public string POP { get { return pop; } set { pop = value; OnPropertyChanged("POP"); } }
+        public string TMX { get { return tmx; } set { tmx = value; OnPropertyChanged("TMX"); } }
+        public string TMN { get { return tmn; } set { tmn = value; OnPropertyChanged("TMN"); } }
+        public string T3H { get { return t3h; } set { t3h = value; OnPropertyChanged("T3H"); } }
+        public string SKY { get { return sky; } set { sky = value; OnPropertyChanged("SKY"); } }
+        public string PTY { get { return pty; } set { pty = value; OnPropertyChanged("PTY"); } }
 
         public WeatherAPI()
         {
             kakaoLocal = new KakaoLocal();
-            cityname = "전북대학교"; // config 파일에 저장해두기
-            Weather_Model = OrganizeWeatherModel(GetWetherInformation(cityname));
+            cityname = "전북대학교"; // 기본 장소
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -53,10 +81,19 @@ namespace codibook.MVVM.ViewModel
             }
             //현재 날짜와 시간을 바탕으로 데이터 호출
             int time = int.Parse(DateTime.Now.ToString("HH"));
-            string nowDate = DateTime.Now.ToString("yyyyMMdd");
+            string nowDate;
+            if (time <= 2) 
+            {
+                nowDate = DateTime.Now.AddDays(-1).ToString("yyyyMMdd");
+                TimeTogle = true;
+            } 
+            else
+            {
+                nowDate = DateTime.Now.ToString("yyyyMMdd");
+                TimeTogle = false;
+            }
 
             string base_time = "0200";
-
 
             List<int> xy = kakaoLocal.kakao(cityname);
 
@@ -76,7 +113,9 @@ namespace codibook.MVVM.ViewModel
         //데이터 정리용
         public WeatherModel OrganizeWeatherModel(WeatherModel model)
         {
-            WeatherModel result = new WeatherModel();
+            WeatherModel result = new WeatherModel(model.Response.body.items);
+
+            result.Response.body.items.item.Clear();
             int time = int.Parse(DateTime.Now.AddHours(-1).ToString("HH"));
             string Time;
             switch (time)
@@ -84,57 +123,164 @@ namespace codibook.MVVM.ViewModel
                 case 2:
                 case 3:
                 case 4:
-                    Time = "0200";
+                    Time = "0600";
                     break;
                 case 5:
                 case 6:
                 case 7:
-                    Time = "0500";
+                    Time = "0900";
                     break;
                 case 8:
                 case 9:
                 case 10:
-                    Time = "0800";
+                    Time = "1200";
                     break;
                 case 11:
                 case 12:
                 case 13:
-                    Time = "1100";
+                    Time = "1500";
                     break;
                 case 14:
                 case 15:
                 case 16:
-                    Time = "1400";
+                    Time = "1800";
                     break;
                 case 17:
                 case 18:
                 case 19:
-                    Time = "1700";
+                    Time = "2100";
                     break;
                 case 20:
                 case 21:
                 case 22:
-                    Time = "2000";
+                    Time = "0000";
                     break;
                 case 23:
                 case 24:
                 case 1:
-                    Time = "2300";
+                    Time = "0300";
                     break;
 
                 default:
-                    Time = "0500";
+                    Time = "0600";
                     break;
             }
-            for (int i = 0; i < model.Items.item.Count(); i++)
+            for (int i = 0; i < model.Response.body.items.item.Count(); i++)
             {
-                // 날짜가 같고 시간이 같거나, 카테고리가 TMN, TMX 라면
-                if (model.Items.item[i].baseDate.Equals(DateTime.Now.ToString("yyyyMMdd")) && (model.Items.item[i].fcstTime.Equals(Time) || (model.Items.item[i].category.Equals("TMN") || model.Items.item[i].category.Equals("TMX"))))
+                if (TimeTogle)
                 {
-                    result.Items.item.Add(model.Items.item[i]);
+
+                    // 하늘상태(SKY) 코드: 맑음(1), 구름많음(3), 흐림(4)
+                    // 구름조금(2) 삭제(2019.06.4)
+                    // 강수형태(PTY) 코드: 없음(0), 비(1), 비 / 눈(2), 눈(3), 소나기(4), 빗방울(5), 빗방울 / 눈날림(6), 눈날림(7)
+                    // 여기서 비/ 눈은 비와 눈이 섞여 오는 것을 의미(진눈개비)
+                    // 빗방울(5), 빗방울 / 눈날림(6), 눈날림(7)
+
+                    if (model.Response.body.items.item[i].baseDate.Equals(DateTime.Now.AddDays(-1).ToString("yyyyMMdd")) && model.Response.body.items.item[i].category.Equals("TMN"))
+                    {
+                        for(int j = 0; j < result.Response.body.items.item.Count(); j++)
+                        {
+                            if (result.Response.body.items.item[j].category.Equals("TMN"))
+                            {
+                                continue;
+                            }
+                        }
+                        result.Response.body.items.item.Add(model.Response.body.items.item[i]);
+                        ProcessingByCategory(model.Response.body.items.item[i]);
+                    }
+
+                    if (model.Response.body.items.item[i].baseDate.Equals(DateTime.Now.AddDays(-1).ToString("yyyyMMdd")) && model.Response.body.items.item[i].category.Equals("TMX"))
+                    {
+                        for (int j = 0; j < result.Response.body.items.item.Count(); j++)
+                        {
+                            if (result.Response.body.items.item[j].category.Equals("TMX"))
+                            {
+                                continue;
+                            }
+                        }
+                        result.Response.body.items.item.Add(model.Response.body.items.item[i]);
+                        ProcessingByCategory(model.Response.body.items.item[i]);
+                    }
+
+                    if (model.Response.body.items.item[i].baseDate.Equals(DateTime.Now.AddDays(-1).ToString("yyyyMMdd"))
+                    && model.Response.body.items.item[i].fcstTime.Equals(Time)
+                    && (model.Response.body.items.item[i].category.Equals("POP") || model.Response.body.items.item[i].category.Equals("PTY") || model.Response.body.items.item[i].category.Equals("T3H") || model.Response.body.items.item[i].category.Equals("SKY")))
+                    {
+
+                        result.Response.body.items.item.Add(model.Response.body.items.item[i]);
+                        ProcessingByCategory(model.Response.body.items.item[i]);
+                    }
                 }
+                else
+                {
+                    if (model.Response.body.items.item[i].baseDate.Equals(DateTime.Now.ToString("yyyyMMdd")) && model.Response.body.items.item[i].category.Equals("TMN"))
+                    {
+                        for(int j = 0; j < result.Response.body.items.item.Count(); j++)
+                        {
+                            if (result.Response.body.items.item[j].category.Equals("TMN"))
+                            {
+                                continue;
+                            }
+                        }
+                        result.Response.body.items.item.Add(model.Response.body.items.item[i]);
+                        ProcessingByCategory(model.Response.body.items.item[i]);
+                    }
+
+                    if(model.Response.body.items.item[i].baseDate.Equals(DateTime.Now.ToString("yyyyMMdd")) && model.Response.body.items.item[i].category.Equals("TMX"))
+                    {
+                        for (int j = 0; j < result.Response.body.items.item.Count(); j++)
+                        {
+                            if (result.Response.body.items.item[j].category.Equals("TMX"))
+                            {
+                                continue;
+                            }
+                        }
+                        result.Response.body.items.item.Add(model.Response.body.items.item[i]);
+                        ProcessingByCategory(model.Response.body.items.item[i]);
+                    }
+
+                    if (model.Response.body.items.item[i].baseDate.Equals(DateTime.Now.ToString("yyyyMMdd"))
+                    && model.Response.body.items.item[i].fcstTime.Equals(Time)
+                    && (model.Response.body.items.item[i].category.Equals("POP") || model.Response.body.items.item[i].category.Equals("PTY") || model.Response.body.items.item[i].category.Equals("T3H") || model.Response.body.items.item[i].category.Equals("SKY")))
+                    {
+                        result.Response.body.items.item.Add(model.Response.body.items.item[i]);
+                        ProcessingByCategory(model.Response.body.items.item[i]);
+                    }
+                }
+
+
+
+                
             }
                 return result;
+        }
+
+        protected void ProcessingByCategory(Item i)
+        {
+            if (i.category.Equals("POP")) 
+            {
+                this.POP = i.fcstValue;
+            }
+            else if (i.category.Equals("T3H"))
+            {
+                this.T3H = i.fcstValue + "°";
+            }
+            else if (i.category.Equals("SKY"))
+            {
+                this.SKY = i.fcstValue;
+            }
+            else if (i.category.Equals("PTY"))
+            {
+                this.PTY = i.fcstValue;
+            }
+            else if(i.category.Equals("TMX"))
+            {
+                this.TMX = "max " + i.fcstValue.Substring(0, i.fcstValue.Length - 2) + "°";
+            }
+            else if (i.category.Equals("TMN"))
+            {
+                this.TMN = "min " + i.fcstValue.Substring(0, i.fcstValue.Length - 2) + "°";
+            }
         }
 
         public class KakaoLocal

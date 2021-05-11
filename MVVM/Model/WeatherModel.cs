@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,8 @@ namespace codibook.MVVM.Model
 
     public class WeatherModel : INotifyPropertyChanged
     {
-        private Items ITEMS;
-        public Items Items { get { return ITEMS; } set { ITEMS = value; OnPropertyChanged("Items"); } }
+        private Response response;
+        public Response Response { get { return response; } set { response = value; OnPropertyChanged("Response"); } }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -23,47 +24,72 @@ namespace codibook.MVVM.Model
             }
         }
 
-    }
+        public WeatherModel()
+        {
 
-    public class Item : INotifyPropertyChanged
+        }
+
+        public WeatherModel(Items items)
+        {
+            this.Response = new Response();
+            this.Response.body = new Body();
+            this.Response.body.items = new Items();
+            this.Response.body.items.item = new List<Item>();
+            for(int i = 0; i < items.item.Count(); i++)
+            {
+                this.Response.body.items.item.Add(new Item ( items.item[i].baseDate, items.item[i].baseTime, items.item[i].category, items.item[i].fcstDate, items.item[i].fcstTime, items.item[i].fcstValue, items.item[i].nx, items.item[i].ny));
+            }
+            
+        }
+
+    }
+    public class Header
     {
-
-        private string BaseDate;
-        private string BaseTime;
-        private string Category;
-        private string Time;
-        private string Value;
-
-        public string baseDate { get { return BaseDate; } set { BaseDate = value; OnPropertyChanged("baseDate"); } }
-        public string baseTime { get { return BaseTime; } set { BaseTime = value; OnPropertyChanged("baseTime"); } }
-        public string category { get { return Category; } set { Category = value; OnPropertyChanged("category");} }
-        public string fcstTime { get { return Time; } set { Time = value; OnPropertyChanged("fcstTime"); } }
-        public string fcstValue { get { return Value; } set { Value = value; OnPropertyChanged("fcstValue"); } }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+        public string resultCode { get; set; }
+        public string resultMsg { get; set; }
     }
 
-    public class Items : INotifyPropertyChanged
+    public class Item
     {
-        private IList<Item> ITEM;
-        public IList<Item> item { get { return ITEM; } set { ITEM = value; OnPropertyChanged("item"); } }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
+        public string baseDate { get; set; }
+        public string baseTime { get; set; }
+        public string category { get; set; }
+        public string fcstDate { get; set; }
+        public string fcstTime { get; set; }
+        public string fcstValue { get; set; }
+        public int nx { get; set; }
+        public int ny { get; set; }
+        public Item(string BaseDate, string BaseTime, string Category, string Date, string Time, string Value, int x, int y)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            this.baseDate = BaseDate;
+            this.baseTime = BaseTime;
+            this.category = Category;
+            this.fcstDate = Date;
+            this.fcstTime = Time;
+            this.fcstValue = Value;
+            this.nx = x;
+            this.ny = y;
         }
     }
+
+    public class Items
+    {
+        public List<Item> item { get; set; }
+    }
+
+    public class Body
+    {
+        public string dataType { get; set; }
+        public Items items { get; set; }
+        public int pageNo { get; set; }
+        public int numOfRows { get; set; }
+        public int totalCount { get; set; }
+    }
+
+    public class Response
+    {
+        public Header header { get; set; }
+        public Body body { get; set; }
+    }
+
 }

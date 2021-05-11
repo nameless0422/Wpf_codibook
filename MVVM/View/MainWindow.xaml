@@ -74,7 +74,7 @@
                         <ColumnDefinition Width="1.5*"/>
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="0.25*"/>
+                        <ColumnDefinition Width="0.05*"/>
                         <ColumnDefinition Width="50"/>
                         <ColumnDefinition Width="50"/>
                         <ColumnDefinition Width="50"/>
@@ -130,11 +130,33 @@
                         </Border>
                     </Grid>
                     <Grid Grid.Column="3">
-                        <Border Margin="10,15,10,15" Background="White" CornerRadius="15">
-                            <TextBlock Text="{Binding }"
-                                       Foreground="#666666">
-                                
-                            </TextBlock>
+                        <Border Margin="10,15,10,15" Background="White" CornerRadius="15"
+                                DataContext="{StaticResource WeatherAPI}">
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <TextBlock HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           Text="{Binding T3H}"
+                                           Margin="5"
+                                           FontSize="24"
+                                           FontWeight="Bold"
+                                           Foreground="#FF535353"
+                                           FontFamily="{StaticResource AdobeClean-Bold}"></TextBlock>
+                                <TextBlock HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           Text="{Binding TMX}"
+                                           Margin="5"
+                                           FontSize="20"
+                                           Foreground="#FF535353"
+                                           FontFamily="{StaticResource AdobeClean-Bold}"></TextBlock>
+                                <TextBlock HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           Text="{Binding TMN}"
+                                           Margin="5"
+                                           FontSize="20"
+                                           Foreground="#FF535353"
+                                           FontFamily="{StaticResource AdobeClean-Bold}"></TextBlock>
+                            </StackPanel>
+                            
                         </Border>
                     </Grid>
                     <Grid Grid.Column="5">

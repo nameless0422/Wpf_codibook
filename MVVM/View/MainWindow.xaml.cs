@@ -72,7 +72,6 @@ namespace codibook.MVVM.View
             {
                 this.Mainframe.Navigate(new LookBookPage());
             }
-            
         }
 
         private void SettingButton_Click(object sender, RoutedEventArgs e)
