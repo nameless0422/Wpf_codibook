@@ -22,9 +22,10 @@ namespace codibook.MVVM.Model
 
         public UserModel(UserModel users)
         {
+            this.USERS = new List<User>();
             for (int i = 0; i < users.USERS.Count(); i++)
             {
-                this.USERS.Add(new User(users.USERS[i].Name, users.USERS[i].ID, users.USERS[i].Password, users.USERS[i].User_ID, users.USERS[i].Time));
+                this.USERS.Add(new User(users.USERS[i].ID, users.USERS[i].Password, users.USERS[i].User_ID, users.USERS[i].Time));
             }
         }
 
@@ -42,30 +43,22 @@ namespace codibook.MVVM.Model
     public class User : INotifyPropertyChanged
     {
 
-        public User(string name_, string id_, string password_)
+        public User(string id_, string password_)
         {
             time = DateTime.Now.ToString("HHmmss");
-            Name = name_;
             ID = id_;
-            Password = password_;
-            User_ID = id_ + password_ + time;
+            Password = (password_.GetHashCode() & 0x7fffffff).ToString();
+            User_ID = ((id_ + time).GetHashCode() & 0x7fffffff).ToString();
         }
 
         // 복사용
-        public User(string name_, string id_, string password_, string user_id_, string time_)
+        public User(string id_, string password_, string user_id_, string time_)
         {
             Time = time_;
-            Name = name_;
             ID = id_;
             Password = password_;
             User_ID = user_id_;
         }
-
-        private string name;
-        private string id;
-        private int password;
-        private int user_id;
-        private string time;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -77,6 +70,12 @@ namespace codibook.MVVM.Model
             }
         }
 
+
+        private string id;
+        private string password;
+        private string user_id;
+        private string time;
+
         public string Time
         {
             get { return time; }
@@ -86,17 +85,6 @@ namespace codibook.MVVM.Model
                 OnPropertyChanged("Time");
             }
         }
-
-        public string Name
-        {
-            get { return name; }
-            set 
-            { 
-                name = value;
-                OnPropertyChanged("Name");
-            }
-        }
-
         public string ID
         {
             get { return id; }
@@ -106,23 +94,21 @@ namespace codibook.MVVM.Model
                 OnPropertyChanged("ID");
             }
         }
-
         public string Password
         {
-            get { return password.ToString(); }
+            get { return password; }
             set 
             { 
-                password = value.GetHashCode();
+                password = value;
                 OnPropertyChanged("Password");
             }
         }
-
         public string User_ID
         {
-            get { return user_id.ToString(); }
+            get { return user_id; }
             set 
-            { 
-                user_id = value.GetHashCode();
+            {
+                user_id = value;
                 OnPropertyChanged("User_ID");
             }
         }

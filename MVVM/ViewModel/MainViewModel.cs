@@ -27,6 +27,7 @@ namespace codibook.MVVM.ViewModel
             }
         }
 
+
         ItemViewModel itemViewModel;
         LookBookViewModel lookBookViewModel;
         public MariaDbAccess mariaDB_access;
@@ -62,7 +63,7 @@ namespace codibook.MVVM.ViewModel
 
                 MySqlConnection conn = new MySqlConnection(connectionString);
                 MySqlCommand cmd = conn.CreateCommand();
-                string sql = "";
+                string sql = a;
                 cmd.CommandText = sql;
                 try
                 {
