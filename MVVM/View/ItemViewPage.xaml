@@ -19,7 +19,8 @@
                                                 VerticalAlignment="Stretch"
                                                 Width="4.5"
                                                 Height="Auto"
-                                                Fill="DarkGray"/>
+                                                Fill="DarkGray"
+                                                Margin="0 35 0 0"/>
                                 <Border x:Name="Rectangle"
                                             CornerRadius="10 10 10 10"
                                             HorizontalAlignment="Stretch"
