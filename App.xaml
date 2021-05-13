@@ -2,7 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:codibook"
-             StartupUri="MVVM/View/MainWindow.xaml">
+             StartupUri="MVVM/View/LoginWindow.xaml">
     <Application.Resources>
         <Style x:Key="redRoundButtonStyle" TargetType="Button">
             <Setter Property="Template">
@@ -584,6 +584,58 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="BtnMouseOverDisable" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+
+            <Setter Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="Button">
+
+                        <Border Name="border" 
+
+                            BorderThickness="{TemplateBinding BorderThickness}"
+
+                            Padding="{TemplateBinding Padding}" 
+
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+
+                            CornerRadius="5"
+
+                            Background="{TemplateBinding Background}">
+
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+
+                                <Setter Property="BorderBrush" Value="Gainsboro" />
+                               
+
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="false">
+
+                                <Setter Property="Opacity" Value="0.25" />
+
+                                <Setter Property="BorderBrush" Value="Transparent" />
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+
+            </Setter>
+
         </Style>
 
     </Application.Resources>
