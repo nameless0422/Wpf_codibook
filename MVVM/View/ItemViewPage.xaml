@@ -17,15 +17,15 @@
                             <Grid x:Name="Grid">
                                 <Rectangle HorizontalAlignment="Stretch"
                                                 VerticalAlignment="Stretch"
-                                                Width="Auto"
+                                                Width="4.5"
                                                 Height="Auto"
-                                                Fill="Transparent"/>
+                                                Fill="DarkGray"/>
                                 <Border x:Name="Rectangle"
-                                            CornerRadius="10 0 0 10"
+                                            CornerRadius="10 10 10 10"
                                             HorizontalAlignment="Stretch"
                                             VerticalAlignment="Stretch"
-                                            Width="Auto"
-                                            Height="Auto"
+                                            Width="16"
+                                            Height="16"
                                             Background="{TemplateBinding Background}"/>
                             </Grid>
                             <ControlTemplate.Triggers>
@@ -42,12 +42,12 @@
             <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
                 <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
                 <Setter Property="Foreground" Value="DarkGray"/>
-                <Setter Property="Background" Value="LightGray"/>
+                <Setter Property="Background" Value="DarkGray"/>
                 <Setter Property="Width" Value="10"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ScrollBar}">
-                            <Grid x:Name="GridRoot" Width="12" Background="{x:Null}">
+                            <Grid x:Name="GridRoot" Width="16" Background="{x:Null}">
                                 <Track x:Name="PART_Track" Grid.Row="3" IsDirectionReversed="True" Focusable="False">
                                     <Track.Thumb>
                                         <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" 
@@ -109,69 +109,6 @@
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
-
-    <!--<UserControl.Resources>
-        
-    Style the ScrollBar
-    
-        <Style TargetType="ScrollBar">
-            <Setter Property="SnapsToDevicePixels"
-                       Value="True"/>
-            <Setter Property="OverridesDefaultStyle"
-                      Value="True"/>
-            
-    Style Trigger
-    
-            <Style.Triggers>
-                <Trigger Property="Orientation"
-                            Value="Vertical">
-                    <Setter Property="Width"
-                               Value="80"/>
-                    <Setter Property="Height"
-                               Value="490"/>
-                    <Setter Property="Margin"
-                               Value="20"/>
-                    
-    --><!--Create a style template for the Scrollbar--><!--
-    
-                    <Setter Property="Template"
-                               Value="{DynamicResource VerticalScrollBar}"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        
-    --><!--Template for the Scrollbar--><!--
-    
-        <ControlTemplate x:Key="VerticalScrollBar"
-                                TargetType="{x:Type ScrollBar}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="80"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="80"/>
-                </Grid.RowDefinitions>
-                
-    --><!--Border with a background--><!--
-    
-                <Border Grid.Row="1"
-                           CornerRadius="20"
-                           Margin="10"
-                           Background="LightGray">
-                </Border>
-                <Track Name="PART_TRACK"
-                          Grid.Row="1"
-                          IsDirectionReversed="True">
-                    
-    --><!--Thumb - Control that can be dragged by the user--><!--
-    
-                    <Track.Thumb>
-                        <Thumb Style="{StaticResource ScrollBar_Thumb}">
-                        </Thumb>
-                    </Track.Thumb>
-                </Track>
-            </Grid>
-        </ControlTemplate>
-    </UserControl.Resources>-->
 
     <Border Background="Transparent" CornerRadius="15">
         <Grid>
