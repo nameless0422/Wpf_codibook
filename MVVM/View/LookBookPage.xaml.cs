@@ -44,5 +44,10 @@ namespace codibook.MVVM.View
         {
 
         }
+
+        private void moreButton_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
