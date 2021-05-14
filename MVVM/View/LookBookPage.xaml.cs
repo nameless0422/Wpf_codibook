@@ -23,6 +23,15 @@ namespace codibook.MVVM.View
         public LookBookPage()
         {
             InitializeComponent();
+
+            ListItem bc = new ListItem();
+            bc.ListName = "Black Coordination";
+            bc.Item1Site = "8seconds";
+            bc.Item1Name = "21SS 블랙 트위드 터틀넥 패딩 점퍼";
+            bc.Item1Price = "49,900won";
+            bc.Item1Tag = "#outer";
+
+            listControlFirst.ListItemInformation = bc;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

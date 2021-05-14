@@ -1,0 +1,241 @@
+﻿<UserControl x:Class="codibook.MVVM.View.UserControlLookBookView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:codibook.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="390" d:DesignWidth="265">
+	<StackPanel>
+		<!-- 리스트 이름 -->
+		<Border x:Name="listNameBorder"
+								Background="White"
+								CornerRadius="10, 10, 0, 0"
+								Width="240"
+								Height="40"
+								HorizontalAlignment="Left"
+								Margin="0, 0, 25, 5">
+			<TextBlock x:Name="listName"
+									   Style="{StaticResource lookbookList_textblock}"
+									   FontSize="14"
+									   VerticalAlignment="Center"
+									   HorizontalAlignment="Center"
+									   Text="Black Coordination">
+			</TextBlock>
+		</Border>
+
+		<!-- 리스트 아이템 1 -->
+		<Border x:Name="listItem1"
+								Background="white"
+								Width="240"
+								Height="80"
+								HorizontalAlignment="Left"
+								Margin="0, 5, 25, 5">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="80"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<Border x:Name="listItem1Image"
+										Grid.Column="0"
+										Width="80"
+										Height="80">
+					<Border.Background>
+						<ImageBrush Stretch="UniformToFill"/>
+					</Border.Background>
+				</Border>
+
+				<Grid Grid.Column="1">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="1.5*"/>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="1.5*"/>
+					</Grid.RowDefinitions>
+
+					<TextBlock x:Name="listItem1Site"
+											   Grid.Row="1"
+											   Style="{StaticResource lookbookList_textblock}"
+											   VerticalAlignment="Center"
+											   Margin="10,0,10,0"
+											   Text="8seconds"></TextBlock>
+
+					<TextBlock x:Name="listItem1Name"
+											   Grid.Row="2"
+											   Style="{StaticResource lookbookList_textblock}"
+											   VerticalAlignment="Center"
+											   Margin="10,0,10,0"
+											   Text="21SS 블랙 트위드 터틀넥 패딩 점퍼"></TextBlock>
+
+					<TextBlock x:Name="listItem1Price"
+											   Grid.Row="3"
+											   Style="{StaticResource lookbookList_textblock}"
+											   VerticalAlignment="Center"
+											   Margin="10,0,10,0"
+											   Text="49,900won"></TextBlock>
+
+					<TextBlock x:Name="listItem1Tag"
+											   Grid.Row="4"
+											   Style="{StaticResource lookbookList_textblock}"
+											   VerticalAlignment="Center"
+											   HorizontalAlignment="Right"
+											   Margin="0,0,10,10"
+											   Text="#outer"></TextBlock>
+				</Grid>
+			</Grid>
+		</Border>
+
+		<!-- 리스트 아이템 2 -->
+		<Border x:Name="listItem2"
+								Background="white"
+								Width="240"
+								Height="80"
+								HorizontalAlignment="Left"
+								Margin="0, 5, 25, 5">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="80"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<Border x:Name="listItem2Image"
+										Grid.Column="0"
+										Width="80"
+										Height="80">
+					<Border.Background>
+						<ImageBrush Stretch="UniformToFill"/>
+					</Border.Background>
+				</Border>
+
+				<Grid Grid.Column="1">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="1.5*"/>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="1.5*"/>
+					</Grid.RowDefinitions>
+
+					<TextBlock x:Name="listItem2Site"
+											   Grid.Row="1"
+											   Style="{StaticResource lookbookList_textblock}"
+											   VerticalAlignment="Center"
+											   Margin="10,0,10,0"
+											   Text="8seconds"></TextBlock>
+
+					<TextBlock x:Name="listItem2Name"
+											   Grid.Row="2"
+											   Style="{StaticResource lookbookList_textblock}"
+											   VerticalAlignment="Center"
+											   Margin="10,0,10,0"
+											   Text="21SS 블랙 솔리드 골지 반소매 티셔츠"></TextBlock>
+
+					<TextBlock x:Name="listItem2Price"
+											   Grid.Row="3"
+											   Style="{StaticResource lookbookList_textblock}"
+											   VerticalAlignment="Center"
+											   Margin="10,0,10,0"
+											   Text="19,900won"></TextBlock>
+
+					<TextBlock x:Name="listItem2Tag"
+											   Grid.Row="4"
+											   Style="{StaticResource lookbookList_textblock}"
+											   VerticalAlignment="Center"
+											   HorizontalAlignment="Right"
+											   Margin="0,0,10,10"
+											   Text="#Tshirts"></TextBlock>
+				</Grid>
+			</Grid>
+		</Border>
+
+		<!-- 리스트 아이템 3 -->
+		<Border x:Name="listItem3"
+								Background="white"
+								Width="240"
+								Height="80"
+								HorizontalAlignment="Left"
+								Margin="0, 5, 25, 5">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="80"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<Border x:Name="listItem3Image"
+										Grid.Column="0"
+										Width="80"
+										Height="80">
+					<Border.Background>
+						<ImageBrush Stretch="UniformToFill"/>
+					</Border.Background>
+				</Border>
+
+				<Grid Grid.Column="1">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="1.5*"/>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="1.5*"/>
+					</Grid.RowDefinitions>
+
+					<TextBlock x:Name="listItem3Site"
+											   Grid.Row="1"
+											   Style="{StaticResource lookbookList_textblock}"
+											   VerticalAlignment="Center"
+											   Margin="10,0,10,0"
+											   Text="8seconds"></TextBlock>
+
+					<TextBlock x:Name="listItem3Name"
+											   Grid.Row="2"
+											   Style="{StaticResource lookbookList_textblock}"
+											   VerticalAlignment="Center"
+											   Margin="10,0,10,0"
+											   Text="20FW 아이보리 메탈 트위드 스캘럽"></TextBlock>
+
+					<TextBlock x:Name="listItem3Price"
+											   Grid.Row="3"
+											   Style="{StaticResource lookbookList_textblock}"
+											   VerticalAlignment="Center"
+											   Margin="10,0,10,0"
+											   Text="23,490won"></TextBlock>
+
+					<TextBlock x:Name="listItem3Tag"
+											   Grid.Row="4"
+											   Style="{StaticResource lookbookList_textblock}"
+											   VerticalAlignment="Center"
+											   HorizontalAlignment="Right"
+											   Margin="0,0,10,10"
+											   Text="#skirt"></TextBlock>
+				</Grid>
+			</Grid>
+		</Border>
+
+		<!-- 리스트 더보기 버튼 -->
+		<Button x:Name="moreButton"
+								Style="{StaticResource MoreButton}"
+								Click="moreButton_Click_1"
+								Width="240"
+								HorizontalAlignment="Left"
+								Margin="0, 5, 25, 5"/>
+
+		<!-- 리스트 총액 -->
+		<Border x:Name="listTotalPriceBorder"
+								Background="White"
+								CornerRadius="0, 0, 10, 10"
+								Width="240"
+								Height="40"
+								HorizontalAlignment="Left"
+								Margin="0, 5, 25, 0">
+			<TextBlock x:Name="listTotalPrice"
+									   Style="{StaticResource lookbookList_textblock}"
+									   FontSize="13"
+									   VerticalAlignment="Center"
+									   HorizontalAlignment="Center"
+									   Text="total 93,740won">
+			</TextBlock>
+		</Border>
+	</StackPanel>
+</UserControl>

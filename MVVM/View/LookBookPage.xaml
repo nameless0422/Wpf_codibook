@@ -4,11 +4,113 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:codibook.MVVM.View"
-             mc:Ignorable="d" 
+			 mc:Ignorable="d" 
 			 Background="Transparent"
              d:DesignHeight="608" d:DesignWidth="1052"
 			 MinHeight="550" MinWidth="600">
+	
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate>
+							<Grid x:Name="Grid">
+								<Rectangle HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch"
+                                                Width="Auto"
+                                                Height="Auto"
+                                                Fill="Transparent"/>
+								<Border x:Name="Rectangle"
+                                            CornerRadius="10 10 10 10"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch"
+                                            Width="16"
+                                            Height="40"
+                                            Background="{TemplateBinding Background}"/>
+							</Grid>
+							<ControlTemplate.Triggers>
+								<Trigger Property="Tag" Value="Horizontal">
+									<Setter TargetName="Rectangle" Property="Width" Value="Auto"/>
+									<Setter TargetName="Rectangle" Property="Height" Value="7"/>
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<!--ScrollBars-->
+			<Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+				<Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+				<Setter Property="Foreground" Value="DarkGray"/>
+				<Setter Property="Background" Value="DarkGray"/>
+				<Setter Property="Width" Value="10"/>
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type ScrollBar}">
+							<Grid x:Name="GridRoot" Width="16" Background="{x:Null}">
+								<Track x:Name="PART_Track" Grid.Row="3" IsDirectionReversed="True" Focusable="False">
+									<Track.Thumb>
+										<Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" 
+                                                   Style="{DynamicResource ScrollThumbs}"/>
+									</Track.Thumb>
+									<Track.IncreaseRepeatButton>
+										<RepeatButton x:Name="PageUp" 
+                                                        Command="ScrollBar.PageDownCommand" 
+                                                        Opacity="0"
+                                                        Focusable="False"/>
+									</Track.IncreaseRepeatButton>
+									<Track.DecreaseRepeatButton>
+										<RepeatButton x:Name="PageDown" 
+                                                        Command="ScrollBar.PageUpCommand" 
+                                                        Opacity="0"
+                                                        Focusable="False"/>
+									</Track.DecreaseRepeatButton>
+								</Track>
+							</Grid>
 
+							<ControlTemplate.Triggers>
+								<Trigger SourceName="Thumb" Property="IsMouseOver" Value="True">
+									<Setter Value="{DynamicResource ButtonSelectBrush}"  
+                                               TargetName="Thumb"
+                                               Property="Background"/>
+								</Trigger>
+								<Trigger SourceName="Thumb" Property="IsDragging" Value="True">
+									<Setter Value="{DynamicResource DarkBrush}"  
+                                               TargetName="Thumb"
+                                               Property="Background"/>
+								</Trigger>
+
+								<Trigger Property="IsEnabled" Value="False">
+									<Setter TargetName="Thumb"
+                                               Property="Visibility"
+                                               Value="Collapsed"/>
+								</Trigger>
+								<Trigger Property="Orientation" Value="Horizontal">
+									<Setter TargetName="GridRoot" Property="LayoutTransform">
+										<Setter.Value>
+											<RotateTransform Angle="-90"/>
+										</Setter.Value>
+									</Setter>
+									<Setter TargetName="PART_Track" Property="LayoutTransform">
+										<Setter.Value>
+											<RotateTransform Angle="-90"/>
+										</Setter.Value>
+									</Setter>
+									<Setter Property="Width" Value="Auto"/>
+									<Setter Property="Height" Value="12"/>
+									<Setter TargetName="Thumb" Property="Tag" Value="Horizontal"/>
+									<Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand"/>
+									<Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand"/>
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+		</ResourceDictionary>
+	</UserControl.Resources>
+	
 	<Border Background="#F5F5F5" CornerRadius="15">
 		<Grid>
 			<Grid.RowDefinitions>
@@ -58,236 +160,8 @@
 							  VerticalScrollBarVisibility="Visible"
 							  >
 					<StackPanel>
-						<!-- 리스트 이름 -->
-						<Border x:Name="listNameBorder"
-								Background="White"
-								CornerRadius="10, 10, 0, 0"
-								Width="240"
-								Height="40"
-								HorizontalAlignment="Left"
-								Margin="0, 0, 25, 5">
-							<TextBlock x:Name="listName"
-									   Style="{StaticResource lookbookList_textblock}"
-									   FontSize="14"
-									   VerticalAlignment="Center"
-									   HorizontalAlignment="Center"
-									   Text="Black Coordination">
-							</TextBlock>
-						</Border>
-								
-						<!-- 리스트 아이템 1 -->
-						<Border x:Name="listItem1"
-								Background="white"
-								Width="240"
-								Height="80"
-								HorizontalAlignment="Left"
-								Margin="0, 5, 25, 5">
-							<Grid>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="80"/>
-									<ColumnDefinition Width="*"/>
-								</Grid.ColumnDefinitions>
-
-								<Border x:Name="listItem1Picture"
-										Grid.Column="0"
-										Width="80"
-										Height="80">
-									<Border.Background>
-										<ImageBrush Stretch="UniformToFill"/>
-									</Border.Background>
-								</Border>
-
-								<Grid Grid.Column="1">
-									<Grid.RowDefinitions>
-										<RowDefinition Height="1.5*"/>
-										<RowDefinition Height="*"/>
-										<RowDefinition Height="*"/>
-										<RowDefinition Height="*"/>
-										<RowDefinition Height="1.5*"/>
-									</Grid.RowDefinitions>
-
-									<TextBlock x:Name="listItem1Site"
-											   Grid.Row="1"
-											   Style="{StaticResource lookbookList_textblock}"
-											   VerticalAlignment="Center"
-											   Margin="10,0,10,0"
-											   Text="8seconds"></TextBlock>
-
-									<TextBlock x:Name="listItem1Name"
-											   Grid.Row="2"
-											   Style="{StaticResource lookbookList_textblock}"
-											   VerticalAlignment="Center"
-											   Margin="10,0,10,0"
-											   Text="21SS 블랙 트위드 터틀넥 패딩 점퍼"></TextBlock>
-
-									<TextBlock x:Name="listItem1Price"
-											   Grid.Row="3"
-											   Style="{StaticResource lookbookList_textblock}"
-											   VerticalAlignment="Center"
-											   Margin="10,0,10,0"
-											   Text="49,900won"></TextBlock>
-
-									<TextBlock x:Name="listItem1Tag"
-											   Grid.Row="4"
-											   Style="{StaticResource lookbookList_textblock}"
-											   VerticalAlignment="Center"
-											   HorizontalAlignment="Right"
-											   Margin="0,0,10,10"
-											   Text="#outer"></TextBlock>
-								</Grid>
-							</Grid>
-						</Border>
-						
-						<!-- 리스트 아이템 2 -->
-						<Border x:Name="listItem2"
-								Background="white"
-								Width="240"
-								Height="80"
-								HorizontalAlignment="Left"
-								Margin="0, 5, 25, 5">
-							<Grid>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="80"/>
-									<ColumnDefinition Width="*"/>
-								</Grid.ColumnDefinitions>
-
-								<Border x:Name="listItem2Picture"
-										Grid.Column="0"
-										Width="80"
-										Height="80">
-									<Border.Background>
-										<ImageBrush Stretch="UniformToFill"/>
-									</Border.Background>
-								</Border>
-
-								<Grid Grid.Column="1">
-									<Grid.RowDefinitions>
-										<RowDefinition Height="1.5*"/>
-										<RowDefinition Height="*"/>
-										<RowDefinition Height="*"/>
-										<RowDefinition Height="*"/>
-										<RowDefinition Height="1.5*"/>
-									</Grid.RowDefinitions>
-
-									<TextBlock x:Name="listItem2Site"
-											   Grid.Row="1"
-											   Style="{StaticResource lookbookList_textblock}"
-											   VerticalAlignment="Center"
-											   Margin="10,0,10,0"
-											   Text="8seconds"></TextBlock>
-
-									<TextBlock x:Name="listItem2Name"
-											   Grid.Row="2"
-											   Style="{StaticResource lookbookList_textblock}"
-											   VerticalAlignment="Center"
-											   Margin="10,0,10,0"
-											   Text="21SS 블랙 솔리드 골지 반소매 티셔츠"></TextBlock>
-
-									<TextBlock x:Name="listItem2Price"
-											   Grid.Row="3"
-											   Style="{StaticResource lookbookList_textblock}"
-											   VerticalAlignment="Center"
-											   Margin="10,0,10,0"
-											   Text="19,900won"></TextBlock>
-
-									<TextBlock x:Name="listItem2Tag"
-											   Grid.Row="4"
-											   Style="{StaticResource lookbookList_textblock}"
-											   VerticalAlignment="Center"
-											   HorizontalAlignment="Right"
-											   Margin="0,0,10,10"
-											   Text="#Tshirts"></TextBlock>
-								</Grid>
-							</Grid>
-						</Border>
-						
-						<!-- 리스트 아이템 3 -->
-						<Border x:Name="listItem3"
-								Background="white"
-								Width="240"
-								Height="80"
-								HorizontalAlignment="Left"
-								Margin="0, 5, 25, 5">
-							<Grid>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="80"/>
-									<ColumnDefinition Width="*"/>
-								</Grid.ColumnDefinitions>
-
-								<Border x:Name="listItem3Picture"
-										Grid.Column="0"
-										Width="80"
-										Height="80">
-									<Border.Background>
-										<ImageBrush Stretch="UniformToFill"/>
-									</Border.Background>
-								</Border>
-
-								<Grid Grid.Column="1">
-									<Grid.RowDefinitions>
-										<RowDefinition Height="1.5*"/>
-										<RowDefinition Height="*"/>
-										<RowDefinition Height="*"/>
-										<RowDefinition Height="*"/>
-										<RowDefinition Height="1.5*"/>
-									</Grid.RowDefinitions>
-
-									<TextBlock x:Name="listItem3Site"
-											   Grid.Row="1"
-											   Style="{StaticResource lookbookList_textblock}"
-											   VerticalAlignment="Center"
-											   Margin="10,0,10,0"
-											   Text="8seconds"></TextBlock>
-
-									<TextBlock x:Name="listItem3Name"
-											   Grid.Row="2"
-											   Style="{StaticResource lookbookList_textblock}"
-											   VerticalAlignment="Center"
-											   Margin="10,0,10,0"
-											   Text="20FW 아이보리 메탈 트위드 스캘럽"></TextBlock>
-
-									<TextBlock x:Name="listItem3Price"
-											   Grid.Row="3"
-											   Style="{StaticResource lookbookList_textblock}"
-											   VerticalAlignment="Center"
-											   Margin="10,0,10,0"
-											   Text="23,490won"></TextBlock>
-
-									<TextBlock x:Name="listItem3Tag"
-											   Grid.Row="4"
-											   Style="{StaticResource lookbookList_textblock}"
-											   VerticalAlignment="Center"
-											   HorizontalAlignment="Right"
-											   Margin="0,0,10,10"
-											   Text="#skirt"></TextBlock>
-								</Grid>
-							</Grid>
-						</Border>
-						
-						<!-- 리스트 더보기 버튼 -->
-						<Button x:Name="moreButton"
-								Style="{StaticResource MoreButton}"
-								Click="moreButton_Click_1"
-								Width="240"
-								HorizontalAlignment="Left"
-								Margin="0, 5, 25, 5"/>
-
-						<!-- 리스트 총액 -->
-							<Border x:Name="listTotalPriceBorder"
-								Background="White"
-								CornerRadius="0, 0, 10, 10"
-								Width="240"
-								Height="40"
-								HorizontalAlignment="Left"
-								Margin="0, 5, 25, 0">
-								<TextBlock x:Name="listTotalPrice"
-									   Style="{StaticResource lookbookList_textblock}"
-									   FontSize="13"
-									   VerticalAlignment="Center"
-									   HorizontalAlignment="Center"
-									   Text="total 93,740won">
-								</TextBlock>
-							</Border>
+						<local:UserControlLookBookView x:Name="listControlFirst"/>
+						<local:UserControlLookBookView/>
 					</StackPanel>
 				</ScrollViewer>
 
