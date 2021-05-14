@@ -17,16 +17,15 @@
                             <Grid x:Name="Grid">
                                 <Rectangle HorizontalAlignment="Stretch"
                                                 VerticalAlignment="Stretch"
-                                                Width="4.5"
+                                                Width="Auto"
                                                 Height="Auto"
-                                                Fill="DarkGray"
-                                                Margin="0 35 0 0"/>
+                                                Fill="Transparent"/>
                                 <Border x:Name="Rectangle"
                                             CornerRadius="10 10 10 10"
                                             HorizontalAlignment="Stretch"
                                             VerticalAlignment="Stretch"
                                             Width="16"
-                                            Height="16"
+                                            Height="40"
                                             Background="{TemplateBinding Background}"/>
                             </Grid>
                             <ControlTemplate.Triggers>
