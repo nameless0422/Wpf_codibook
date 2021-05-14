@@ -1,4 +1,5 @@
-﻿using codibook.MVVM.View;
+﻿using codibook.MVVM.Model;
+using codibook.MVVM.View;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,6 @@ namespace codibook.MVVM.ViewModel
                 OnPropertyChanged("Search_Text");
             }
         }
-
 
         ItemViewModel itemViewModel;
         LookBookViewModel lookBookViewModel;

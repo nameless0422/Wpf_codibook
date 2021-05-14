@@ -1,4 +1,5 @@
-﻿using codibook.MVVM.View;
+﻿using codibook.MVVM.Model;
+using codibook.MVVM.View;
 using codibook.MVVM.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static codibook.MVVM.ViewModel.MariaDB;
+
 
 namespace codibook.MVVM.View
 {
@@ -24,9 +25,19 @@ namespace codibook.MVVM.View
     
     public partial class MainWindow : Window
     {
+
+        User user;
+
         public MainWindow()
         {
             InitializeComponent();
+            this.Mainframe.Navigate(new ItemViewPage());
+        }
+
+        public MainWindow(User U)
+        {
+            InitializeComponent();
+            this.user = U;
             this.Mainframe.Navigate(new ItemViewPage());
         }
 
@@ -92,15 +103,5 @@ namespace codibook.MVVM.View
             userPopUp.Show();
         }
 
-        private void TextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            MariaDbAccess mariaDbAccess = new MariaDbAccess();
-            if (e.Key == Key.Return)
-            {
-                if (!Search_Box.Text.Equals(string.Empty)){
-                    mariaDbAccess.MariaDB_Select(Search_Box.Text);
-                } 
-            }
-        }
     }
 }

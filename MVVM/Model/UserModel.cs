@@ -45,7 +45,7 @@ namespace codibook.MVVM.Model
 
         public User(string id_, string password_)
         {
-            time = DateTime.Now.ToString("HHmmss");
+            time = DateTime.Now.ToString("yyyyMMddHHmmss");
             ID = id_;
             Password = (password_.GetHashCode() & 0x7fffffff).ToString();
             User_ID = ((id_ + time).GetHashCode() & 0x7fffffff).ToString();
@@ -58,6 +58,14 @@ namespace codibook.MVVM.Model
             ID = id_;
             Password = password_;
             User_ID = user_id_;
+        }
+        // 복사 생성자
+        public User(User user)
+        {
+            this.ID = user.ID;
+            this.Password = user.Password;
+            this.Time = user.Time;
+            this.User_ID = user.User_ID;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

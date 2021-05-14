@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using codibook.MVVM.Model;
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
 
 namespace codibook.MVVM.View
 {
@@ -54,6 +55,10 @@ namespace codibook.MVVM.View
         {
             try
             {
+                MainWindow mainWindow;
+                User user;
+
+                // ssh 접속
                 using (var client = new SshClient("106.10.57.242", 5000, "root", "qawzsx351"))
                 {
                     client.Connect();
@@ -61,10 +66,12 @@ namespace codibook.MVVM.View
                     {
                         try
                         {
+                            // 내부 db 접속을 위한 포트포워딩
                             var portForwarded = new ForwardedPortLocal("localhost", 3306, "106.10.57.242", 5001);
                             client.AddForwardedPort(portForwarded);
                             portForwarded.Start();
 
+                            // db 접속
                             using (MySqlConnection con = new MySqlConnection("SERVER=localhost;PORT=3307;UID=root;PASSWORD=qawzsx351;DATABASE=codibook;SslMode=None"))
                             {
                                 con.Open();
@@ -78,16 +85,29 @@ namespace codibook.MVVM.View
                                     MessageBox.Show("password는 8글자 이상이어야 햡니다.");
                                     return;
                                 }
-                                User user = new User(this.ID_BOX.Text, this.Password_BOX.Password);
-                                string query = "";
-                                MySqlCommand sqlCom = new MySqlCommand(query, con);
-                                sqlCom.ExecuteNonQuery();
+                                user = new User(this.ID_BOX.Text, this.Password_BOX.Password);
+                                string query1 = "SELECT COUNT(*) FROM user WHERE ID='" + this.ID_BOX.Text + "' AND PASSWORD='" + user.Password + "'";
+                                MySqlCommand sqlCom = new MySqlCommand(query1, con);
+                                if (sqlCom.ExecuteScalar().ToString().Equals("1"))
+                                {
+                                    con.Close();
+                                    client.Disconnect();
+                                    mainWindow = new MainWindow(user);
+                                    mainWindow.Show();
+                                    this.Close();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("로그인 정보가 잘못되었습니다.");
+                                    return;
+                                }
+
                                 con.Close();
+                                client.Disconnect();
+                                
                             }
-                            client.Disconnect();
-                            MainWindow mainWindow = new MainWindow();
-                            mainWindow.Show();
-                            this.Close();
+                            
+
                         }
                         catch (Exception ex)
                         {
@@ -111,6 +131,7 @@ namespace codibook.MVVM.View
 
             try
             {
+                // ssh 접속
                 using (var client = new SshClient("106.10.57.242", 5000, "root", "qawzsx351")) 
                 {
                     client.Connect();
@@ -118,14 +139,31 @@ namespace codibook.MVVM.View
                     {
                         try
                         {
+                            // 내부 db 접속을 위한 포트포워딩
                             var portForwarded = new ForwardedPortLocal("localhost", 3306 , "106.10.57.242", 5001);
                             client.AddForwardedPort(portForwarded);
                             portForwarded.Start();
 
+                            // db 접속
                             using (MySqlConnection con = new MySqlConnection("SERVER=localhost;PORT=3307;UID=root;PASSWORD=qawzsx351;DATABASE=codibook;SslMode=None"))
                             {
                                 con.Open();
-                                if(this.ID_BOX.Text.Equals(string.Empty) || this.ID_BOX.Text.Length <= 5)
+                                MySqlCommand sqlCom;
+                                string query1 = "SELECT COUNT(*) FROM user WHERE ID='"+ this.ID_BOX.Text +"'";
+                                sqlCom = new MySqlCommand(query1, con);
+                                object query1_result = sqlCom.ExecuteScalar();
+                                if(int.Parse(query1_result.ToString()) != 0)
+                                {
+                                    MessageBox.Show("이미 존재하는 id입니다.");
+                                    return;
+                                }
+                                
+                                if (this.ID_BOX.Text.Equals(string.Empty) || this.ID_BOX.Text.Length <= 5)
+                                {
+                                    MessageBox.Show("id는 6글자 이상이어야 햡니다.");
+                                    return;
+                                }
+                                else if(!CheckEnglish(this.ID_BOX.Text)) 
                                 {
                                     MessageBox.Show("id는 6글자 이상이어야 햡니다.");
                                     return;
@@ -135,16 +173,18 @@ namespace codibook.MVVM.View
                                     MessageBox.Show("password는 8글자 이상이어야 햡니다.");
                                     return;
                                 }
+                                // 조건에 어긋나지 않으면 새로운 유저 객체를 만들어서 그 값을 서버에 저장한다.
                                 User user = new User(this.ID_BOX.Text, this.Password_BOX.Password);
-                                string query = "INSERT INTO user VALUE ("+ user.User_ID +", '" + user.ID + "', '"+ user.Password +"', '" + user.Time + "');";
-                                MySqlCommand sqlCom = new MySqlCommand(query, con);
+                                string query2 = "INSERT INTO user VALUE ("+ user.User_ID +", '" + user.ID + "', '"+ user.Password +"', '" + user.Time + "');";
+                                sqlCom = new MySqlCommand(query2, con);
                                 sqlCom.ExecuteNonQuery();
                                 con.Close();
+                                client.Disconnect();
+                                MainWindow mainWindow = new MainWindow(user);
+                                mainWindow.Show();
+                                this.Close();
                             }
-                            client.Disconnect();
-                            MainWindow mainWindow = new MainWindow();
-                            mainWindow.Show();
-                            this.Close();
+                            
                         }catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message);
@@ -162,5 +202,17 @@ namespace codibook.MVVM.View
             }
 
         }
+
+        // 문자열 체크용
+        public static bool CheckEnglish(string letter)
+
+        {
+            Regex engRegex = new Regex(@"[a-zA-Z]");
+
+            return engRegex.IsMatch(letter);
+        }
     }
+
 }
+
+
