@@ -108,6 +108,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="MVVM\View\ItemViewUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -124,6 +128,9 @@
     <Compile Include="MVVM\ViewModel\LookBookViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainCommand.cs" />
     <Compile Include="MVVM\ViewModel\WeatherAPI.cs" />
+    <Compile Include="MVVM\View\ItemViewUserControl.xaml.cs">
+      <DependentUpon>ItemViewUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -215,7 +222,6 @@
   <ItemGroup>
     <Folder Include="Classes\" />
     <Folder Include="Images\" />
-    <Folder Include="MVVM\View\UserControl\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
