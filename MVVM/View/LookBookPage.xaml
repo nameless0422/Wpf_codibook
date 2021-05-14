@@ -52,7 +52,11 @@
 				</Grid.ColumnDefinitions>
 
 				<!-- 스크롤바 -->
-				<ScrollViewer Grid.Column="1" Grid.ColumnSpan="2">
+				<ScrollViewer Grid.Column="1" Grid.ColumnSpan="2"
+							  Background="#f5f5f5"
+							  BorderBrush="#626262"
+							  VerticalScrollBarVisibility="Visible"
+							  >
 					<StackPanel>
 						<!-- 리스트 이름 -->
 						<Border x:Name="listNameBorder"
@@ -70,7 +74,8 @@
 									   Text="Black Coordination">
 							</TextBlock>
 						</Border>
-
+								
+						<!-- 리스트 아이템 1 -->
 						<Border x:Name="listItem1"
 								Background="white"
 								Width="240"
@@ -85,9 +90,11 @@
 
 								<Border x:Name="listItem1Picture"
 										Grid.Column="0"
-										Background="#626262"
 										Width="80"
 										Height="80">
+									<Border.Background>
+										<ImageBrush Stretch="UniformToFill"/>
+									</Border.Background>
 								</Border>
 
 								<Grid Grid.Column="1">
@@ -130,7 +137,8 @@
 								</Grid>
 							</Grid>
 						</Border>
-
+						
+						<!-- 리스트 아이템 2 -->
 						<Border x:Name="listItem2"
 								Background="white"
 								Width="240"
@@ -145,9 +153,11 @@
 
 								<Border x:Name="listItem2Picture"
 										Grid.Column="0"
-										Background="#626262"
 										Width="80"
 										Height="80">
+									<Border.Background>
+										<ImageBrush Stretch="UniformToFill"/>
+									</Border.Background>
 								</Border>
 
 								<Grid Grid.Column="1">
@@ -190,7 +200,8 @@
 								</Grid>
 							</Grid>
 						</Border>
-
+						
+						<!-- 리스트 아이템 3 -->
 						<Border x:Name="listItem3"
 								Background="white"
 								Width="240"
@@ -205,9 +216,11 @@
 
 								<Border x:Name="listItem3Picture"
 										Grid.Column="0"
-										Background="#626262"
 										Width="80"
 										Height="80">
+									<Border.Background>
+										<ImageBrush Stretch="UniformToFill"/>
+									</Border.Background>
 								</Border>
 
 								<Grid Grid.Column="1">
@@ -250,7 +263,8 @@
 								</Grid>
 							</Grid>
 						</Border>
-
+						
+						<!-- 리스트 더보기 버튼 -->
 						<Button x:Name="moreButton"
 								Style="{StaticResource MoreButton}"
 								Click="moreButton_Click_1"
@@ -258,21 +272,22 @@
 								HorizontalAlignment="Left"
 								Margin="0, 5, 25, 5"/>
 
-						<Border x:Name="listTotalPriceBorder"
+						<!-- 리스트 총액 -->
+							<Border x:Name="listTotalPriceBorder"
 								Background="White"
 								CornerRadius="0, 0, 10, 10"
 								Width="240"
 								Height="40"
 								HorizontalAlignment="Left"
 								Margin="0, 5, 25, 0">
-							<TextBlock x:Name="listTotalPrice"
+								<TextBlock x:Name="listTotalPrice"
 									   Style="{StaticResource lookbookList_textblock}"
 									   FontSize="13"
 									   VerticalAlignment="Center"
 									   HorizontalAlignment="Center"
 									   Text="total 93,740won">
-							</TextBlock>
-						</Border>
+								</TextBlock>
+							</Border>
 					</StackPanel>
 				</ScrollViewer>
 
