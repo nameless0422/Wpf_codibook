@@ -18,7 +18,7 @@ namespace codibook.MVVM.View
     /// <summary>
     /// UserControlLookBookView.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class UserControlLookBookView : UserControl
+    public partial class UserControlLookBookPage : UserControl
     {
         private ListItem listItemInformation;
 
@@ -36,7 +36,7 @@ namespace codibook.MVVM.View
             }
         }
 
-        public UserControlLookBookView()
+        public UserControlLookBookPage()
         {
             InitializeComponent();
         }

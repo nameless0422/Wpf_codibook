@@ -148,9 +148,10 @@
 
 			<Grid Grid.Row="1" Margin="0,0,0,40">
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="110"/>
-					<ColumnDefinition Width="903*"/>
-					<ColumnDefinition Width="40*"/>
+					<ColumnDefinition Width="2*"/>
+					<ColumnDefinition Width="795"/>
+					<ColumnDefinition Width="0.5*"/>
+					<ColumnDefinition Width="1.5*"/>
 				</Grid.ColumnDefinitions>
 
 				<!-- 스크롤바 -->
@@ -159,10 +160,13 @@
 							  BorderBrush="#626262"
 							  VerticalScrollBarVisibility="Visible"
 							  >
-					<StackPanel>
-						<local:UserControlLookBookView x:Name="listControlFirst"/>
-						<local:UserControlLookBookView/>
-					</StackPanel>
+					<WrapPanel>
+						<local:UserControlLookBookPage x:Name="listControlFirst"/>
+						<local:UserControlLookBookPage/>
+						<local:UserControlLookBookPage/>
+						<local:UserControlLookBookPage/>
+						<local:UserControlLookBookPage/>
+					</WrapPanel>
 				</ScrollViewer>
 
 			</Grid>

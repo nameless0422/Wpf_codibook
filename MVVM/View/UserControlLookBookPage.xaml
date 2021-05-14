@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="codibook.MVVM.View.UserControlLookBookView"
+﻿<UserControl x:Class="codibook.MVVM.View.UserControlLookBookPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:codibook.MVVM.View"
              mc:Ignorable="d" 
-             d:DesignHeight="390" d:DesignWidth="265">
+             d:DesignHeight="415" d:DesignWidth="265">
 	<StackPanel>
 		<!-- 리스트 이름 -->
 		<Border x:Name="listNameBorder"
@@ -20,7 +20,7 @@
 									   FontSize="14"
 									   VerticalAlignment="Center"
 									   HorizontalAlignment="Center"
-									   Text="Black Coordination">
+									   Text="List Name">
 			</TextBlock>
 		</Border>
 
@@ -60,29 +60,29 @@
 											   Style="{StaticResource lookbookList_textblock}"
 											   VerticalAlignment="Center"
 											   Margin="10,0,10,0"
-											   Text="8seconds"></TextBlock>
+											   Text="Site"></TextBlock>
 
 					<TextBlock x:Name="listItem1Name"
 											   Grid.Row="2"
 											   Style="{StaticResource lookbookList_textblock}"
 											   VerticalAlignment="Center"
 											   Margin="10,0,10,0"
-											   Text="21SS 블랙 트위드 터틀넥 패딩 점퍼"></TextBlock>
+											   Text="Item Name"></TextBlock>
 
 					<TextBlock x:Name="listItem1Price"
 											   Grid.Row="3"
 											   Style="{StaticResource lookbookList_textblock}"
 											   VerticalAlignment="Center"
 											   Margin="10,0,10,0"
-											   Text="49,900won"></TextBlock>
+											   Text="Price"></TextBlock>
 
 					<TextBlock x:Name="listItem1Tag"
-											   Grid.Row="4"
+											   Grid.Row="3"
 											   Style="{StaticResource lookbookList_textblock}"
 											   VerticalAlignment="Center"
 											   HorizontalAlignment="Right"
-											   Margin="0,0,10,10"
-											   Text="#outer"></TextBlock>
+											   Margin="0,9,10,10"
+											   Text="#tag" Grid.RowSpan="2"></TextBlock>
 				</Grid>
 			</Grid>
 		</Border>
@@ -123,29 +123,29 @@
 											   Style="{StaticResource lookbookList_textblock}"
 											   VerticalAlignment="Center"
 											   Margin="10,0,10,0"
-											   Text="8seconds"></TextBlock>
+											   Text="Site"></TextBlock>
 
 					<TextBlock x:Name="listItem2Name"
 											   Grid.Row="2"
 											   Style="{StaticResource lookbookList_textblock}"
 											   VerticalAlignment="Center"
 											   Margin="10,0,10,0"
-											   Text="21SS 블랙 솔리드 골지 반소매 티셔츠"></TextBlock>
+											   Text="Item Name"></TextBlock>
 
 					<TextBlock x:Name="listItem2Price"
 											   Grid.Row="3"
 											   Style="{StaticResource lookbookList_textblock}"
 											   VerticalAlignment="Center"
 											   Margin="10,0,10,0"
-											   Text="19,900won"></TextBlock>
+											   Text="Price"></TextBlock>
 
 					<TextBlock x:Name="listItem2Tag"
-											   Grid.Row="4"
+											   Grid.Row="3"
 											   Style="{StaticResource lookbookList_textblock}"
 											   VerticalAlignment="Center"
 											   HorizontalAlignment="Right"
-											   Margin="0,0,10,10"
-											   Text="#Tshirts"></TextBlock>
+											   Margin="0,9,10,10"
+											   Text="#tag" Grid.RowSpan="2"></TextBlock>
 				</Grid>
 			</Grid>
 		</Border>
@@ -186,29 +186,29 @@
 											   Style="{StaticResource lookbookList_textblock}"
 											   VerticalAlignment="Center"
 											   Margin="10,0,10,0"
-											   Text="8seconds"></TextBlock>
+											   Text="Site"></TextBlock>
 
 					<TextBlock x:Name="listItem3Name"
 											   Grid.Row="2"
 											   Style="{StaticResource lookbookList_textblock}"
 											   VerticalAlignment="Center"
 											   Margin="10,0,10,0"
-											   Text="20FW 아이보리 메탈 트위드 스캘럽"></TextBlock>
+											   Text="Item Name"></TextBlock>
 
 					<TextBlock x:Name="listItem3Price"
 											   Grid.Row="3"
 											   Style="{StaticResource lookbookList_textblock}"
 											   VerticalAlignment="Center"
 											   Margin="10,0,10,0"
-											   Text="23,490won"></TextBlock>
+											   Text="Price"></TextBlock>
 
 					<TextBlock x:Name="listItem3Tag"
-											   Grid.Row="4"
+											   Grid.Row="3"
 											   Style="{StaticResource lookbookList_textblock}"
 											   VerticalAlignment="Center"
 											   HorizontalAlignment="Right"
-											   Margin="0,0,10,10"
-											   Text="#skirt"></TextBlock>
+											   Margin="0,9,10,10"
+											   Text="#tag" Grid.RowSpan="2"></TextBlock>
 				</Grid>
 			</Grid>
 		</Border>
@@ -228,13 +228,13 @@
 								Width="240"
 								Height="40"
 								HorizontalAlignment="Left"
-								Margin="0, 5, 25, 0">
+								Margin="0, 5, 25, 25">
 			<TextBlock x:Name="listTotalPrice"
 									   Style="{StaticResource lookbookList_textblock}"
 									   FontSize="13"
 									   VerticalAlignment="Center"
 									   HorizontalAlignment="Center"
-									   Text="total 93,740won">
+									   Text="total Price">
 			</TextBlock>
 		</Border>
 	</StackPanel>
