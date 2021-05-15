@@ -168,7 +168,12 @@
 
                 <!-- 구현부 -->
                 <Grid Grid.Column="1">
-
+                    <WrapPanel>
+                        <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend1"/>
+                        <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend2"/>
+                        <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend3"/>
+                        <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend4"/>
+                    </WrapPanel>
                 </Grid>
             </Grid>
 
@@ -229,10 +234,10 @@
                 <!-- 스크롤바 -->
                 <ScrollViewer Grid.Column="1">
                     <StackPanel>
-                        <usercontrols:ItemViewUserControl x:Name="usercontrol1"/>
-                        <usercontrols:ItemViewUserControl x:Name="usercontrol2"/>
-                        <usercontrols:ItemViewUserControl x:Name="usercontrol3"/>
-                        <usercontrols:ItemViewUserControl x:Name="usercontrol4"/>                        
+                        <usercontrols:ItemViewUserControl x:Name="MCLlist1"/>
+                        <usercontrols:ItemViewUserControl x:Name="MCLlist2"/>
+                        <usercontrols:ItemViewUserControl x:Name="MCLlist3"/>
+                        <usercontrols:ItemViewUserControl x:Name="MCLlist4"/>
                     </StackPanel>
                 </ScrollViewer>
             </Grid>

@@ -159,6 +159,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\View\UserControls\WeatherRecommendUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MVVM\Model\ItemModel.cs" />
@@ -186,6 +190,9 @@
     </Compile>
     <Compile Include="MVVM\View\UserControls\UserControlLookBookPage.xaml.cs">
       <DependentUpon>UserControlLookBookPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\UserControls\WeatherRecommendUserControl.xaml.cs">
+      <DependentUpon>WeatherRecommendUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
