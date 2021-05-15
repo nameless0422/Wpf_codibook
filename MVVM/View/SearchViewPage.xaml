@@ -4,277 +4,163 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:codibook.MVVM.View"
-             xmlns:ViewModel ="clr-namespace:codibook.MVVM.ViewModel"
+             xmlns:ViewModel ="clr-namespace:codibook.MVVM.ViewModel" 
+             xmlns:usercontrols="clr-namespace:codibook.MVVM.View.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="720" d:DesignWidth="1280">
 
     <UserControl.Resources>
-        <ViewModel:MainViewModel x:Key="MainViewModel"/>
+        <ResourceDictionary>
+            <ViewModel:MainViewModel x:Key="MainViewModel"/>
+            <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Grid x:Name="Grid">
+                                <Rectangle HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch"
+                                                Width="Auto"
+                                                Height="Auto"
+                                                Fill="Transparent"/>
+                                <Border x:Name="Rectangle"
+                                            CornerRadius="10 10 10 10"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch"
+                                            Width="12"
+                                            Height="80"
+                                            Background="{TemplateBinding Background}"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="Tag" Value="Horizontal">
+                                    <Setter TargetName="Rectangle" Property="Width" Value="Auto"/>
+                                    <Setter TargetName="Rectangle" Property="Height" Value="7"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <!--" ScrollBars-->
+            <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+                <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                <Setter Property="Foreground" Value="DarkGray"/>
+                <Setter Property="Background" Value="DarkGray"/>
+                <Setter Property="Width" Value="10"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ScrollBar}">
+                            <Grid x:Name="GridRoot" Width="16" Background="{x:Null}">
+                                <Track x:Name="PART_Track" Grid.Row="3" IsDirectionReversed="True" Focusable="False">
+                                    <Track.Thumb>
+                                        <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" 
+                                                   Style="{DynamicResource ScrollThumbs}"/>
+                                    </Track.Thumb>
+                                    <Track.IncreaseRepeatButton>
+                                        <RepeatButton x:Name="PageUp" 
+                                                        Command="ScrollBar.PageDownCommand" 
+                                                        Opacity="0"
+                                                        Focusable="False"/>
+                                    </Track.IncreaseRepeatButton>
+                                    <Track.DecreaseRepeatButton>
+                                        <RepeatButton x:Name="PageDown" 
+                                                        Command="ScrollBar.PageUpCommand" 
+                                                        Opacity="0"
+                                                        Focusable="False"/>
+                                    </Track.DecreaseRepeatButton>
+                                </Track>
+                            </Grid>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger SourceName="Thumb" Property="IsMouseOver" Value="True">
+                                    <Setter Value="{DynamicResource ButtonSelectBrush}"  
+                                               TargetName="Thumb"
+                                               Property="Background"/>
+                                </Trigger>
+                                <Trigger SourceName="Thumb" Property="IsDragging" Value="True">
+                                    <Setter Value="{DynamicResource DarkBrush}"  
+                                               TargetName="Thumb"
+                                               Property="Background"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="Thumb"
+                                               Property="Visibility"
+                                               Value="Collapsed"/>
+                                </Trigger>
+                                <Trigger Property="Orientation" Value="Horizontal">
+                                    <Setter TargetName="GridRoot" Property="LayoutTransform">
+                                        <Setter.Value>
+                                            <RotateTransform Angle="-90"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter TargetName="PART_Track" Property="LayoutTransform">
+                                        <Setter.Value>
+                                            <RotateTransform Angle="-90"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Width" Value="Auto"/>
+                                    <Setter Property="Height" Value="12"/>
+                                    <Setter TargetName="Thumb" Property="Tag" Value="Horizontal"/>
+                                    <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand"/>
+                                    <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
     </UserControl.Resources>
+
     <Border Background="Transparent" CornerRadius="15">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="60"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <!-- Search 라벨 -->
-            <Grid Grid.Row="0">
-                <Label x:Name="Search"
-                       HorizontalAlignment="Left"
-					   VerticalAlignment="Bottom"
-					   FontFamily="{StaticResource AdobeClean-Bold}"
-					   FontSize="25"
-					   Foreground="DimGray"
-					   Margin="50, 0, 0, 10"/>
-            </Grid>
-
             <!-- Search -->
-
-            <Grid Grid.Row="1">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,30,0">
+            <Grid Grid.Row="0">
+                <Label x:Name="SearchList"
+                         HorizontalAlignment="Left"
+					     VerticalAlignment="Bottom"
+					     Content="search result : "
+					     FontFamily="AdobeClean-Bold"
+					     FontSize="25"
+				  	     Foreground="DimGray"
+			    		 Margin="75, 0, 0, 5"/>
+                <TextBlock x:Name="SearchResult"
+                               Text="8Seconds"
+							   Style="{StaticResource myclotheslist_textblock}"
+							   FontSize="25"
+                               Margin="235, 21, 0, 5">
+                </TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0, 0, 170, 0">
                     <Button x:Name="lookbook"
-                            Style="{StaticResource Search_LookBookButton}"  
-                            FontFamily="{StaticResource AdobeClean-Bold}"
-                            ></Button>
+                               Style="{StaticResource Search_LookBookButton}"  
+                               FontFamily="{StaticResource AdobeClean-Bold}"
+                               Margin="0, 15, 0, 0">
+                    </Button>
                     <Button x:Name="item" 
-                            Style="{StaticResource Search_ItemButton}"
-                            FontFamily="{StaticResource AdobeClean-Bold}"
-                            ></Button>
+                               Style="{StaticResource Search_ItemButton}"
+                               FontFamily="{StaticResource AdobeClean-Bold}"
+                               Margin="5, 15, 0, 0">
+                    </Button>
                 </StackPanel>
             </Grid>
-            
-            <Grid Grid.Row="2">
+
+            <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="120"/>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="145"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- 스크롤바 -->
                 <ScrollViewer Grid.Column="1">
                     <StackPanel>
-                        <Border CornerRadius="15" Background="Transparent" Margin="0, 3, 25, 5">
-                            <Grid>
-                                <Border x:Name="mcl1Item"
-								           Background="White"
-                                           CornerRadius="15">
-                                    <Border x:Name="mcl1Image"
-									           Background="DimGray"
-								 	           Width="92"
-									           HorizontalAlignment="Left"
-                                               CornerRadius="15, 0, 0, 15">
-                                        <Button Margin="65, 65, 8, 8"
-                                                    Style="{StaticResource HeartButton}">
-                                        </Button>
-                                    </Border>
-                                </Border>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock x:Name="mcl1Company"
-                                                   Grid.Row="0"
-										           Style="{StaticResource myclotheslist_textblock}"
-										           FontSize="15"
-                                                   Margin="105, 5 0, 5">
-                                                   
-                                    </TextBlock>
-                                    <TextBlock x:Name="mcl1Name"
-                                                   Grid.Row="1"
-										           Style="{StaticResource myclotheslist_textblock}"
-										           FontSize="15"
-                                                   Margin="105, 5, 0, 5">
-                                                   
-                                    </TextBlock>
-                                    <TextBlock x:Name="mcl1Price"
-                                                   Grid.Row="2"
-											       Style="{StaticResource myclotheslist_textblock}"
-											       FontSize="15"
-                                                   Margin="105, 5, 0, 5">
-                                                   
-                                    </TextBlock>
-                                    <TextBlock x:Name="mcl1Tag"
-                                                   Grid.Row="2"
-                                                   VerticalAlignment="Bottom"
-                                                   HorizontalAlignment="Right"
-											       Style="{StaticResource myclotheslist_textblock}"
-											       FontSize="15"
-                                                   Margin="105, 5, 15, 5">
-                                                  
-                                    </TextBlock>
-                                </Grid>
-                            </Grid>
-                        </Border>
-
-                        <Border CornerRadius="15" Background="Transparent" Margin="0, 0, 25, 5">
-                            <Grid>
-                                <Border x:Name="mcl2Item"
-								           Background="White"
-                                           CornerRadius="15">
-                                    <Border x:Name="mcl2Image"
-									           Background="DimGray"
-								 	           Width="92"
-									           HorizontalAlignment="Left"
-                                               CornerRadius="15, 0, 0, 15">
-                                        <Button Margin="65, 65, 8, 8"
-                                                    Style="{StaticResource HeartButton}">
-                                        </Button>
-                                    </Border>
-                                </Border>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock x:Name="mcl2Company"
-                                                   Grid.Row="0"
-										           Style="{StaticResource myclotheslist_textblock}"
-										           FontSize="15"
-                                                   Margin="105, 5 0, 5">
-                                                   
-                                    </TextBlock>
-                                    <TextBlock x:Name="mcl2Name"
-                                                   Grid.Row="1"
-										           Style="{StaticResource myclotheslist_textblock}"
-										           FontSize="15"
-                                                   Margin="105, 5, 0, 5">
-                                                   
-                                    </TextBlock>
-                                    <TextBlock x:Name="mcl2Price"
-                                                   Grid.Row="2"
-											       Style="{StaticResource myclotheslist_textblock}"
-											       FontSize="15"
-                                                   Margin="105, 5, 0, 5">
-                                                   
-                                    </TextBlock>
-                                    <TextBlock x:Name="mcl2Tag"
-                                                   Grid.Row="2"
-                                                   VerticalAlignment="Bottom"
-                                                   HorizontalAlignment="Right"
-											       Style="{StaticResource myclotheslist_textblock}"
-											       FontSize="15"
-                                                   Margin="105, 5, 15, 5">
-                                                   
-                                    </TextBlock>
-                                </Grid>
-                            </Grid>
-                        </Border>
-
-                        <Border CornerRadius="15" Background="Transparent" Margin="0, 0, 25, 5">
-                            <Grid>
-                                <Border x:Name="mcl3Item"
-								           Background="White"
-                                           CornerRadius="15">
-                                    <Border x:Name="mcl3Image"
-									           Background="DimGray"
-								 	           Width="92"
-									           HorizontalAlignment="Left"
-                                               CornerRadius="15, 0, 0, 15">
-                                        <Button Margin="65, 65, 8, 8"
-                                                    Style="{StaticResource HeartButton}">
-                                        </Button>
-                                    </Border>
-                                </Border>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock x:Name="mcl3Company"
-                                                   Grid.Row="0"
-										           Style="{StaticResource myclotheslist_textblock}"
-										           FontSize="15"
-                                                   Margin="105, 5 0, 5">
-                                                   
-                                    </TextBlock>
-                                    <TextBlock x:Name="mcl3Name"
-                                                   Grid.Row="1"
-										           Style="{StaticResource myclotheslist_textblock}"
-										           FontSize="15"
-                                                   Margin="105, 5, 0, 5">
-                                                   
-                                    </TextBlock>
-                                    <TextBlock x:Name="mcl3Price"
-                                                   Grid.Row="2"
-											       Style="{StaticResource myclotheslist_textblock}"
-											       FontSize="15"
-                                                   Margin="105, 5, 0, 5">
-                                                   
-                                    </TextBlock>
-                                    <TextBlock x:Name="mcl3Tag"
-                                                   Grid.Row="2"
-                                                   VerticalAlignment="Bottom"
-                                                   HorizontalAlignment="Right"
-											       Style="{StaticResource myclotheslist_textblock}"
-											       FontSize="15"
-                                                   Margin="105, 5, 15, 5">
-                                                   
-                                    </TextBlock>
-                                </Grid>
-                            </Grid>
-                        </Border>
-
-                        <Border CornerRadius="15" Background="Transparent" Margin="0, 0, 25, 5">
-                            <Grid>
-                                <Border x:Name="mcl4Item"
-								           Background="White"
-                                           CornerRadius="15">
-                                    <Border x:Name="mcl4Image"
-									           Background="DimGray"
-								 	           Width="92"
-									           HorizontalAlignment="Left"
-                                               CornerRadius="15, 0, 0, 15">
-                                        <Button Margin="65, 65, 8, 8"
-                                                    Style="{StaticResource HeartButton}">
-                                        </Button>
-                                    </Border>
-                                </Border>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock x:Name="mcl4Company"
-                                                   Grid.Row="0"
-										           Style="{StaticResource myclotheslist_textblock}"
-										           FontSize="15"
-                                                   Margin="105, 5 0, 5">
-                                                  
-                                    </TextBlock>
-                                    <TextBlock x:Name="mcl4Name"
-                                                   Grid.Row="1"
-										           Style="{StaticResource myclotheslist_textblock}"
-										           FontSize="15"
-                                                   Margin="105, 5, 0, 5">
-                                                   
-                                    </TextBlock>
-                                    <TextBlock x:Name="mcl4Price"
-                                                   Grid.Row="2"
-											       Style="{StaticResource myclotheslist_textblock}"
-											       FontSize="15"
-                                                   Margin="105, 5, 0, 5">
-                                                   
-                                    </TextBlock>
-                                    <TextBlock x:Name="mcl4Tag"
-                                                   Grid.Row="2"
-                                                   VerticalAlignment="Bottom"
-                                                   HorizontalAlignment="Right"
-											       Style="{StaticResource myclotheslist_textblock}"
-											       FontSize="15"
-                                                   Margin="105, 5, 15, 5">
-                                                   
-                                    </TextBlock>
-                                </Grid>
-                            </Grid>
-                        </Border>
-
+                        <usercontrols:ItemViewUserControl x:Name="Searchlist1"/>
+                        <usercontrols:ItemViewUserControl x:Name="Searchlist2"/>
+                        <usercontrols:ItemViewUserControl x:Name="Searchlist3"/>
                     </StackPanel>
                 </ScrollViewer>
             </Grid>

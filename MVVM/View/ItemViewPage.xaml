@@ -25,8 +25,8 @@
                                             CornerRadius="10 10 10 10"
                                             HorizontalAlignment="Stretch"
                                             VerticalAlignment="Stretch"
-                                            Width="16"
-                                            Height="40"
+                                            Width="12"
+                                            Height="80"
                                             Background="{TemplateBinding Background}"/>
                             </Grid>
                             <ControlTemplate.Triggers>
@@ -56,15 +56,15 @@
                                     </Track.Thumb>
                                     <Track.IncreaseRepeatButton>
                                         <RepeatButton x:Name="PageUp" 
-                                                        Command="ScrollBar.PageDownCommand" 
-                                                        Opacity="0"
-                                                        Focusable="False"/>
+                                                            Command="ScrollBar.PageDownCommand" 
+                                                            Opacity="0"
+                                                            Focusable="False"/>
                                     </Track.IncreaseRepeatButton>
                                     <Track.DecreaseRepeatButton>
                                         <RepeatButton x:Name="PageDown" 
-                                                        Command="ScrollBar.PageUpCommand" 
-                                                        Opacity="0"
-                                                        Focusable="False"/>
+                                                            Command="ScrollBar.PageUpCommand" 
+                                                            Opacity="0"
+                                                            Focusable="False"/>
                                     </Track.DecreaseRepeatButton>
                                 </Track>
                             </Grid>
