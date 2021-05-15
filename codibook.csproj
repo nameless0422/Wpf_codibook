@@ -158,7 +158,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\UserControlLookBookPage.xaml">
+    <Page Include="MVVM\View\UserControls\UserControlLookBookPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,7 +184,7 @@
     <Compile Include="MVVM\View\SearchViewPage.xaml.cs">
       <DependentUpon>SearchViewPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\View\UserControlLookBookPage.xaml.cs">
+    <Compile Include="MVVM\View\UserControls\UserControlLookBookPage.xaml.cs">
       <DependentUpon>UserControlLookBookPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">

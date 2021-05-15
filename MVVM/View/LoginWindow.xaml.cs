@@ -148,9 +148,9 @@ namespace codibook.MVVM.View
                             using (MySqlConnection con = new MySqlConnection("SERVER=localhost;PORT=3307;UID=root;PASSWORD=qawzsx351;DATABASE=codibook;SslMode=None"))
                             {
                                 con.Open();
-                                MySqlCommand sqlCom;
+                                
                                 string query1 = "SELECT COUNT(*) FROM user WHERE ID='"+ this.ID_BOX.Text +"'";
-                                sqlCom = new MySqlCommand(query1, con);
+                                MySqlCommand sqlCom = new MySqlCommand(query1, con);
                                 object query1_result = sqlCom.ExecuteScalar();
                                 if(int.Parse(query1_result.ToString()) != 0)
                                 {
