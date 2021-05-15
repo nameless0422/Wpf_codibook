@@ -5,14 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:codibook.MVVM.View.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="222" d:DesignWidth="222">
+             d:DesignHeight="232" d:DesignWidth="232">
     <Grid>
         <Border x:Name="listItem1"
 								Background="white"
-								Width="222"
-								Height="222"
+								Width="232"
+								Height="232"
 								HorizontalAlignment="Left"
-								Margin="15, 5, 15, 5">
+								Margin="16.5, 5, 16.5, 5">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.7*"/>
