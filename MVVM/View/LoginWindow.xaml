@@ -16,55 +16,64 @@
     <Window.Resources>
         <vm:MainViewModel x:Key="MainViewModel"></vm:MainViewModel>
     </Window.Resources>
-    <Border Background="#F5F5F5" CornerRadius="15">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <!-- 타이틀바 -->
-            <Grid Grid.Row="0">
-                <Rectangle MouseLeftButtonDown="Rectangle_MouseDown" 
+    <Grid>
+        <Border Background="#F5F5F5" CornerRadius="15">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <!-- 타이틀바 -->
+                <Grid Grid.Row="0">
+                    <Rectangle MouseLeftButtonDown="Rectangle_MouseDown" 
                        Fill="#F5F5F5"
                            RadiusX="15" RadiusY="15"
                            >
-                </Rectangle>
+                    </Rectangle>
 
-                <DockPanel HorizontalAlignment="Right" Margin="0, 0, 5, 0">
-                    <Button x:Name="ToMiniButton" 
+                    <DockPanel HorizontalAlignment="Right" Margin="0, 0, 5, 0">
+                        <Button x:Name="ToMiniButton" 
                         Click="ToMiniButton_Click"
                         Width="20"
                         Height="20"
                         Margin="0, 1, 2, 0"
                         Style="{StaticResource yellowRoundButtonStyle}"></Button>
-                    
-                    <Button x:Name="CloseButton" 
+
+                        <Button x:Name="CloseButton" 
                         Click="CloseButton_Click"
                         Width="20"
                         Height="20"
                         Margin="0, 1, 2, 0"
                         Style="{StaticResource redRoundButtonStyle}"></Button>
-                </DockPanel>
-            </Grid>
-            <!-- 컨텐츠 -->
-            <Grid Grid.Row="1">
-                <Border Background="DarkGray" CornerRadius="15" Width="400" Height="500">
-                    <StackPanel Margin="0,30,0,0">
-                        <Label Content="Login"
-                               Foreground="#F5F5F5"
-                               FontSize="40"
+                    </DockPanel>
+                </Grid>
+                <!-- 컨텐츠 -->
+                <Grid Grid.Row="1">
+                    <Border Background="#FFFFFF" CornerRadius="15" Width="400" Margin="430,150,430,150">
+                        <StackPanel Margin="0,30,0,0">
+                            <Label Content="user login"
+                               Foreground="#666666"
+                               FontSize="26"
                                HorizontalAlignment="Center"
-                               FontFamily="{StaticResource AdobeClean-Regular}"/>
-                        <Separator Margin="10" HorizontalAlignment="Center" Width="300" Background="#F5F5F5"></Separator>
-                        <Label Content="ID"
-                               Foreground="#F5F5F5"
+                               FontWeight="DemiBold"
+                               FontFamily="{StaticResource AdobeClean-Bold}"/>
+                            <Label Content="Hello. Nice meet you."
+                                   HorizontalAlignment="Center"
+                                   Margin="0,10,0,-10"
+                                   Foreground="#666666"
+                                   FontSize="16"
+                                   FontFamily="{StaticResource AdobeClean-Regular}">
+                                
+                            </Label>
+                            <Label Content="ID"
+                               Foreground="#666666"
                                Margin="50,5,0,0"
-                               FontSize="30"
+                               FontSize="24"
                                HorizontalAlignment="Left"
                                FontFamily="{StaticResource AdobeClean-Regular}"
                             ></Label>
-                        <Border Background="#F5F5F5" CornerRadius="15" Width="300" Height="50">
-                            <TextBox x:Name="ID_BOX"
+                            <Border Background="#F5F5F5" CornerRadius="15" Width="300" Height="50">
+                                <TextBox x:Name="ID_BOX"
                                      FontSize="20"
                                      Width="280"
                                      Height="30"
@@ -74,16 +83,16 @@
                                      HorizontalAlignment="Center"
                                      Foreground="#FF535353"
                                      FontFamily="{StaticResource AdobeClean-Regular}"></TextBox>
-                        </Border>
-                        <Label Content="PASSWORD"
-                               Foreground="#F5F5F5"
+                            </Border>
+                            <Label Content="PASSWORD"
+                               Foreground="#666666"
                                Margin="50,5,0,0"
-                               FontSize="30"
+                               FontSize="24"
                                HorizontalAlignment="Left"
                                FontFamily="{StaticResource AdobeClean-Regular}"
                             ></Label>
-                        <Border Background="#F5F5F5" CornerRadius="15" Width="300" Height="50">
-                            <PasswordBox x:Name="Password_BOX"
+                            <Border Background="#F5F5F5" CornerRadius="15" Width="300" Height="50">
+                                <PasswordBox x:Name="Password_BOX"
                                      FontSize="20"
                                      Width="280"
                                      Height="30"
@@ -94,48 +103,49 @@
                                      Foreground="#FF535353"
                                      
                                      ></PasswordBox>
-                        </Border>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button x:Name="Login"
-                                    Background="#F5F5F5"
-                                    Content="Login"
-                                    Foreground="#FF535353"
-                                    FontWeight="Bold"
-                                    Click="Login_Click"
-                                    FontFamily="{StaticResource AdobeClean-Regular}"
-                                    BorderThickness="0"
-                                    Margin="5,20,5,0"
-                                    Width="100"
-                                    Height="50"
-                                    >
-                                <Button.Resources>
-                                    <Style TargetType="Border">
-                                        <Setter Property="CornerRadius" Value="15"/>
-                                    </Style>
-                                </Button.Resources>
-                            </Button>
-                            <Button x:Name="Register"
+                            </Border>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button x:Name="Register"
                                         Background="#F5F5F5"
-                                        Content="Register"
+                                        Content="signup"
                                         Foreground="#FF535353"
                                         FontWeight="Bold"
                                         Click="Register_Click"
-                                        FontFamily="{StaticResource AdobeClean-Regular}"
+                                        FontFamily="{StaticResource AdobeClean-Light}"
                                         BorderThickness="0"
-                                        Margin="5,20,5,0"
-                                        Width="100"
+                                        Margin="6,20,6,0"
+                                        Width="145"
                                         Height="50"
                                         >
-                                <Button.Resources>
-                                    <Style TargetType="Border">
-                                        <Setter Property="CornerRadius" Value="15"/>
-                                    </Style>
-                                </Button.Resources>
-                            </Button>
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="15"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                                <Button x:Name="Login"
+                                    Background="#F5F5F5"
+                                    Content="login"
+                                    Foreground="#FF535353"
+                                    FontWeight="Bold"
+                                    Click="Login_Click"
+                                    FontFamily="{StaticResource AdobeClean-Light}"
+                                    BorderThickness="0"
+                                    Margin="6,20,6,0"
+                                    Width="145"
+                                    Height="50"
+                                    >
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="15"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
-                </Border>
+                    </Border>
+                </Grid>
             </Grid>
-        </Grid>
-    </Border>
+        </Border>
+    </Grid>
 </Window>
