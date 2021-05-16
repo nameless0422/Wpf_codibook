@@ -57,10 +57,7 @@ namespace codibook.MVVM.View
             {
                 MainWindow mainWindow;
                 User user;
-                mainWindow = new MainWindow();
-                mainWindow.Show();
-                this.Close();
-                /*
+                
                 // ssh 접속
                 using (var client = new SshClient("106.10.57.242", 5000, "root", "qawzsx351"))
                 {
@@ -70,12 +67,12 @@ namespace codibook.MVVM.View
                         try
                         {
                             // 내부 db 접속을 위한 포트포워딩
-                            var portForwarded = new ForwardedPortLocal("localhost", 3306, "106.10.57.242", 5001);
+                            var portForwarded = new ForwardedPortLocal("127.0.0.1", 3306, "127.0.0.1", 3306);
                             client.AddForwardedPort(portForwarded);
                             portForwarded.Start();
 
                             // db 접속
-                            using (MySqlConnection con = new MySqlConnection("SERVER=localhost;PORT=3307;UID=root;PASSWORD=qawzsx351;DATABASE=codibook;SslMode=None"))
+                            using (MySqlConnection con = new MySqlConnection("SERVER=localhost;PORT=3306;UID=root;PASSWORD=qawzsx351;DATABASE=codibook;SslMode=None"))
                             {
                                 con.Open();
                                 if (this.ID_BOX.Text.Equals(string.Empty) || this.ID_BOX.Text.Length <= 5)
@@ -121,7 +118,7 @@ namespace codibook.MVVM.View
                     {
                         MessageBox.Show("Client cannot be reached...");
                     }
-                }*/
+                }
             }
             catch (Exception ex)
             {
@@ -143,12 +140,12 @@ namespace codibook.MVVM.View
                         try
                         {
                             // 내부 db 접속을 위한 포트포워딩
-                            var portForwarded = new ForwardedPortLocal("localhost", 3307 , "106.10.57.242", 3306);
+                            var portForwarded = new ForwardedPortLocal("127.0.0.1", 3306, "127.0.0.1", 3306);
                             client.AddForwardedPort(portForwarded);
                             portForwarded.Start();
 
                             // db 접속
-                            using (MySqlConnection con = new MySqlConnection("SERVER=localhost;PORT=3307;UID=root;PASSWORD=qawzsx351;DATABASE=codibook;SslMode=None"))
+                            using (MySqlConnection con = new MySqlConnection("SERVER=localhost;PORT=3306;UID=root;PASSWORD=qawzsx351;DATABASE=codibook;SslMode=None"))
                             {
                                 con.Open();
                                 
