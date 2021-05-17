@@ -26,7 +26,7 @@
                                             HorizontalAlignment="Stretch"
                                             VerticalAlignment="Stretch"
                                             Width="12"
-                                            Height="80"
+                                            Height="Auto"
                                             Background="{TemplateBinding Background}"/>
                             </Grid>
                             <ControlTemplate.Triggers>
