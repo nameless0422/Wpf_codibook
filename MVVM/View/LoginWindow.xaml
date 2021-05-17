@@ -68,7 +68,7 @@
                             <Label Content="ID"
                                Foreground="#666666"
                                Margin="50,5,0,0"
-                               FontSize="24"
+                               FontSize="20"
                                HorizontalAlignment="Left"
                                FontFamily="{StaticResource AdobeClean-Regular}"
                             ></Label>
@@ -87,7 +87,7 @@
                             <Label Content="PASSWORD"
                                Foreground="#666666"
                                Margin="50,5,0,0"
-                               FontSize="24"
+                               FontSize="20"
                                HorizontalAlignment="Left"
                                FontFamily="{StaticResource AdobeClean-Regular}"
                             ></Label>
@@ -107,7 +107,7 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <Button x:Name="Register"
                                         Background="#F5F5F5"
-                                        Content="signup"
+                                        Content="sign up"
                                         Foreground="#FF535353"
                                         FontWeight="Bold"
                                         Click="Register_Click"

@@ -139,6 +139,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\View\PopUp\AddListPopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\PopUp\SettingPopUp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -175,6 +179,9 @@
     </Compile>
     <Compile Include="MVVM\View\LookBookPage.xaml.cs">
       <DependentUpon>LookBookPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\PopUp\AddListPopUp.xaml.cs">
+      <DependentUpon>AddListPopUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\PopUp\SettingPopUp.xaml.cs">
       <DependentUpon>SettingPopUp.xaml</DependentUpon>

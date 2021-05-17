@@ -34,19 +34,10 @@ namespace codibook.MVVM.View
             listControlFirst.ListItemInformation = bc;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void addListButton_Click(object sender, RoutedEventArgs e)
         {
-
+            PopUp.AddListPopUp addListPopUp = new PopUp.AddListPopUp();
+            addListPopUp.Show();
         }
 
         private void moreButton_Click(object sender, RoutedEventArgs e)
@@ -54,9 +45,5 @@ namespace codibook.MVVM.View
 
         }
 
-        private void moreButton_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
