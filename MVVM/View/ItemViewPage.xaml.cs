@@ -44,5 +44,10 @@ namespace codibook.MVVM.View
         {
 
         }
+
+        private void WeatherRecommend4_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
