@@ -236,6 +236,7 @@
   <ItemGroup>
     <Folder Include="Classes\" />
     <Folder Include="Images\" />
+    <Folder Include="MVVM\ViewModel\Commands\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

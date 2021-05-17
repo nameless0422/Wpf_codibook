@@ -166,14 +166,13 @@
                     </Button>
                 </Grid>
 
-                <!-- 구현부 -->
                 <Grid Grid.Column="1">
-                    <WrapPanel>
+                    <StackPanel Orientation="Horizontal" >
                         <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend1"/>
                         <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend2"/>
                         <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend3"/>
                         <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend4"/>
-                    </WrapPanel>
+                    </StackPanel>
                 </Grid>
             </Grid>
 

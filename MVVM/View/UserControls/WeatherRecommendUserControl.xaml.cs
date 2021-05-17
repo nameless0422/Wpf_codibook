@@ -24,5 +24,10 @@ namespace codibook.MVVM.View.UserControls
         {
             InitializeComponent();
         }
+
+        private void listItem_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            this.listItem.Width = e.NewSize.Height;
+        }
     }
 }
