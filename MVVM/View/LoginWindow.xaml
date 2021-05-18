@@ -5,16 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:codibook.MVVM.View"
         xmlns:vm ="clr-namespace:codibook.MVVM.ViewModel"
+        xmlns:Commands="clr-namespace:codibook.MVVM.ViewModel.Commands.loginCommands"
         WindowStyle="None" 
         AllowsTransparency="True"
         BorderThickness="1" 
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Background="Transparent"
+        x:Name="thisWindow"
         Title="LoginWindow" Height="720" Width="1280">
 
     <Window.Resources>
-        <vm:MainViewModel x:Key="MainViewModel"></vm:MainViewModel>
+        <vm:LoginViewModel x:Key="loginViewModel"/>
     </Window.Resources>
     <Grid>
         <Border Background="#F5F5F5" CornerRadius="15">
@@ -104,13 +106,14 @@
                                      
                                      ></PasswordBox>
                             </Border>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DataContext="{StaticResource loginViewModel}">
                                 <Button x:Name="Register"
                                         Background="#F5F5F5"
                                         Content="sign up"
                                         Foreground="#FF535353"
                                         FontWeight="Bold"
-                                        Click="Register_Click"
+                                        Command="{Binding registerCommandProperty}"
+                                        CommandParameter="{Binding ElementName=thisWindow}"
                                         FontFamily="{StaticResource AdobeClean-Light}"
                                         BorderThickness="0"
                                         Margin="6,20,6,0"
@@ -128,7 +131,8 @@
                                     Content="login"
                                     Foreground="#FF535353"
                                     FontWeight="Bold"
-                                    Click="Login_Click"
+                                    Command="{Binding loginCommandProperty}"
+                                    CommandParameter="{Binding ElementName=thisWindow}"
                                     FontFamily="{StaticResource AdobeClean-Light}"
                                     BorderThickness="0"
                                     Margin="6,20,6,0"

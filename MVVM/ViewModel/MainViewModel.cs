@@ -1,5 +1,6 @@
 ﻿using codibook.MVVM.Model;
 using codibook.MVVM.View;
+using codibook.MVVM.ViewModel.Commands.mainCommands;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -28,13 +29,18 @@ namespace codibook.MVVM.ViewModel
             }
         }
 
-        ItemViewModel itemViewModel;
-        LookBookViewModel lookBookViewModel;
         public MariaDbAccess mariaDB_access;
+        public navigateToPageCommand navigateToPageCommandProperty { get; set; }
+        public SettingCommand settingCommandProperty { get; set; }
+
+        public bool SettingCheck;
 
         public MainViewModel()
         {
+            SettingCheck = false;
             mariaDB_access = new MariaDbAccess();
+            navigateToPageCommandProperty = new navigateToPageCommand();
+            settingCommandProperty = new SettingCommand();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

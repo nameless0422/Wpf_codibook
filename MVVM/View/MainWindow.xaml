@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:codibook.MVVM.View"
         xmlns:vm ="clr-namespace:codibook.MVVM.ViewModel"
+        x:Name="thisWindow"
         WindowStyle="None" 
         AllowsTransparency="True"
         BorderThickness="1" 
@@ -18,6 +19,7 @@
 
     <Window.Resources>
         <vm:WeatherAPI x:Key="WeatherAPI"/>
+        <vm:MainViewModel x:Key="MainVM"/>
     </Window.Resources>
     
     <Border Background="#F5F5F5" CornerRadius="15">
@@ -184,10 +186,11 @@
                             
                         </Border>
                     </Grid>
-                    <Grid Grid.Column="5">
+                    <Grid Grid.Column="5" DataContext="{StaticResource MainVM}">
                         <Button Margin="5,15"
                                 Style="{StaticResource Setting}"
-                                Click="SettingButton_Click">
+                                Command="{Binding settingCommandProperty}"
+                                CommandParameter="{Binding Source={StaticResource MainVM}}">
                             
                         </Button>
                     </Grid>
@@ -269,9 +272,10 @@
                         </Frame>
                     </Grid>
                     <!-- 페이지 체인지 버튼-->
-                    <Grid Grid.Column="2" VerticalAlignment="Bottom">
+                    <Grid Grid.Column="2" VerticalAlignment="Bottom" DataContext="{StaticResource MainVM}">
                         <Button x:Name="ChangeViewButton" 
-                        Click="NavigateToPage_Click"
+                        Command="{Binding navigateToPageCommandProperty}"
+                        CommandParameter="{Binding ElementName=thisWindow}"
                         Width="80"
                         Height="80"
                         Margin="0, 0, 40, 40"

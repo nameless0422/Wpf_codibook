@@ -72,26 +72,6 @@ namespace codibook.MVVM.View
             this.Close();
         }
 
-        // 페이지 변경
-        // 룩북 뷰 <---> 아이템 뷰
-        private void NavigateToPage_Click(object sender, RoutedEventArgs e)
-        {
-            if(this.Mainframe.Content.GetType() == typeof(LookBookPage) || this.Mainframe.Content.GetType() == typeof(SearchViewPage))
-            {
-                this.Mainframe.Navigate(new ItemViewPage());
-            } 
-            else if(this.Mainframe.Content.GetType() == typeof(ItemViewPage) || this.Mainframe.Content.GetType() == typeof(SearchViewPage))
-            {
-                this.Mainframe.Navigate(new LookBookPage());
-            }
-        }
-
-        private void SettingButton_Click(object sender, RoutedEventArgs e)
-        {
-            PopUp.SettingPopUp settingPopUp = new PopUp.SettingPopUp();
-            settingPopUp.Show();
-        }
-
         private void BookMarkButton_Click(object sender, RoutedEventArgs e)
         {
             this.Mainframe.Navigate(new SearchViewPage());
