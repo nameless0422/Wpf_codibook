@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace codibook.MVVM.ViewModel.PopUpViewModel
 {
-    public class SettingPopUpViewModel
+    public class UserPopUpViewModel
     {
-        public SettingPopUpCloseCommand closeCommand { get; set; }
-        public SettingPopUpViewModel()
+        public UserPopUpCloseCommand closeCommand { get; set; }
+        public UserPopUpViewModel()
         {
-            closeCommand = new SettingPopUpCloseCommand();
+            closeCommand = new UserPopUpCloseCommand();
         }
     }
 }

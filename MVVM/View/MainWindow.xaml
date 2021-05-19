@@ -201,10 +201,11 @@
 
                         </Button>
                     </Grid>
-                    <Grid Grid.Column="7">
+                    <Grid Grid.Column="7" DataContext="{StaticResource MainVM}">
                         <Button Margin="5,15"
                                 Style="{StaticResource UserButton}"
-                                Click="UserButton_Click">
+                                Command="{Binding userCommandProprety}"
+                                CommandParameter="{Binding Source={StaticResource MainVM}}">
 
                         </Button>
                     </Grid>

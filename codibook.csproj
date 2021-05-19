@@ -120,16 +120,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MVVM\ViewModel\Commands\closeCommands\SettingPopUpCommand.cs" />
+    <Compile Include="MVVM\ViewModel\Commands\closeCommands\SettingPopUpCloseCommand.cs" />
+    <Compile Include="MVVM\ViewModel\Commands\closeCommands\UserPopUpCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\loginCommands\loginCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\loginCommands\registerCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\mainCommands\navigateToPageCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\mainCommands\SettingCommand.cs" />
+    <Compile Include="MVVM\ViewModel\Commands\mainCommands\UserCommand.cs" />
     <Compile Include="MVVM\ViewModel\ItemViewModel.cs" />
     <Compile Include="MVVM\ViewModel\LoginViewModel.cs" />
     <Compile Include="MVVM\ViewModel\LookBookViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainCommand.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\SettingPopUpViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\PopUpViewModel\UserPopUpViewModel.cs" />
     <Compile Include="MVVM\ViewModel\WeatherAPI.cs" />
     <Compile Include="MVVM\View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>

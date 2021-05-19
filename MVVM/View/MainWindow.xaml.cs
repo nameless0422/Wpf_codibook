@@ -70,17 +70,13 @@ namespace codibook.MVVM.View
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            Environment.Exit(0);
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
 
         private void BookMarkButton_Click(object sender, RoutedEventArgs e)
         {
             this.Mainframe.Navigate(new SearchViewPage());
-        }
-
-        private void UserButton_Click(object sender, RoutedEventArgs e)
-        {
-            PopUp.UserPopUp userPopUp = new PopUp.UserPopUp();
-            userPopUp.Show();
         }
 
     }

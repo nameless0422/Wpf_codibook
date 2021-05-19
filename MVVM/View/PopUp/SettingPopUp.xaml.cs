@@ -1,4 +1,5 @@
-﻿using System;
+﻿using codibook.MVVM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,13 +20,12 @@ namespace codibook.MVVM.View.PopUp
     /// </summary>
     public partial class SettingPopUp : Window
     {
-        public SettingPopUp()
+        public MainViewModel viewModel;
+
+        public SettingPopUp(MainViewModel vm)
         {
             InitializeComponent();
-        }
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+            viewModel = vm;
         }
 
         // 타이틀바 드래그

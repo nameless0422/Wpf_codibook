@@ -1,5 +1,6 @@
 ﻿using codibook.MVVM.Model;
 using codibook.MVVM.View;
+using codibook.MVVM.View.PopUp;
 using codibook.MVVM.ViewModel.Commands.mainCommands;
 using MySql.Data.MySqlClient;
 using System;
@@ -10,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using static codibook.MVVM.ViewModel.MariaDB;
+
 
 namespace codibook.MVVM.ViewModel
 {
@@ -29,18 +30,29 @@ namespace codibook.MVVM.ViewModel
             }
         }
 
-        public MariaDbAccess mariaDB_access;
         public navigateToPageCommand navigateToPageCommandProperty { get; set; }
-        public SettingCommand settingCommandProperty { get; set; }
 
+        public SettingCommand settingCommandProperty { get; set; }
+        public SettingPopUp settingPopUpPage { get; set; }
+
+        public UserCommand userCommandProprety { get; set; }
+        public UserPopUp userPopUpPage { get; set; }
+
+        //setting popup이 켜져있는지
         public bool SettingCheck;
+
+        //User popup이 켜져있는지
+        public bool UserCheck;
 
         public MainViewModel()
         {
             SettingCheck = false;
-            mariaDB_access = new MariaDbAccess();
+            UserCheck = false;
             navigateToPageCommandProperty = new navigateToPageCommand();
             settingCommandProperty = new SettingCommand();
+            settingPopUpPage = new SettingPopUp(this);
+            userCommandProprety = new UserCommand();
+            userPopUpPage = new UserPopUp(this);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -54,38 +66,4 @@ namespace codibook.MVVM.ViewModel
         }
     }
 
-    public class MariaDB
-    {
-        public class MariaDbAccess
-        {
-
-            public void MariaDB_Select(string a)
-            {
-
-                /// <summary>
-                /// DB 연결 스트링
-                /// </summary>
-                string connectionString = "Server=106.10.57.242;Port=5000;Database=codibook;Uid=root;Pwd=qawzsx351";
-
-                MySqlConnection conn = new MySqlConnection(connectionString);
-                MySqlCommand cmd = conn.CreateCommand();
-                string sql = a;
-                cmd.CommandText = sql;
-                try
-                {
-                    conn.Open();
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                }
-                MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-
-                }
-            }
-
-        }
-    }
 }

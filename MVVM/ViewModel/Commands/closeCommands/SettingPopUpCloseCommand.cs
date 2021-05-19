@@ -1,4 +1,5 @@
-﻿using System;
+﻿using codibook.MVVM.View.PopUp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Windows.Input;
 
 namespace codibook.MVVM.ViewModel.Commands.closeCommands
 {
-    public class SettingPopUpCommand : ICommand
+    public class SettingPopUpCloseCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
@@ -18,7 +19,9 @@ namespace codibook.MVVM.ViewModel.Commands.closeCommands
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            SettingPopUp settingPopUp = parameter as SettingPopUp;
+            settingPopUp.viewModel.SettingCheck = false;
+            settingPopUp.Close();
         }
     }
 }

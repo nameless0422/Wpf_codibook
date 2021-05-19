@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:codibook.MVVM.View.PopUp"
-        xmlns:vm ="clr-namespace:codibook.MVVM.ViewModel"
+        xmlns:vm ="clr-namespace:codibook.MVVM.ViewModel.PopUpViewModel"
+        x:Name="thisWindow"
         WindowStyle="None" 
         AllowsTransparency="True"
         BorderThickness="1" 
@@ -12,6 +13,9 @@
         ResizeMode="NoResize"
         Background="Transparent"
         Title="UserPopUp" Height="400" Width="400">
+    <Window.Resources>
+        <vm:UserPopUpViewModel x:Key="VM"></vm:UserPopUpViewModel>
+    </Window.Resources>
     <Border Background="#F5F5F5" CornerRadius="15">
         <Grid>
             <Grid.RowDefinitions>
@@ -26,9 +30,10 @@
                            >
                 </Rectangle>
 
-                <DockPanel HorizontalAlignment="Right" Margin="0, 0, 5, 0">
+                <DockPanel HorizontalAlignment="Right" Margin="0, 0, 5, 0" DataContext="{StaticResource VM}">
                     <Button x:Name="CloseButton" 
-                        Click="CloseButton_Click"
+                        Command="{Binding closeCommand}"
+                        CommandParameter="{Binding ElementName=thisWindow}"
                         Width="20"
                         Height="20"
                         Margin="0, 1, 2, 0"
