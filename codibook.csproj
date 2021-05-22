@@ -169,6 +169,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\View\UserControls\UserControlAddListMyColthes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\UserControls\UserControlAddListPopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\UserControls\UserControlLookBookPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -204,6 +212,12 @@
     </Compile>
     <Compile Include="MVVM\View\UserControls\ItemViewUserControl.xaml.cs">
       <DependentUpon>ItemViewUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\UserControls\UserControlAddListMyColthes.xaml.cs">
+      <DependentUpon>UserControlAddListMyColthes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\UserControls\UserControlAddListPopUp.xaml.cs">
+      <DependentUpon>UserControlAddListPopUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\UserControls\UserControlLookBookPage.xaml.cs">
       <DependentUpon>UserControlLookBookPage.xaml</DependentUpon>

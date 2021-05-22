@@ -13,28 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace codibook.MVVM.View
+namespace codibook.MVVM.View.UserControls
 {
     /// <summary>
-    /// LookBookPage.xaml에 대한 상호 작용 논리
+    /// UserControlAddListPopUp.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class LookBookPage : UserControl
+    public partial class UserControlAddListPopUp : UserControl
     {
-        public LookBookPage()
+        public UserControlAddListPopUp()
         {
             InitializeComponent();
         }
-
-        private void addListButton_Click(object sender, RoutedEventArgs e)
-        {
-            PopUp.AddListPopUp addListPopUp = new PopUp.AddListPopUp();
-            addListPopUp.Show();
-        }
-
-        private void moreButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
     }
 }

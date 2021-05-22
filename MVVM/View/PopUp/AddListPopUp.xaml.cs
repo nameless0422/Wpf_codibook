@@ -39,5 +39,15 @@ namespace codibook.MVVM.View.PopUp
         {
 
         }
+
+        private void RightArrowButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LeftArrowButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
