@@ -1,7 +1,9 @@
 ﻿using codibook.MVVM.Model;
 using codibook.MVVM.View;
 using codibook.MVVM.View.PopUp;
+using codibook.MVVM.ViewModel.Commands.closeCommands;
 using codibook.MVVM.ViewModel.Commands.mainCommands;
+using codibook.MVVM.ViewModel.Commands.titlebarCommands;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -31,6 +33,12 @@ namespace codibook.MVVM.ViewModel
         }
 
         public navigateToPageCommand navigateToPageCommandProperty { get; set; }
+        public BookMarkCommand bookMarkCommandProperty { get; set; }
+
+        public MainCloseCommand mainCloseCommandProperty { get; set; }
+        public ToMaxOrNormalCommand toMaxOrNormalCommandProperty { get; set; }
+        public ToMiniCommand toMiniCommandProperty { get; set; }
+        public MainTitleBarCommand titleBarCommandProperty { get; set; }
 
         public SettingCommand settingCommandProperty { get; set; }
         public SettingPopUp settingPopUpPage { get; set; }
@@ -49,10 +57,15 @@ namespace codibook.MVVM.ViewModel
             SettingCheck = false;
             UserCheck = false;
             navigateToPageCommandProperty = new navigateToPageCommand();
+            bookMarkCommandProperty = new BookMarkCommand();
             settingCommandProperty = new SettingCommand();
             settingPopUpPage = new SettingPopUp(this);
             userCommandProprety = new UserCommand();
             userPopUpPage = new UserPopUp(this);
+            mainCloseCommandProperty = new MainCloseCommand();
+            toMaxOrNormalCommandProperty = new ToMaxOrNormalCommand();
+            toMiniCommandProperty = new ToMiniCommand(); 
+            titleBarCommandProperty = new MainTitleBarCommand();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
