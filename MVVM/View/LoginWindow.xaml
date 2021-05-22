@@ -27,22 +27,30 @@
                 </Grid.RowDefinitions>
                 <!-- 타이틀바 -->
                 <Grid Grid.Row="0">
-                    <Rectangle MouseLeftButtonDown="Rectangle_MouseDown" 
+                    <Rectangle DataContext="{StaticResource loginViewModel}"
                        Fill="#F5F5F5"
                            RadiusX="15" RadiusY="15"
                            >
+                        <Rectangle.InputBindings>
+                            <MouseBinding Gesture="LeftClick" 
+                                      Command="{Binding loginTitleBarCommandProperty}"
+                                      CommandParameter="{Binding ElementName=thisWindow}"
+                                      />
+                        </Rectangle.InputBindings>
                     </Rectangle>
 
-                    <DockPanel HorizontalAlignment="Right" Margin="0, 0, 5, 0">
+                    <DockPanel HorizontalAlignment="Right" Margin="0, 0, 5, 0" DataContext="{StaticResource loginViewModel}">
                         <Button x:Name="ToMiniButton" 
-                        Click="ToMiniButton_Click"
+                        Command="{Binding toMiniCommandProperty}"
+                        CommandParameter="{Binding ElementName=thisWindow}"
                         Width="20"
                         Height="20"
                         Margin="0, 1, 2, 0"
                         Style="{StaticResource yellowRoundButtonStyle}"></Button>
 
                         <Button x:Name="CloseButton" 
-                        Click="CloseButton_Click"
+                        Command="{Binding loginCloseCommandProperty}"
+                        CommandParameter="{Binding ElementName=thisWindow}"
                         Width="20"
                         Height="20"
                         Margin="0, 1, 2, 0"

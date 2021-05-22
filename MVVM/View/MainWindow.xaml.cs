@@ -40,44 +40,5 @@ namespace codibook.MVVM.View
             this.user = U;
             this.Mainframe.Navigate(new ItemViewPage());
         }
-
-        // 타이틀바 드래그
-        private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
-        }
-
-        // 최소화
-        private void ToMiniButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = System.Windows.WindowState.Minimized;
-        }
-
-        // 최대화
-        private void ToMaxOrNormalButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.WindowState == System.Windows.WindowState.Maximized)
-            {
-                this.WindowState = System.Windows.WindowState.Normal;
-            }
-            else if (this.WindowState == System.Windows.WindowState.Normal)
-            {
-                this.WindowState = System.Windows.WindowState.Maximized;
-            }
-        }
-
-        // 닫기
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            Environment.Exit(0);
-            System.Diagnostics.Process.GetCurrentProcess().Kill();
-        }
-
-        private void BookMarkButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Mainframe.Navigate(new SearchViewPage());
-        }
-
     }
 }

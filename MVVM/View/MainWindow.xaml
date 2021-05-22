@@ -33,28 +33,36 @@
             <!-- 타이틀바 -->
             <Grid Grid.Row="0">
 
-                <Rectangle MouseLeftButtonDown="Rectangle_MouseDown" 
-                       Fill="#F5F5F5"
+                <Rectangle DataContext="{StaticResource MainVM}"
+                           Fill="#F5F5F5"
                            RadiusX="15" RadiusY="15"
                            >
-
+                    <Rectangle.InputBindings>
+                        <MouseBinding Gesture="LeftClick" 
+                                      Command="{Binding titleBarCommandProperty}"
+                                      CommandParameter="{Binding ElementName=thisWindow}"
+                                      />
+                    </Rectangle.InputBindings>
                 </Rectangle>
 
-                <DockPanel HorizontalAlignment="Right" Margin="0, 0, 5, 0">
+                <DockPanel HorizontalAlignment="Right" Margin="0, 0, 5, 0" DataContext="{StaticResource MainVM}">
                     <Button x:Name="ToMiniButton" 
-                        Click="ToMiniButton_Click"
+                        Command="{Binding toMiniCommandProperty}"
+                        CommandParameter="{Binding ElementName=thisWindow}"
                         Width="20"
                         Height="20"
                         Margin="0, 1, 2, 0"
                         Style="{StaticResource yellowRoundButtonStyle}"></Button>
                     <Button x:Name="ToMaxButton" 
-                        Click="ToMaxOrNormalButton_Click"
+                        Command="{Binding toMaxOrNormalCommandProperty}"
+                        CommandParameter="{Binding ElementName=thisWindow}"
                         Width="20"
                         Height="20"
                         Margin="0, 1, 2, 0"
                         Style="{StaticResource greenRoundButtonStyle}"></Button>
                     <Button x:Name="CloseButton" 
-                        Click="CloseButton_Click"
+                        Command="{Binding mainCloseCommandProperty}"
+                        CommandParameter="{Binding ElementName=thisWindow}"
                         Width="20"
                         Height="20"
                         Margin="0, 1, 2, 0"
@@ -194,10 +202,11 @@
                             
                         </Button>
                     </Grid>
-                    <Grid Grid.Column="6">
+                    <Grid Grid.Column="6" DataContext="{StaticResource MainVM}">
                         <Button Margin="5,15"
                                 Style="{StaticResource BookMark}"
-                                Click="BookMarkButton_Click">
+                                Command="{Binding bookMarkCommandProperty}"
+                                CommandParameter="{Binding ElementName=thisWindow}">
 
                         </Button>
                     </Grid>

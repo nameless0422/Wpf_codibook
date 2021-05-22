@@ -31,24 +31,6 @@ namespace codibook.MVVM.View
 
         }
         
-        
-        // 타이틀바 드래그
-        private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
-        }
-
-        // 최소화
-        private void ToMiniButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = System.Windows.WindowState.Minimized;
-        }
-
-        // 닫기
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
     }
 
 }
