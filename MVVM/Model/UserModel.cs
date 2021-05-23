@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,8 @@ namespace codibook.MVVM.Model
 {
     public class UserModel : INotifyPropertyChanged
     {
-        private List<User> users;
-        public List<User> USERS
+        private ObservableCollection<User> users;
+        public ObservableCollection<User> USERS
         {
             get { return users; }
             set
@@ -22,7 +23,7 @@ namespace codibook.MVVM.Model
 
         public UserModel(UserModel users)
         {
-            this.USERS = new List<User>();
+            this.USERS = new ObservableCollection<User>();
             for (int i = 0; i < users.USERS.Count(); i++)
             {
                 this.USERS.Add(new User(users.USERS[i].ID, users.USERS[i].Password, users.USERS[i].User_ID, users.USERS[i].Time));

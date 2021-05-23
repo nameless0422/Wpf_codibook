@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -31,8 +32,8 @@ namespace codibook.MVVM.Model
             }
         }
 
-        private List<string> category;
-        public List<string> Category
+        private ObservableCollection<string> category;
+        public ObservableCollection<string> Category
         {
             get { return category; }
             set 
@@ -55,7 +56,7 @@ namespace codibook.MVVM.Model
         {
             Link = link;
             Liked = liked;
-            Category = new List<string>();
+            Category = new ObservableCollection<string>();
             for(int i = 0; i < category.Count(); i++)
             {
                 Category.Add(category[i]);

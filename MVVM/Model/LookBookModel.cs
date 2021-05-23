@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -19,11 +20,11 @@ namespace codibook.MVVM.Model
                 OnPropertyChanged("Name");
             }
         }
-        private List<ItemModel> ItemList;
+        private ObservableCollection<ItemModel> ItemList;
         public LookBookModel(string name, List<ItemModel> itemlist)
         {
             Name = name;
-            ItemList = new List<ItemModel>();
+            ItemList = new ObservableCollection<ItemModel>();
             for(int i = 0; i < itemlist.Count(); i++)
             {
                 ItemList.Add(itemlist[i]);
