@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\htmlParser.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\LoginCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\MainCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\SettingPopUpCloseCommand.cs" />
@@ -265,7 +266,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Classes\" />
     <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
