@@ -10,6 +10,27 @@ namespace codibook.MVVM.Model
 {
     public class ItemModel : INotifyPropertyChanged
     {
+        private int item_id;
+        public int Item_ID
+        {
+            get { return item_id; }
+            set
+            {
+                item_id = value;
+                OnPropertyChanged("Item_ID");
+            }
+        }
+
+        private string name;
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                name = value;
+                OnPropertyChanged("Name");
+            }
+        }
 
         private string link;
         public string Link
@@ -21,6 +42,18 @@ namespace codibook.MVVM.Model
                 OnPropertyChanged("Link");
             }
         }
+
+        private int price;
+        public int Price
+        {
+            get { return price; }
+            set
+            {
+                price = value;
+                OnPropertyChanged("Price");
+            }
+        }
+
         private int liked;
         public int Liked
         {
@@ -29,6 +62,17 @@ namespace codibook.MVVM.Model
             {
                 liked = value;
                 OnPropertyChanged("");
+            }
+        }
+
+        private int temp;
+        public int Temp
+        {
+            get { return temp; }
+            set
+            {
+                temp = value;
+                OnPropertyChanged("Temp");
             }
         }
 
@@ -52,15 +96,19 @@ namespace codibook.MVVM.Model
             }
         }
 
-        public ItemModel(string link, int liked, List<string> category)
+        public ItemModel(string name, int price, int temp, string link, int liked, ObservableCollection<string> category)
         {
+            Name = name;
+            Price = price;
+            Temp = temp;
             Link = link;
             Liked = liked;
             Category = new ObservableCollection<string>();
-            for(int i = 0; i < category.Count(); i++)
+            for (int i = 0; i < category.Count(); i++)
             {
                 Category.Add(category[i]);
             }
+
         }
     }
 }
