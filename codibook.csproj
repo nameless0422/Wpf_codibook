@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\DBConnecter.cs" />
     <Compile Include="Classes\htmlParser.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\LoginCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\MainCloseCommand.cs" />
