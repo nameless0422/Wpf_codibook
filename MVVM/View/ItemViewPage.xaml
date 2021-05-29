@@ -172,6 +172,7 @@
                         <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend2"/>
                         <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend3"/>
                         <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend4"/>
+
                     </StackPanel>
                 </Grid>
             </Grid>

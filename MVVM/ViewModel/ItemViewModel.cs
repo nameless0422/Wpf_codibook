@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using codibook.MVVM.Model;
 using System.Windows;
 using System.Collections.ObjectModel;
+using codibook.Classes;
 
 namespace codibook.MVVM.ViewModel
 {
