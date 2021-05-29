@@ -167,11 +167,14 @@
                 </Grid>
 
                 <Grid Grid.Column="1">
-                    <StackPanel Orientation="Horizontal" >
+                    <StackPanel Orientation="Horizontal">
                         <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend1"/>
                         <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend2"/>
                         <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend3"/>
                         <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend4"/>
+                        <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend5"/>
+                        <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend6"/>
+                        <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend7"/>
                     </StackPanel>
                 </Grid>
             </Grid>
