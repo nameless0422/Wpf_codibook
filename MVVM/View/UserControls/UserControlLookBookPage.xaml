@@ -216,7 +216,7 @@
 		<!-- 리스트 더보기 버튼 -->
 		<Button x:Name="moreButton"
 								Style="{StaticResource MoreButton}"
-								Click="moreButton_Click_1"
+								Click="moreButton_Click"
 								Width="240"
 								HorizontalAlignment="Left"
 								Margin="0, 5, 25, 5"/>

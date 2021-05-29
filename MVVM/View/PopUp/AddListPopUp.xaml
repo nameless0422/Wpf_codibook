@@ -117,6 +117,9 @@
 	</Window.Resources>
 	
 	<Border Background="white" CornerRadius="15">
+		<Border.Effect>
+			<DropShadowEffect ShadowDepth="0" BlurRadius="10" Color="Gray" />
+		</Border.Effect>
 		<Grid>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="30" />
@@ -266,7 +269,7 @@
 			<Grid Grid.Row="5">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition/>
-					<ColumnDefinition Width="550"/>
+					<ColumnDefinition Width="570"/>
 					<ColumnDefinition/>
 				</Grid.ColumnDefinitions>
 

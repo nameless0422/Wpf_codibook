@@ -1,4 +1,5 @@
-﻿using System;
+﻿using codibook.MVVM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,16 @@ namespace codibook.MVVM.View.PopUp
     /// </summary>
     public partial class AddListPopUp : Window
     {
+        private LookBookViewModel lookBookViewModel;
+
         public AddListPopUp()
         {
             InitializeComponent();
+        }
+
+        public AddListPopUp(LookBookViewModel lookBookViewModel)
+        {
+            this.lookBookViewModel = lookBookViewModel;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

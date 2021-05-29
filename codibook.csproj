@@ -129,6 +129,8 @@
     <Compile Include="MVVM\ViewModel\Commands\loginCommands\loginCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\loginCommands\registerCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\loginCommands\ToMiniCommand.cs" />
+    <Compile Include="MVVM\ViewModel\Commands\lookbookCommands\AddListCommand.cs" />
+    <Compile Include="MVVM\ViewModel\Commands\lookbookCommands\MoreListCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\mainCommands\BookMarkCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\mainCommands\navigateToPageCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\mainCommands\SettingCommand.cs" />
@@ -155,6 +157,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\View\LookBookPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\PopUp\AddItemPopUp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,6 +212,9 @@
     </Compile>
     <Compile Include="MVVM\View\LookBookPage.xaml.cs">
       <DependentUpon>LookBookPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\PopUp\AddItemPopUp.xaml.cs">
+      <DependentUpon>AddItemPopUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\PopUp\AddListPopUp.xaml.cs">
       <DependentUpon>AddListPopUp.xaml</DependentUpon>

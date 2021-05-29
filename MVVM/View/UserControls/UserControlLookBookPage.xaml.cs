@@ -41,7 +41,7 @@ namespace codibook.MVVM.View
             InitializeComponent();
         }
 
-        private void moreButton_Click_1(object sender, RoutedEventArgs e)
+        private void moreButton_Click(object sender, RoutedEventArgs e)
         {
             PopUp.AddListPopUp addListPopUp = new PopUp.AddListPopUp();
             addListPopUp.Show();
