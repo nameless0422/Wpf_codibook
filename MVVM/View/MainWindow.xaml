@@ -164,15 +164,16 @@
 
                         </Border>
                     </Grid>
-                    <Grid Grid.Column="3">
+                    <Grid Grid.Column="3" Width="200">
                         <Border Margin="10,15,10,15" Background="White" CornerRadius="15"
-                                DataContext="{StaticResource WeatherAPI}">
+                                DataContext="{StaticResource WeatherAPI}"
+                                Width="174">
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
                                            Text="{Binding T3H}"
                                            Margin="5"
-                                           FontSize="24"
+                                           FontSize="19"
                                            FontWeight="Bold"
                                            Foreground="#FF535353"
                                            FontFamily="{StaticResource AdobeClean-Bold}"></TextBlock>
@@ -180,14 +181,14 @@
                                            VerticalAlignment="Center" 
                                            Text="{Binding TMX}"
                                            Margin="5"
-                                           FontSize="20"
+                                           FontSize="15"
                                            Foreground="#FF535353"
                                            FontFamily="{StaticResource AdobeClean-Bold}"></TextBlock>
                                 <TextBlock HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
                                            Text="{Binding TMN}"
                                            Margin="5"
-                                           FontSize="20"
+                                           FontSize="15"
                                            Foreground="#FF535353"
                                            FontFamily="{StaticResource AdobeClean-Bold}"></TextBlock>
                             </StackPanel>
@@ -219,14 +220,15 @@
                         </Button>
                     </Grid>
                     <Grid Grid.Column="8">
-                        <Grid Margin="5,15">
+                        <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
+                                <RowDefinition Height="0.6*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.6*"/>
                             </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" DataContext="{StaticResource WeatherAPI}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Height="20" Width="15" Margin="10,0,0,0">
+                            <Grid Grid.Row="1" DataContext="{StaticResource WeatherAPI}" Width="100">
+                                <StackPanel Orientation="Horizontal" Width="100">
+                                    <Image Height="18.5" Width="13.5" Margin="10, 0, 0, 11">
                                         <Image.Source>
                                             <DrawingImage x:Name="placeholderDrawingImage">
                                                 <DrawingImage.Drawing>
@@ -247,7 +249,7 @@
                                         </Image.Source>
                                     </Image>
                                     <TextBlock Margin="2,6,0,6"
-                                               FontSize="13" 
+                                               FontSize="11.5" 
                                                Foreground="#FF535353"
                                                FontFamily="{StaticResource AdobeClean-Bold}"
                                                FontWeight="DemiBold"
