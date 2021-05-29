@@ -221,6 +221,13 @@ namespace codibook.Classes
             }
         }
 
+        public ObservableCollection<ItemModel> getItemList(User user, int temp)
+        {
+            ObservableCollection<ItemModel> itemlist = null;
+
+            return itemlist;
+        }
+
         // 단일 아이템 받아오기
         // itemID를 바탕으로
         public ItemModel getItem(int itemID)
@@ -341,5 +348,164 @@ namespace codibook.Classes
             }
             return item;
         }
+
+
+        // User 데이터를 받고, 검색할 keyword를 받는다.
+        // keyword가 빈 문자열이라면 db에서 모든 아이템을 받아온다.
+        public ObservableCollection<LookBookModel> getLookBookList(User user, string keyword)
+        {
+            ObservableCollection<LookBookModel> result = null;
+
+            if (keyword.Equals(string.Empty)){
+
+            }
+            else
+            {
+
+            }
+
+
+            return result;
+        }
+        
+        // 단일 룩북 데이터 받아오기
+        public LookBookModel getLookBook(int lookbookID)
+        {
+            LookBookModel result = null;
+            try
+            {
+                // ssh 접속
+                using (var client = new SshClient("106.10.57.242", 5000, "root", "qawzsx351"))
+                {
+                    client.Connect();
+                    if (client.IsConnected)
+                    {
+                        try
+                        {
+                            // 내부 db 접속을 위한 포트포워딩
+                            var portForwarded = new ForwardedPortLocal("127.0.0.1", 3306, "127.0.0.1", 3306);
+                            client.AddForwardedPort(portForwarded);
+                            portForwarded.Start();
+
+                            // db 접속
+                            using (MySqlConnection con = new MySqlConnection("SERVER=localhost;PORT=3306;UID=root;PASSWORD=qawzsx351;DATABASE=codibook;SslMode=None"))
+                            {
+                                con.Open();
+
+                                string query1 = "SELECT * FROM LookBook WHERE LOOKBOOK_ID=" + lookbookID + ";";
+                                MySqlCommand sqlCom1 = new MySqlCommand(query1, con);
+                                MySqlDataReader reader1 = sqlCom1.ExecuteReader();
+                                while (reader1.Read())
+                                {
+                                    ObservableCollection<ItemModel> list = new ObservableCollection<ItemModel>();
+                                    string query2 = "SELECT * FROM LookBook_item WHERE LOOKBOOK_ID=" + (int)reader1["LOOKBOOK_ID"] + ";";
+                                    MySqlCommand sqlCom2 = new MySqlCommand(query2, con);
+                                    MySqlDataReader reader2 = sqlCom2.ExecuteReader();
+                                    while (reader2.Read())
+                                    {
+                                        list.Add(getItem((int)reader2["ITEM_ID"]));
+                                    }
+                                    result = new LookBookModel(reader1["NAME"] as string, list);
+                                    reader2.Close();
+                                }
+                                reader1.Close();
+                                con.Close();
+                                client.Disconnect();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Client cannot be reached...");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return result;
+        }
+
+        // 단일 룩북데이터 db에 저장후 LookBook_ID 받아오기
+        public LookBookModel setLookBook(User user, LookBookModel LB)
+        {
+            try
+            {
+                // ssh 접속
+                using (var client = new SshClient("106.10.57.242", 5000, "root", "qawzsx351"))
+                {
+                    client.Connect();
+                    if (client.IsConnected)
+                    {
+                        try
+                        {
+                            // 내부 db 접속을 위한 포트포워딩
+                            var portForwarded = new ForwardedPortLocal("127.0.0.1", 3306, "127.0.0.1", 3306);
+                            client.AddForwardedPort(portForwarded);
+                            portForwarded.Start();
+
+                            // db 접속
+                            using (MySqlConnection con = new MySqlConnection("SERVER=localhost;PORT=3306;UID=root;PASSWORD=qawzsx351;DATABASE=codibook;SslMode=None"))
+                            {
+                                con.Open();
+
+                                // 항목 중복체크
+                                string query1 = "SELECT COUNT(*) FROM LookBook WHERE USER_ID=" + user.User_ID + " AND NAME='" + LB.Name + "';";
+                                MySqlCommand sqlCom = new MySqlCommand(query1, con);
+                                if (int.Parse(sqlCom.ExecuteScalar().ToString()) != 0)
+                                {
+                                    MessageBox.Show("이미 같은 이름의 항목이 존재합니다!");
+                                    return LB;
+                                }
+
+                                // db에 데이터 INSERT
+                                query1 = "INSERT INTO LookBook (NAME, USER_ID) VALUES ('" + LB.Name + "'," + user.User_ID + ");";
+                                sqlCom = new MySqlCommand(query1, con);
+                                sqlCom.ExecuteNonQuery();
+
+                                // IDX 받아오기, LookBook_item 테이블에 item id 넣기
+                                query1 = "SELECT * FROM LookBook WHERE USER_ID=" + user.User_ID + " AND NAME='" + LB.Name +  "';";
+                                sqlCom = new MySqlCommand(query1, con);
+                                MySqlDataReader reader = sqlCom.ExecuteReader();
+                                while (reader.Read())
+                                {
+                                    LB.IDX = (int)reader["LOOKBOOK_ID"];
+
+                                    // LookBook_item 테이블에 데이터 저장
+                                    for (int i = 0; i < LB.ItemList.Count; i++)
+                                    {
+                                        string query2 = "INSERT INTO LookBook_item (ITEM_ID, LOOKBOOK_ID) VALUES (" + LB.ItemList[i].Item_ID + "," + LB.IDX + ");";
+                                        MySqlCommand sqlCom2 = new MySqlCommand(query2,con);
+                                        sqlCom2.ExecuteNonQuery();
+                                    }
+                                }
+                                reader.Close();
+                                con.Close();
+                                client.Disconnect();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Client cannot be reached...");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return LB;
+        }
+
     }
 }

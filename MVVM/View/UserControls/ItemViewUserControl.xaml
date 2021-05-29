@@ -19,7 +19,7 @@
 							       HorizontalAlignment="Left"
                                    CornerRadius="15, 0, 0, 15">
                             <Border.Background>
-                                <ImageBrush Stretch="UniformToFill"/>
+                                <ImageBrush Stretch="UniformToFill" ImageSource="GM0021040887645_1_ORGINL_20210412181320963.jpg"/>
                             </Border.Background>
                             <!--Heart Button-->
                             <Button Margin="65, 65, 8, 8"
