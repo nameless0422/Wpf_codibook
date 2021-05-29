@@ -10,8 +10,9 @@
         mc:Ignorable="d"
 		ResizeMode="NoResize"
         Background="Transparent"
-        Title="AddListPopUp" Height="400" Width="600">
-	<Border Background="white" CornerRadius="15">
+        Title="AddListPopUp" Height="420" Width="620">
+	<Border Background="#f5f5f5" CornerRadius="15"
+			Height="400" Width="600">
 		<Border.Effect>
 			<DropShadowEffect ShadowDepth="0" BlurRadius="10" Color="Gray" />
 		</Border.Effect>
@@ -27,7 +28,7 @@
 			<!-- 타이틀바 -->
 			<Grid Grid.Row="0">
 				<Rectangle MouseLeftButtonDown="Rectangle_MouseDown" 
-                       Fill="white"
+                       Fill="#f5f5f5"
                            RadiusX="15" RadiusY="15"
                            >
 				</Rectangle>
@@ -43,8 +44,132 @@
 
 			<Grid Grid.Row="1">
 				<Label x:Name="addItem"
+					   Content="add item"
 					   VerticalAlignment="Center"
-					   />
+					   FontFamily="AdobeClean-Bold"
+					   FontSize="14"
+					   Foreground="#626262"
+					   Margin="40, 0, 0, 0"/>
+			</Grid>
+
+			<Grid Grid.Row="2">
+				<Border x:Name="addItemBorder"
+						Background="white"
+						CornerRadius="10"
+						Margin="40, 0, 40, 10">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="140"/>
+							<ColumnDefinition/>
+						</Grid.ColumnDefinitions>
+
+						<Grid Grid.Column="0">
+							<!-- 아이템 이미지 -->
+							<Border x:Name="addItemIamge"
+									Background="#e0e0e0"
+									CornerRadius="10, 0, 0, 10">
+								<Canvas>
+									<!-- 아이템 이미지 추가 버튼 -->
+									<Button x:Name="addItemImageButton"
+										    Style="{StaticResource AddButton}"
+											VerticalAlignment="Center"
+											HorizontalAlignment="Center" Canvas.Left="65" Canvas.Top="65"/>
+									
+									<!-- 아이템 즐겨찾기 버튼 -->
+									<Button x:Name="itemFavoriteButton"
+											Style="{StaticResource HeartButton}"
+											VerticalAlignment="Bottom" Canvas.Left="115" Canvas.Top="115"/>
+								</Canvas>
+							</Border>
+						</Grid>
+
+						<Grid Grid.Column="1">
+							<Grid.RowDefinitions>
+								<RowDefinition/>
+								<RowDefinition/>
+								<RowDefinition/>
+								<RowDefinition/>
+								<RowDefinition/>
+							</Grid.RowDefinitions>
+							
+							<Grid Grid.Row="0">
+								<!-- 수정 버튼 -->
+							</Grid>
+
+							<Grid Grid.Row="1">
+								<!-- 아이템 이름 -->
+								<TextBlock x:Name="itemName"
+										   Text="name"
+										   FontFamily="AdobeClean-Bold"
+										   FontSize="14"
+										   Foreground="#626262"
+										   VerticalAlignment="Bottom"
+										   Margin="20, 0, 20, 0"/>
+							</Grid>
+
+							<Grid Grid.Row="2">
+								<!-- 아이템 가격 -->
+								<TextBlock x:Name="itemPrice"
+										   Text="price"
+										   Style="{StaticResource lookbookList_textblock}"
+										   VerticalAlignment="Center"
+										   FontSize="13"
+										   Margin="20, 0, 20, 0"/>
+							</Grid>
+
+							<Grid Grid.Row="3">
+								<WrapPanel>
+									<!-- 아이템 사이트 -->
+									<TextBlock x:Name="itemSite"
+										   Text="shop"
+										   Style="{StaticResource lookbookList_textblock}"
+										   VerticalAlignment="Top"
+										   FontSize="13"
+										   Margin="20, 0, 5, 0"/>
+									<!-- 아이템 사이트 링크 -->
+									<Border x:Name="itemSiteBorder"
+											Background="#f5f5f5"
+											CornerRadius="10"
+											Width="250">
+									</Border>
+								</WrapPanel>
+							</Grid>
+
+							<Grid Grid.Row="4">
+								<!-- 아이템 태그 -->
+							</Grid>
+						</Grid>
+					</Grid>
+				</Border>
+			</Grid>
+
+			<Grid Grid.Row="3">
+				<Border x:Name="memoBorder"
+						Background="white"
+						CornerRadius="10"
+						Margin="40, 10, 40, 0">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="30"/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+
+						<Grid Grid.Row="0">
+							<WrapPanel>
+								<Label x:Name="memoLabel"
+									   Content="memo"
+									   Style="{StaticResource AdobeCleanRegular_label}"
+									   FontSize="14"
+									   Foreground="#626262"
+									   Margin="10, 5, 0, 0"/>
+								
+								<!-- 수정 버튼 -->
+								
+							</WrapPanel>
+						</Grid>
+					</Grid>
+
+				</Border>
 			</Grid>
 		</Grid>
 	</Border>

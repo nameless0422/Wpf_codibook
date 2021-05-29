@@ -12,7 +12,7 @@
         mc:Ignorable="d"
 		ResizeMode="NoResize"
         Background="Transparent"
-        Title="AddListPopUp" Height="500" Width="700">
+        Title="AddListPopUp" Height="520" Width="720">
 	
 	<Window.Resources>
 		<ResourceDictionary>
@@ -116,7 +116,7 @@
 		</ResourceDictionary>
 	</Window.Resources>
 	
-	<Border Background="white" CornerRadius="15">
+	<Border Background="#f5f5f5" CornerRadius="15" Height="500" Width="700">
 		<Border.Effect>
 			<DropShadowEffect ShadowDepth="0" BlurRadius="10" Color="Gray" />
 		</Border.Effect>
@@ -133,7 +133,7 @@
 			<!-- 타이틀바 -->
 			<Grid Grid.Row="0">
 				<Rectangle MouseLeftButtonDown="Rectangle_MouseDown" 
-                       Fill="white"
+                       Fill="#f5f5f5"
                            RadiusX="15" RadiusY="15"
                            >
 				</Rectangle>
@@ -148,7 +148,7 @@
 			</Grid>
 
 			<Grid Grid.Row="1">
-				<Border Background="#f2f2f2"
+				<Border Background="white"
 						Margin="50, 20, 50, 0"
 						CornerRadius="10">
 					<Image Height="15" Width="15" HorizontalAlignment="Left" Margin="12.5, 0, 0, 0">
@@ -204,7 +204,6 @@
                                 Height="40"
                                 VerticalAlignment="Center"
 								HorizontalAlignment="Center"
-								Background="#f5f5f5"
                                 Style="{StaticResource MiniArrowButton}" RenderTransformOrigin="0.5,0.5">
 							<Button.RenderTransform>
 								<TransformGroup>
@@ -233,7 +232,6 @@
                                 Height="40"
                                 VerticalAlignment="Center"
 								HorizontalAlignment="Center"
-								Background="#f5f5f5"
                                 Style="{StaticResource MiniArrowButton}">
 						</Button>
 					</Grid>

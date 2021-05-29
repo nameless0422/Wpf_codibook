@@ -8,7 +8,7 @@
              d:DesignHeight="120" Width="130">
     <Grid>
 		<Border x:Name="listViewBorder"
-		    	Background="#f5f5f5"
+		    	Background="white"
 				CornerRadius="10"
 				Width="120"
 				Height="120">
