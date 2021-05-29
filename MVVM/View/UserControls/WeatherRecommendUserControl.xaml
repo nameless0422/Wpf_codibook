@@ -24,9 +24,10 @@
 						   Grid.Row="0"
 						   Width="Auto"
 						   Height="Auto" 
-                           Margin="0, 0, 26, 0.4">
+                           Margin="0, 0, 0, 0.4"
+                           CornerRadius="15, 15, 0, 0">
                     <Border.Background>
-                        <ImageBrush Stretch="UniformToFill"/>
+                        <ImageBrush Stretch="UniformToFill" ImageSource="GM0021041290525_0_ORGINL_20210415150133253.jpg"/>
                     </Border.Background>
                 </Border>
 
