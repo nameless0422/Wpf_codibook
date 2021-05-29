@@ -10,6 +10,17 @@ namespace codibook.MVVM.Model
 {
     public class LookBookModel : INotifyPropertyChanged
     {
+        private int idx;
+        public int IDX
+        {
+            get { return idx; }
+            set
+            {
+                idx = value;
+                OnPropertyChanged("IDX");
+            }
+        }
+
         private string name;
         public string Name
         {
@@ -20,8 +31,8 @@ namespace codibook.MVVM.Model
                 OnPropertyChanged("Name");
             }
         }
-        private ObservableCollection<ItemModel> ItemList;
-        public LookBookModel(string name, List<ItemModel> itemlist)
+        public ObservableCollection<ItemModel> ItemList;
+        public LookBookModel(string name, ObservableCollection<ItemModel> itemlist)
         {
             Name = name;
             ItemList = new ObservableCollection<ItemModel>();
