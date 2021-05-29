@@ -284,5 +284,8 @@
   <ItemGroup>
     <Resource Include="MVVM\View\UserControls\GM0021041290525_0_ORGINL_20210415150133253.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MVVM\View\UserControls\GM0021040887645_1_ORGINL_20210412181320963.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
