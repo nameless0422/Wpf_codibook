@@ -446,7 +446,7 @@
 				<Setter.Value>
 					<ControlTemplate TargetType="Button">
 						<Grid>
-							<Image Width="20" Height="20">
+							<Image>
 								<Image.Source>
 									<DrawingImage x:Name="moreDrawingImage">
 										<DrawingImage.Drawing>
