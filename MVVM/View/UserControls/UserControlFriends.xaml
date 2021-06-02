@@ -10,7 +10,8 @@
 			Background="White"
 			CornerRadius="10"
 			Width="240"
-			Height="56">
+			Height="56"
+			Margin="0, 5, 0, 5">
 		<Grid>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="56"/>
@@ -18,11 +19,9 @@
 			</Grid.ColumnDefinitions>
 
 			<Grid Grid.Column="0">
-				<Border x:Name="friendsImage">
-					<Border.Background>
-						<ImageBrush Stretch="UniformToFill"/>
-					</Border.Background>
-				</Border>
+				<Border x:Name="friendsImage" 
+						Background="#FFCFCFCF"
+						CornerRadius="10, 0, 0, 10"/>
 			</Grid>
 
 			<Grid Grid.Column="1">
