@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:codibook.MVVM.View.PopUp"
-        xmlns:vm ="clr-namespace:codibook.MVVM.ViewModel.PopUpViewModel"
-        x:Name="thisWindow"
+        xmlns:vm ="clr-namespace:codibook.MVVM.ViewModel.PopUpViewModel" xmlns:usercontrols="clr-namespace:codibook.MVVM.View.UserControls"
+		x:Name="thisWindow"
         WindowStyle="None" 
         AllowsTransparency="True"
         BorderThickness="1" 
@@ -13,9 +13,10 @@
         ResizeMode="NoResize"
         Background="Transparent"
         Title="UserPopUp" Height="520" Width="320">
+	
     <Window.Resources>
-        <vm:UserPopUpViewModel x:Key="VM"></vm:UserPopUpViewModel>
-    </Window.Resources>
+		<vm:UserPopUpViewModel x:Key="VM"/>
+	</Window.Resources>
 	
     <Border Background="#F5F5F5" CornerRadius="15"
 			Height="500" Width="300">
@@ -84,10 +85,10 @@
 				<Border x:Name="userProfileBorder"
 						Background="white"
 						CornerRadius="10"
-						Margin="20, 10, 20, 10">
+						Margin="30, 12, 30, 12">
 					<Grid>
 						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="60"/>
+							<ColumnDefinition Width="56"/>
 							<ColumnDefinition/>
 						</Grid.ColumnDefinitions>
 
@@ -113,9 +114,19 @@
 			
 			<!-- 친구 프로필 -->
 			<Grid Grid.Row="4">
-				<ScrollViewer>
-					
-				</ScrollViewer>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="30"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="30"/>
+				</Grid.ColumnDefinitions>
+
+				<Grid Grid.Column="1">
+					<StackPanel>
+						<usercontrols:UserControlFriends/>
+						<usercontrols:UserControlFriends/>
+						<usercontrols:UserControlFriends/>
+					</StackPanel>
+				</Grid>
 			</Grid>
         </Grid>
     </Border>

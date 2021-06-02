@@ -215,11 +215,12 @@
 
 		<!-- 리스트 더보기 버튼 -->
 		<Button x:Name="moreButton"
-								Style="{StaticResource MoreButton}"
-								Click="moreButton_Click"
-								Width="240"
-								HorizontalAlignment="Left"
-								Margin="0, 5, 25, 5"/>
+				Style="{StaticResource MoreButton}"
+				Click="moreButton_Click"
+				Width="20"
+				Height="20"
+				HorizontalAlignment="Center"
+				Margin="0, 5, 25, 5"/>
 
 		<!-- 리스트 총액 -->
 		<Border x:Name="listTotalPriceBorder"

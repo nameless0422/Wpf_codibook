@@ -192,6 +192,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\View\UserControls\UserControlFriends.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\UserControls\UserControlLookBookPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -236,6 +240,9 @@
     </Compile>
     <Compile Include="MVVM\View\UserControls\UserControlAddListPopUp.xaml.cs">
       <DependentUpon>UserControlAddListPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\UserControls\UserControlFriends.xaml.cs">
+      <DependentUpon>UserControlFriends.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\UserControls\UserControlLookBookPage.xaml.cs">
       <DependentUpon>UserControlLookBookPage.xaml</DependentUpon>
