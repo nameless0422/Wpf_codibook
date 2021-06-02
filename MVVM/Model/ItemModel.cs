@@ -61,7 +61,7 @@ namespace codibook.MVVM.Model
             set
             {
                 liked = value;
-                OnPropertyChanged("");
+                OnPropertyChanged("Liked");
             }
         }
 
@@ -73,6 +73,17 @@ namespace codibook.MVVM.Model
             {
                 temp = value;
                 OnPropertyChanged("Temp");
+            }
+        }
+
+        private string shop_name;
+        public string Shop_Name
+        {
+            get { return shop_name; }
+            set
+            {
+                shop_name = value;
+                OnPropertyChanged("Shop_Name");
             }
         }
 

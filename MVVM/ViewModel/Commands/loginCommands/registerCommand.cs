@@ -78,7 +78,9 @@ namespace codibook.MVVM.ViewModel.Commands.loginCommands
                                 sqlCom.ExecuteNonQuery();
                                 con.Close();
                                 client.Disconnect();
-                                MainWindow mainWindow = new MainWindow(user);
+                                MainWindow mainWindow = new MainWindow();
+                                MainViewModel mainVM = mainWindow.Resources["MainVM"] as MainViewModel;
+                                mainVM.user = user;
                                 mainWindow.Show();
                                 window.Close();
                             }

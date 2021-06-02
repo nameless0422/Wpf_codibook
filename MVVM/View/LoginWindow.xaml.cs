@@ -25,7 +25,7 @@ namespace codibook.MVVM.View
     public partial class LoginWindow : Window
     {
 
-        public LoginWindow()
+       public LoginWindow()
         {
             InitializeComponent();
 

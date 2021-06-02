@@ -35,7 +35,7 @@
                         </Grid.RowDefinitions>
                         <!--회사명-->
                         <TextBlock x:Name="mclCompany"
-                                       Text="Company" 
+                                       Text="{}" 
                                        Grid.Row="0"
 									   Style="{StaticResource myclotheslist_textblock}"
 									   FontSize="15"

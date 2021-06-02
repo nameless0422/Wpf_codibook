@@ -126,7 +126,7 @@
                                 CornerRadius="15"
                                 >
                             <StackPanel Margin="15,13,15,12"
-                                Orientation="Horizontal">
+                                Orientation="Horizontal" DataContext="{StaticResource MainVM}">
                                 <Image Height="20" Width="20">
                                     <Image.Source>
                                         <DrawingImage x:Name="loupe_Image">
@@ -153,7 +153,6 @@
                                          Style="{StaticResource TmonyBold_textbox}"
                                          Margin="10,0,0,0" Width="560"
                                          Foreground="#FF535353"
-                                         AcceptsReturn="True"
                                          Text=""
                                          >
                                             

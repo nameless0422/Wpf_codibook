@@ -11,13 +11,15 @@ using codibook.Classes;
 
 namespace codibook.MVVM.ViewModel
 {
-    class ItemViewModel
+    public class ItemViewModel
     {
         public User user { get; set; }
+        public ObservableCollection<ItemModel> recommands { get; set; }
         public ObservableCollection<ItemModel> items { get; set; }
         public ItemViewModel()
         {
             items = new ObservableCollection<ItemModel>();
+            recommands = new ObservableCollection<ItemModel>();
         }
 
         public void setUser(User U)
@@ -27,8 +29,25 @@ namespace codibook.MVVM.ViewModel
 
         public void addItem(ItemModel I)
         {
-            items.Add(I);
+            items.Add(DBConnecter.setItem(user,I));
         }
+
+        public void setItemlist()
+        {
+            items = DBConnecter.getItemList(user);
+        }
+
+        public void setItemlist(string keyword, int mode)
+        {
+            items = DBConnecter.getItemList(user,keyword,mode);
+        }
+
+        public void updateWeatherRecommands(int temp)
+        {
+            recommands = DBConnecter.getItemList(user, temp);
+        }
+
+
 
     }
 

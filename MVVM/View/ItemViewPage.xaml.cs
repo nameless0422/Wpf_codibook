@@ -1,4 +1,5 @@
-﻿using System;
+﻿using codibook.MVVM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,11 @@ namespace codibook.MVVM.View
     public partial class ItemViewPage : UserControl
     {
         public ItemViewPage()
+        {
+            InitializeComponent();
+        }
+
+        public ItemViewPage(MainViewModel m)
         {
             InitializeComponent();
         }

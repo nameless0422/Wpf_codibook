@@ -25,20 +25,9 @@ namespace codibook.MVVM.View
     
     public partial class MainWindow : Window
     {
-
-        User user;
-
         public MainWindow()
         {
             InitializeComponent();
-            this.Mainframe.Navigate(new ItemViewPage());
-        }
-
-        public MainWindow(User U)
-        {
-            InitializeComponent();
-            this.user = U;
-            this.Mainframe.Navigate(new ItemViewPage());
         }
     }
 }

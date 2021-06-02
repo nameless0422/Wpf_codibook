@@ -32,6 +32,11 @@ namespace codibook.MVVM.ViewModel
             }
         }
 
+        public User user { get; set; }
+
+        public ItemViewModel itemVM { get; set; }
+        public LookBookViewModel lookBookVM { get; set; }
+
         public navigateToPageCommand navigateToPageCommandProperty { get; set; }
         public BookMarkCommand bookMarkCommandProperty { get; set; }
 
