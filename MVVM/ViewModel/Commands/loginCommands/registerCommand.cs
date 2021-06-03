@@ -79,8 +79,8 @@ namespace codibook.MVVM.ViewModel.Commands.loginCommands
                                 con.Close();
                                 client.Disconnect();
                                 MainWindow mainWindow = new MainWindow();
-                                MainViewModel mainVM = mainWindow.Resources["MainVM"] as MainViewModel;
-                                mainVM.user = user;
+                                (mainWindow.Resources["MainVM"] as MainViewModel).user = user;
+                                mainWindow.Mainframe.Navigate(new ItemViewPage(mainWindow.Resources["MainVM"] as MainViewModel));
                                 mainWindow.Show();
                                 window.Close();
                             }

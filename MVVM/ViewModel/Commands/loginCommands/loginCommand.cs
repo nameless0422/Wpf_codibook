@@ -66,16 +66,24 @@ namespace codibook.MVVM.ViewModel.Commands.loginCommands
                                     MessageBox.Show("id에는 영어가 포함되어야 합니다.");
                                     return;
                                 }
-                                user = new User(window.ID_BOX.Text, window.Password_BOX.Password);
+                                user = new User(window.ID_BOX.Text, (window.Password_BOX.Password.GetHashCode() & 0x7fffffff).ToString(),"","");
                                 string query1 = "SELECT COUNT(*) FROM user WHERE ID='" + window.ID_BOX.Text + "' AND PASSWORD='" + user.Password + "'";
                                 MySqlCommand sqlCom = new MySqlCommand(query1, con);
                                 if (sqlCom.ExecuteScalar().ToString().Equals("1"))
                                 {
+                                    string query2 = "SELECT * FROM user WHERE ID='" + window.ID_BOX.Text + "' AND PASSWORD='" + user.Password + "'";
+                                    MySqlCommand sqlCom2 = new MySqlCommand(query2, con);
+                                    MySqlDataReader reader = sqlCom2.ExecuteReader();
+                                    while (reader.Read())
+                                    {
+                                        user.User_ID = ((int)reader["USER_ID"]).ToString();
+                                        user.Time = reader["TIME"] as string;
+                                    }
                                     con.Close();
                                     client.Disconnect();
                                     mainWindow = new MainWindow();
-                                    mainWindow.Mainframe.Navigate(new ItemViewPage());
                                     (mainWindow.Resources["MainVM"] as MainViewModel).user = user;
+                                    mainWindow.Mainframe.Navigate(new ItemViewPage(mainWindow.Resources["MainVM"] as MainViewModel));
                                     mainWindow.Show();
                                     window.Close();
                                 }
@@ -108,6 +116,7 @@ namespace codibook.MVVM.ViewModel.Commands.loginCommands
                 MessageBox.Show(ex.Message);
             }
         }
+
 
         // 문자열 체크용
         public static bool CheckEnglish(string letter)
