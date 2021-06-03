@@ -226,7 +226,7 @@
             </Grid>
 
             <!-- my clothes list -->
-            <Grid Grid.Row="3">
+            <Grid Grid.Row="3"  DataContext="{StaticResource rd}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="110"/>
                     <ColumnDefinition Width="*"/>
@@ -236,82 +236,80 @@
                 <!-- 구현부 -->
 
                 <!-- 스크롤바 -->
-                <ScrollViewer Grid.Column="1">
-                    <StackPanel x:Name="itemListView" DataContext="{StaticResource ItemVM}">
-                        <ItemsControl ItemsSource="{Binding items}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Border CornerRadius="15" Background="Transparent" Margin="0, 5, 25, 5">
-                                        <Grid>
-                                            <Border x:Name="mclItem"
+                <ScrollViewer Grid.Column="1" DataContext="{StaticResource rd}">
+                    <ItemsControl x:Name="itemListView" DataContext="{StaticResource ItemVM}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="15" Background="Transparent" Margin="0, 5, 25, 5">
+                                    <Grid>
+                                        <Border x:Name="mclItem"
 							                        Background="White"
                                                     CornerRadius="15">
-                                                <!--제품 이미지-->
-                                                <Border x:Name="mclImage"
+                                            <!--제품 이미지-->
+                                            <Border x:Name="mclImage"
 								                        Width="92"
 							                            HorizontalAlignment="Left"
                                                         CornerRadius="15, 0, 0, 15">
-                                                    <Border.Background>
-                                                        <ImageBrush Stretch="UniformToFill"/>
-                                                    </Border.Background>
-                                                    <!--Heart Button-->
-                                                    <Button Margin="65, 65, 8, 8"
+                                                <Border.Background>
+                                                    <ImageBrush Stretch="UniformToFill"/>
+                                                </Border.Background>
+                                                <!--Heart Button-->
+                                                <Button Margin="65, 65, 8, 8"
                                                             Style="{StaticResource HeartButton}">
-                                                    </Button>
-                                                </Border>
+                                                </Button>
                                             </Border>
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="*"/>
-                                                    <RowDefinition Height="*"/>
-                                                    <RowDefinition Height="*"/>
-                                                </Grid.RowDefinitions>
-                                                <!--회사명-->
-                                                <TextBlock x:Name="mclCompany"
+                                        </Border>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <!--회사명-->
+                                            <TextBlock x:Name="mclCompany"
                                                            Text="{Binding Shop_Name}" 
                                                            Grid.Row="0"
 									                       Style="{StaticResource myclotheslist_textblock}"
 									                       FontSize="15"
                                                            Margin="105, 5 0, 5">
-                                                </TextBlock>
-                                                <!--제품명-->
-                                                <TextBlock x:Name="mclName"
+                                            </TextBlock>
+                                            <!--제품명-->
+                                            <TextBlock x:Name="mclName"
                                                            Text="{Binding Name}"
                                                            Grid.Row="1"
 									                       Style="{StaticResource myclotheslist_textblock}"
 								                           FontSize="15"
                                                            Margin="105, 5, 0, 5">
-                                                </TextBlock>
-                                                <!--가격-->
-                                                <TextBlock x:Name="mclPrice"
+                                            </TextBlock>
+                                            <!--가격-->
+                                            <TextBlock x:Name="mclPrice"
                                                            Text="{Binding Price}"
                                                            Grid.Row="2"
 									                       Style="{StaticResource myclotheslist_textblock}"
 							                               FontSize="15"
                                                            Margin="105, 5, 0, 5">
-                                                </TextBlock>
-                                                <!--해쉬 태그-->
-                                                <TextBlock x:Name="mclTag"
-                                                            Text="#Tag"
+                                            </TextBlock>
+                                            <!--해쉬 태그-->
+                                            <TextBlock x:Name="mclTag"
+                                                            Text="{}"
                                                             Grid.Row="2"
                                                             VerticalAlignment="Bottom"
                                                             HorizontalAlignment="Right"
 									                        Style="{StaticResource myclotheslist_textblock}"
 									                        FontSize="15"
                                                             Margin="105, 5, 15, 5">
-                                                </TextBlock>
-                                            </Grid>
+                                            </TextBlock>
                                         </Grid>
-                                    </Border>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
                 </ScrollViewer>
             </Grid>
 
