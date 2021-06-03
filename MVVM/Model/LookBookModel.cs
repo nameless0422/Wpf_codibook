@@ -32,14 +32,10 @@ namespace codibook.MVVM.Model
             }
         }
         public ObservableCollection<ItemModel> ItemList;
-        public LookBookModel(string name, ObservableCollection<ItemModel> itemlist)
+        public LookBookModel(int id,string name)
         {
+            IDX = id;
             Name = name;
-            ItemList = new ObservableCollection<ItemModel>();
-            for(int i = 0; i < itemlist.Count(); i++)
-            {
-                ItemList.Add(itemlist[i]);
-            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
