@@ -107,19 +107,14 @@ namespace codibook.MVVM.Model
             }
         }
 
-        public ItemModel(string name, int price, int temp, string link, int liked, ObservableCollection<string> category)
+        public ItemModel(int idx,string name, int price, int temp, string link, int liked)
         {
+            Item_ID = idx;
             Name = name;
             Price = price;
             Temp = temp;
             Link = link;
             Liked = liked;
-            Category = new ObservableCollection<string>();
-            for (int i = 0; i < category.Count(); i++)
-            {
-                Category.Add(category[i]);
-            }
-
         }
     }
 }
