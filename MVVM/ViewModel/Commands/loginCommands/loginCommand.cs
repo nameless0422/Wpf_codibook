@@ -89,12 +89,15 @@ namespace codibook.MVVM.ViewModel.Commands.loginCommands
                                     ItemViewModel vm = itemView.Resources["ItemVM"] as ItemViewModel;
                                     vm.setUser(user);
                                     vm.setItemlist();
-                                    vm.updateWeatherRecommands(23);
+                                    string temp_str = (mainWindow.Resources["WeatherAPI"] as WeatherAPI).T3H;
+                                    int temp = int.Parse(temp_str.Replace("°", ""));
+                                    vm.updateWeatherRecommands(temp);
                                     if (vm.recommandsList.Count() > 4)
                                     {
                                         for (int i = 0; i < 4; i++)
                                         {
                                             vm.recommand_four.Add(vm.recommandsList[i]);
+                                            vm.recommand_four[i].x = i;
                                         }
                                     }
                                     else
@@ -102,6 +105,7 @@ namespace codibook.MVVM.ViewModel.Commands.loginCommands
                                         for (int i = 0; i < vm.recommandsList.Count(); i++)
                                         {
                                             vm.recommand_four.Add(vm.recommandsList[i]);
+                                            vm.recommand_four[i].x = i;
                                         }
                                     }
                                     itemView.itemListView.ItemsSource = vm.items;

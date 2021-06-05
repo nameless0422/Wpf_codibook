@@ -10,6 +10,18 @@ namespace codibook.MVVM.Model
 {
     public class ItemModel : INotifyPropertyChanged
     {
+        private int X;
+        public int x
+        {
+            get { return X; }
+            set
+            {
+                X = value;
+                OnPropertyChanged("x");
+            }
+        }
+
+
         private int item_id;
         public int Item_ID
         {

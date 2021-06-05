@@ -219,9 +219,23 @@
                         </ItemsControl.ItemTemplate>
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <StackPanel Grid.IsSharedSizeScope="True" Orientation="Horizontal"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                </Grid>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style>
+                                <Style.Setters>
+                                    <Setter Property="Grid.Column" Value="{Binding x}"/>
+                                </Style.Setters>
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
                     </ItemsControl>
                 </Grid>
             </Grid>
