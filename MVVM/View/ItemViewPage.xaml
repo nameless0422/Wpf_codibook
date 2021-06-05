@@ -168,16 +168,61 @@
                 </Grid>
 
                 <Grid Grid.Column="1">
-                    <StackPanel x:Name="weatherRecommendListView"
-                        Orientation="Horizontal">
-                        <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend1"/>
-                        <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend2"/>
-                        <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend3"/>
-                        <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend4"/>
-                        <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend5"/>
-                        <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend6"/>
-                        <usercontrols:WeatherRecommendUserControl x:Name="WeatherRecommend7"/>
-                    </StackPanel>
+                    <ItemsControl x:Name="recommandListView" DataContext="{StaticResource ItemVM}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border x:Name="listItem"
+				                        Background="white"
+				                        HorizontalAlignment="Left"
+				                        Margin="20, 10, 20, 10"
+                                        CornerRadius="15, 15, 15, 15"
+                                        MinWidth="140" MinHeight="140"
+                                        >
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.7*"/>
+                                            <RowDefinition Height="0.15*"/>
+                                            <RowDefinition Height="0.15*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Border x:Name="RecommendImage"
+						                        Grid.Row="0"
+						                        Width="Auto"
+						                        Height="Auto" 
+                                                Margin="0, 0, 0, 0.4"
+                                                CornerRadius="15, 15, 0, 0">
+                                            <Border.Background>
+                                                <ImageBrush Stretch="UniformToFill"/>
+                                            </Border.Background>
+                                        </Border>
+
+                                        <Grid Grid.Row="1">
+                                            <TextBlock x:Name="listItemName"
+								                       Style="{StaticResource myclotheslist_textblock}"
+								                       VerticalAlignment="Center"
+								                       Margin="10, 5, 0, 0"
+								                       Text="{Binding Name}"
+                                                       FontSize="14"/>
+                                        </Grid>
+
+                                        <Grid Grid.Row="2">
+                                            <TextBlock x:Name="listItemPrice"
+								                       Style="{StaticResource myclotheslist_textblock}"
+								                       VerticalAlignment="Center"
+								                       Margin="10, 0, 0, 8"
+								                       Text="{Binding Price}"
+                                                       FontSize="14"/>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Grid.IsSharedSizeScope="True" Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
                 </Grid>
             </Grid>
 

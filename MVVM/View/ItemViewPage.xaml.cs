@@ -26,15 +26,6 @@ namespace codibook.MVVM.View
             InitializeComponent();
         }
 
-        public ItemViewPage(MainViewModel m)
-        {
-            InitializeComponent();
-            ItemViewModel vm = this.Resources["ItemVM"] as ItemViewModel;
-            vm.setUser(m.user);
-            vm.setItemlist();
-            itemListView.ItemsSource = vm.items;
-        }
-
         private void RightArrowButton_Click(object sender, RoutedEventArgs e)
         {
 

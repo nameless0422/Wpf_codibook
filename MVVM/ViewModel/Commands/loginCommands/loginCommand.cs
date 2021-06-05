@@ -83,7 +83,32 @@ namespace codibook.MVVM.ViewModel.Commands.loginCommands
                                     client.Disconnect();
                                     mainWindow = new MainWindow();
                                     (mainWindow.Resources["MainVM"] as MainViewModel).user = user;
-                                    mainWindow.Mainframe.Navigate(new ItemViewPage(mainWindow.Resources["MainVM"] as MainViewModel));
+
+                                    // 뷰페이지 데이터 db에서 받아오기
+                                    ItemViewPage itemView = new ItemViewPage();
+                                    ItemViewModel vm = itemView.Resources["ItemVM"] as ItemViewModel;
+                                    vm.setUser(user);
+                                    vm.setItemlist();
+                                    vm.updateWeatherRecommands(23);
+                                    if (vm.recommandsList.Count() > 4)
+                                    {
+                                        for (int i = 0; i < 4; i++)
+                                        {
+                                            vm.recommand_four.Add(vm.recommandsList[i]);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (int i = 0; i < vm.recommandsList.Count(); i++)
+                                        {
+                                            vm.recommand_four.Add(vm.recommandsList[i]);
+                                        }
+                                    }
+                                    itemView.itemListView.ItemsSource = vm.items;
+                                    itemView.recommandListView.ItemsSource = vm.recommand_four;
+                                    
+                                    // 프레임 네비게이션
+                                    mainWindow.Mainframe.Navigate(itemView);
                                     mainWindow.Show();
                                     window.Close();
                                 }

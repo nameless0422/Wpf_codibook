@@ -14,12 +14,16 @@ namespace codibook.MVVM.ViewModel
     public class ItemViewModel
     {
         public User user { get; set; }
-        public ObservableCollection<ItemModel> recommands { get; set; }
+        public ObservableCollection<ItemModel> recommand_four { get; set; }
+
+        public ObservableCollection<ItemModel> recommandsList { get; set; }
+
         public ObservableCollection<ItemModel> items { get; set; }
         public ItemViewModel()
         {
             items = new ObservableCollection<ItemModel>();
-            recommands = new ObservableCollection<ItemModel>();
+            recommand_four = new ObservableCollection<ItemModel>();
+            recommandsList = new ObservableCollection<ItemModel>();
         }
 
         public void setUser(User U)
@@ -44,7 +48,7 @@ namespace codibook.MVVM.ViewModel
 
         public void updateWeatherRecommands(int temp)
         {
-            recommands = DBConnecter.getItemList(user, temp);
+            recommandsList = DBConnecter.getItemList(user, temp);
         }
 
 
