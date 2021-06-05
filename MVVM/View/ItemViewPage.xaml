@@ -8,6 +8,7 @@
              xmlns:vm="clr-namespace:codibook.MVVM.ViewModel"
              mc:Ignorable="d" 
              Background="Transparent"
+             x:Name="thisWindow"
              d:DesignHeight="720" d:DesignWidth="1280">
     <UserControl.Resources>
         <vm:ItemViewModel x:Key="ItemVM"/>
@@ -192,7 +193,7 @@
                                                 Margin="0, 0, 0, 0.4"
                                                 CornerRadius="15, 15, 0, 0">
                                             <Border.Background>
-                                                <ImageBrush Stretch="UniformToFill"/>
+                                                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Image}"/>
                                             </Border.Background>
                                         </Border>
 
@@ -241,7 +242,7 @@
             </Grid>
 
             <!-- my clothes list 라벨 및 버튼 -->
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="2" DataContext="{StaticResource ItemVM}">
                 <Label x:Name="MyClothesList"
                          HorizontalAlignment="Left"
 					     VerticalAlignment="Bottom"
@@ -250,22 +251,6 @@
 					     FontSize="25"
 				  	     Foreground="DimGray"
 			    		 Margin="50, 0, 0, 5"/>
-
-                <!-- Category 라벨 및 Button -->
-                <Label x:Name="Category"
-					     HorizontalAlignment="Right"
-					     VerticalAlignment="Bottom"
-					     Content="category"
-					     FontFamily="AdobeClean-Regular"
-					     FontSize="18"
-					     Foreground="DimGray"
-					     Margin="0, 0, 155, 5"/>
-                <Button x:Name="CategoryButton"
-						   Margin="0, 0, 139, 13"
-						   HorizontalAlignment="Right"
-						   VerticalAlignment="Bottom"
-						   Style="{StaticResource CategoryButton}"
-						   Click="CategoryButton_Click"/>
 
                 <!-- Add Item 라벨 및 Button-->
                 <Label x:Name="AddItem"
@@ -281,7 +266,9 @@
 						   HorizontalAlignment="Right"
 					       VerticalAlignment="Bottom"
 						   Style="{StaticResource AddButton}"
-						   Click="addItemButton_Click"/>
+						   Command="{Binding addItemButtonCommandProperty}"
+                           CommandParameter="{Binding ElementName=thisWindow}"
+                        />
             </Grid>
 
             <!-- my clothes list -->
@@ -310,7 +297,7 @@
 							                            HorizontalAlignment="Left"
                                                         CornerRadius="15, 0, 0, 15">
                                                 <Border.Background>
-                                                    <ImageBrush Stretch="UniformToFill"/>
+                                                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Image}"/>
                                                 </Border.Background>
                                                 <!--Heart Button-->
                                                 <Button Margin="65, 65, 8, 8"

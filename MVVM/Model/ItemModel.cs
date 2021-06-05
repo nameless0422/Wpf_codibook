@@ -1,10 +1,12 @@
-﻿using System;
+﻿using codibook.Classes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace codibook.MVVM.Model
 {
@@ -21,6 +23,16 @@ namespace codibook.MVVM.Model
             }
         }
 
+        private BitmapImage image;
+        public BitmapImage Image
+        {
+            get { return image; }
+            set
+            {
+                image = value;
+                OnPropertyChanged("Image");
+            }
+        }
 
         private int item_id;
         public int Item_ID
@@ -52,6 +64,14 @@ namespace codibook.MVVM.Model
             { 
                 link = value;
                 OnPropertyChanged("Link");
+                try
+                {
+                    Image = htmlParser.LoadImage(htmlParser.GetOgImage(value));
+                }
+                catch (Exception e) 
+                {
+                    return;
+                }
             }
         }
 
@@ -119,7 +139,7 @@ namespace codibook.MVVM.Model
             }
         }
 
-        public ItemModel(int idx,string name, int price, int temp, string link, int liked)
+        public ItemModel(int idx, string name, int price, int temp, string link, int liked)
         {
             Item_ID = idx;
             Name = name;
@@ -127,6 +147,11 @@ namespace codibook.MVVM.Model
             Temp = temp;
             Link = link;
             Liked = liked;
+        }
+
+        public void setNameByLink()
+        {
+            Name = htmlParser.GetOgTitle(Link);
         }
     }
 }

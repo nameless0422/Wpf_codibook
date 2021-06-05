@@ -8,6 +8,7 @@ using codibook.MVVM.Model;
 using System.Windows;
 using System.Collections.ObjectModel;
 using codibook.Classes;
+using codibook.MVVM.ViewModel.Commands.itemViewCommands;
 
 namespace codibook.MVVM.ViewModel
 {
@@ -19,11 +20,15 @@ namespace codibook.MVVM.ViewModel
         public ObservableCollection<ItemModel> recommandsList { get; set; }
 
         public ObservableCollection<ItemModel> items { get; set; }
+
+        public AddItemButtonCommand addItemButtonCommandProperty { get; set; }
+
         public ItemViewModel()
         {
             items = new ObservableCollection<ItemModel>();
             recommand_four = new ObservableCollection<ItemModel>();
             recommandsList = new ObservableCollection<ItemModel>();
+            addItemButtonCommandProperty = new AddItemButtonCommand();
         }
 
         public void setUser(User U)

@@ -10,9 +10,9 @@ using System.Windows.Media.Imaging;
 
 namespace codibook.Classes
 {
-    public class htmlParser
+    public static class htmlParser
     {
-        public string GetOgTitle(string link)
+        public static string GetOgTitle(string link)
         {
             HtmlWeb web = new HtmlWeb();
             HtmlDocument htmlDoc = web.Load(link);
@@ -21,7 +21,7 @@ namespace codibook.Classes
             return ogTitle[0].Attributes["content"].Value;
         }
 
-        public string GetOgImage(string link)
+        public static string GetOgImage(string link)
         {
             HtmlWeb web = new HtmlWeb();
             HtmlDocument htmlDoc = web.Load(link);
@@ -32,7 +32,7 @@ namespace codibook.Classes
 
         }
 
-        public BitmapImage LoadImage(string url)   //Image URL -> Bitmap 으로 변환, Image1.Source = LoadImage(“url”) 이런식으로 쓰면 됨
+        public static BitmapImage LoadImage(string url)   //Image URL -> Bitmap 으로 변환, Image1.Source = LoadImage(“url”) 이런식으로 쓰면 됨
         {
 
             try
