@@ -81,14 +81,14 @@
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.25*"/>
-                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="102"/>
                         <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="205"/>
                         <ColumnDefinition Width="0.05*"/>
                         <ColumnDefinition Width="50"/>
                         <ColumnDefinition Width="50"/>
                         <ColumnDefinition Width="50"/>
-                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="102"/>
                         <ColumnDefinition Width="0.25*"/>
                     </Grid.ColumnDefinitions>
 					<Grid Grid.Column="1">
@@ -163,7 +163,7 @@
 
                         </Border>
                     </Grid>
-                    <Grid Grid.Column="3" Width="200">
+                    <Grid Grid.Column="3">
                         <Border Margin="10,15,10,15" Background="White" CornerRadius="15"
                                 DataContext="{StaticResource WeatherAPI}"
                                 Width="174">
