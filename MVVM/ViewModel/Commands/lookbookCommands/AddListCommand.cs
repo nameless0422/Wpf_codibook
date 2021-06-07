@@ -15,16 +15,7 @@ namespace codibook.MVVM.ViewModel.Commands.lookbookCommands
 
         public bool CanExecute(object parameter)
         {
-            LookBookViewModel lookBookViewModel = parameter as LookBookViewModel;
-            if (lookBookViewModel == null) return true;
-            if (lookBookViewModel.AddListCheck == true)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return true;
         }
 
         public void Execute(object parameter)
@@ -32,7 +23,6 @@ namespace codibook.MVVM.ViewModel.Commands.lookbookCommands
             LookBookViewModel lookBookViewModel = parameter as LookBookViewModel;
             AddListPopUp addListPopUp = new AddListPopUp(lookBookViewModel);
             addListPopUp.Show();
-            lookBookViewModel.AddListCheck = true;
         }
     }
 }

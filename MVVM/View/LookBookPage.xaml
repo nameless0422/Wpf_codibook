@@ -4,13 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:codibook.MVVM.View"
+			 xmlns:vm="clr-namespace:codibook.MVVM.ViewModel"
 			 mc:Ignorable="d" 
 			 Background="Transparent"
              d:DesignHeight="608" d:DesignWidth="1052"
-			 MinHeight="550" MinWidth="600">
+			 MinHeight="550" MinWidth="600"
+			 x:Name="thisWindow">
 	
 	<UserControl.Resources>
 		<ResourceDictionary>
+			<vm:LookBookViewModel x:Key="LookBookVM"/>
 			<Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
 				<Setter Property="Template">
 					<Setter.Value>
@@ -119,7 +122,7 @@
 			</Grid.RowDefinitions>
 
 			<!-- 라벨 & 추가 버튼 -->
-			<Grid Grid.Row="0">
+			<Grid Grid.Row="0" DataContext="{StaticResource LookBookVM}">
 				<Label x:Name="lookbookList"
                        HorizontalAlignment="Left"
 					   VerticalAlignment="Bottom"
@@ -134,7 +137,9 @@
 						HorizontalAlignment="Right"
 						VerticalAlignment="Bottom"
 						Style="{StaticResource AddButton}"
-						Click="addListButton_Click"/>
+						 />
+				<!-- Command="{Binding addListCommand}"
+						CommandParameter="{Binding ElementName=thisWindow}"-->
 
 				<Label x:Name="addList"
 					   HorizontalAlignment="Right"

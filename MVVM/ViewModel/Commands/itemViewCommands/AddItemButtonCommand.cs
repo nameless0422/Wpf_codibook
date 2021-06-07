@@ -23,7 +23,7 @@ namespace codibook.MVVM.ViewModel.Commands.itemViewCommands
             ItemViewPage itemViewPage = parameter as ItemViewPage;
             ItemViewModel vm = itemViewPage.Resources["ItemVM"] as ItemViewModel;
             AddItemPopUp popUp = new AddItemPopUp();
-
+            popUp.Show();
         }
     }
 }
