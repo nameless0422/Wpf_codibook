@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace codibook.MVVM.View
+namespace codibook.MVVM.View.SearchViewListPages
 {
     /// <summary>
-    /// SearchViewPage.xaml에 대한 상호 작용 논리
+    /// SearchItemPage.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class SearchViewPage : UserControl
+    public partial class SearchItemPage : UserControl
     {
-        public SearchViewPage()
+        public SearchItemPage()
         {
             InitializeComponent();
-            this.listframe.Navigate(new SearchViewListPages.SearchItemPage());
         }
     }
 }

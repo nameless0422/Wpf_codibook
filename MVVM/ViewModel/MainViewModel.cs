@@ -51,6 +51,8 @@ namespace codibook.MVVM.ViewModel
         public UserCommand userCommandProprety { get; set; }
         public UserPopUp userPopUpPage { get; set; }
 
+        public searchCommand searchCommandProperty { get; set; }
+
         //setting popup이 켜져있는지
         public bool SettingCheck;
 
@@ -71,6 +73,7 @@ namespace codibook.MVVM.ViewModel
             toMaxOrNormalCommandProperty = new ToMaxOrNormalCommand();
             toMiniCommandProperty = new ToMiniCommand(); 
             titleBarCommandProperty = new MainTitleBarCommand();
+            searchCommandProperty = new searchCommand();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -79,11 +79,13 @@ namespace codibook.MVVM.ViewModel.Commands.loginCommands
                                 con.Close();
                                 client.Disconnect();
                                 MainWindow mainWindow = new MainWindow();
-                                (mainWindow.Resources["MainVM"] as MainViewModel).user = user;
+                                MainViewModel MainVM = mainWindow.Resources["MainVM"] as MainViewModel;
+                                MainVM.user = user;
 
                                 // 뷰페이지 데이터 db에서 받아오기
                                 ItemViewPage itemView = new ItemViewPage();
                                 ItemViewModel vm = itemView.Resources["ItemVM"] as ItemViewModel;
+                                MainVM.itemVM = vm;
                                 vm.setUser(user);
                                 vm.setItemlist();
                                 string temp_str = (mainWindow.Resources["WeatherAPI"] as WeatherAPI).T3H;

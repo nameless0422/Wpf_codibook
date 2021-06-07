@@ -1,4 +1,5 @@
 ﻿using codibook.MVVM.View;
+using codibook.MVVM.View.SearchViewListPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,14 @@ namespace codibook.MVVM.ViewModel.Commands.mainCommands
         {
             MainWindow window = parameter as MainWindow;
             MainViewModel vm = window.Resources["MainVM"] as MainViewModel;
-            vm.Search_Text = window.Search_Box.Text;
-            window.Mainframe.Navigate(new SearchViewPage());
+            SearchViewPage searchPage = new SearchViewPage();
+            SearchItemPage searchItemPage = new SearchItemPage();
+            searchPage.DataContext = vm;
+            searchItemPage.DataContext = vm.itemVM;
+            vm.itemVM.setItemlist(vm.Search_Text,0);
+            searchItemPage.itemListView.ItemsSource = vm.itemVM.items;
+            searchPage.listframe.Navigate(searchItemPage);
+            window.Mainframe.Navigate(searchPage);
             
         }
     }
