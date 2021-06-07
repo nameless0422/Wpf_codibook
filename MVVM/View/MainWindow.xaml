@@ -153,9 +153,13 @@
                                          Style="{StaticResource TmonyBold_textbox}"
                                          Margin="10,0,0,0" Width="560"
                                          Foreground="#FF535353"
-                                         Text=""
+                                         Text="{Binding Search_Text, UpdateSourceTrigger=PropertyChanged}"
                                          >
-                                            
+                                    <TextBox.InputBindings>
+                                        <KeyBinding Command="{Binding searchCommandProperty}"
+                                                    CommandParameter="{Binding ElementName=thisWindow}"
+                                                    Key="Enter"/>
+                                    </TextBox.InputBindings>
                                 </TextBox>
 
                             </StackPanel>
