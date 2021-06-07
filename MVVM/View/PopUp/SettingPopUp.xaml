@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:codibook.MVVM.View.PopUp"
-        xmlns:vm ="clr-namespace:codibook.MVVM.ViewModel.PopUpViewModel"
+        xmlns:puvm ="clr-namespace:codibook.MVVM.ViewModel.PopUpViewModel"
+		xmlns:vm ="clr-namespace:codibook.MVVM.ViewModel"
         x:Name="thisWindow"
         WindowStyle="None" 
         AllowsTransparency="True"
@@ -14,8 +15,9 @@
         Background="Transparent"
         Title="SettingPopUp" Height="220" Width="320">
     <Window.Resources>
-        <vm:SettingPopUpViewModel x:Key="VM"></vm:SettingPopUpViewModel>
-    </Window.Resources>
+		<puvm:SettingPopUpViewModel x:Key="VM"></puvm:SettingPopUpViewModel>
+		<vm:WeatherAPI x:Key="WeatherAPI"/>
+	</Window.Resources>
 	
     <Border Background="#F5F5F5" CornerRadius="15"
 			Height="200" Width="300">
@@ -92,20 +94,27 @@
 
 			<Grid Grid.Row="3">
 				<!-- weather api data binding -->
+				<TextBlock Text="{Binding Source={StaticResource WeatherAPI}, Path=cityname}"
+						   HorizontalAlignment="Center"
+						   FontFamily="{StaticResource AdobeClean-Bold}"
+						   FontWeight="ExtraBold"
+						   Foreground="#626262"
+						   FontSize="16"/>
 			</Grid>
 
 			<Grid Grid.Row="4">
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
 							VerticalAlignment="Top">
 					<Button x:Name="settingButton"
-                                        Background="white"
-                                        Content="setting"
-                                        Foreground="#FF535353"
-                                        FontFamily="{StaticResource AdobeClean-Regular}"
-                                        BorderThickness="0"
-										Margin="0, 0, 5, 0"
-                                        Width="120"
-                                        Height="40">
+                            Background="white"
+                            Content="setting"
+                            Foreground="#FF535353"
+                            FontFamily="{StaticResource AdobeClean-Regular}"
+							FontWeight="SemiBold"
+                            BorderThickness="0"
+							Margin="0, 0, 5, 0"
+                            Width="120"
+                            Height="40">
 						<Button.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="10"/>
@@ -114,14 +123,15 @@
 					</Button>
 					
 					<Button x:Name="saveButton"
-                                    Background="white"
-                                    Content="save"
-                                    Foreground="#FF535353"
-                                    FontFamily="{StaticResource AdobeClean-Regular}"
-                                    BorderThickness="0"
-									Margin="5, 0, 0, 0"
-                                    Width="120"
-                                    Height="40">
+                            Background="white"
+                            Content="save"
+                            Foreground="#FF535353"
+                            FontFamily="{StaticResource AdobeClean-Regular}"
+							FontWeight="SemiBold"
+                            BorderThickness="0"
+							Margin="5, 0, 0, 0"
+                            Width="120"
+                            Height="40">
 						<Button.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="15"/>

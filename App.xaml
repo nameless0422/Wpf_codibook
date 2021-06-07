@@ -662,5 +662,63 @@
 
 			</Setter>
 		</Style>
+		<Style TargetType="{x:Type Button}" x:Key="EditButton">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<Image>
+								<Image.Source>
+									<DrawingImage x:Name="editDrawingImage">
+										<DrawingImage.Drawing>
+											<DrawingGroup ClipGeometry="M0,0 V511.999 H511.999 V0 H0 Z">
+												<DrawingGroup Opacity="1">
+													<DrawingGroup Opacity="1">
+														<GeometryDrawing Brush="#FF535353" Geometry="F1 M511.999,511.999z M0,0z M506.012,111.514L400.481,5.984C392.502,-1.989,379.593,-1.995,371.613,5.97L39.363,337.547C36.687,340.216,34.801,343.579,33.923,347.256L0.562,486.828C-1.086,493.725 0.971,500.996 5.988,506.014 9.862,509.888 15.077,511.999 20.429,511.999 22.015,511.999 23.609,511.808 25.174,511.434L164.747,478.073C168.424,477.195,171.787,475.316,174.456,472.633L506.026,140.382C513.991,132.403,513.985,119.48,506.012,111.514z M149.632,439.687L48.03,463.973 72.309,362.371 386.034,49.299 462.704,125.969 149.632,439.687z" />
+													</DrawingGroup>
+												</DrawingGroup>
+												<DrawingGroup Opacity="1">
+													<DrawingGroup Opacity="1">
+														<DrawingGroup Transform="0.7071,-0.7071,0.7071,0.7071,-1.1875,299.421">
+															<GeometryDrawing Brush="#FF535353">
+																<GeometryDrawing.Geometry>
+																	<RectangleGeometry RadiusX="0" RadiusY="0" Rect="340.418,76.048,40.843,150.192" />
+																</GeometryDrawing.Geometry>
+															</GeometryDrawing>
+														</DrawingGroup>
+													</DrawingGroup>
+												</DrawingGroup>
+												<DrawingGroup Opacity="1">
+													<DrawingGroup Opacity="1">
+														<DrawingGroup Transform="0.7071,-0.7071,0.7071,0.7071,-128.8402,246.5416">
+															<GeometryDrawing Brush="#FF535353">
+																<GeometryDrawing.Geometry>
+																	<RectangleGeometry RadiusX="0" RadiusY="0" Rect="52.658,258.373,361.047,40.843" />
+																</GeometryDrawing.Geometry>
+															</GeometryDrawing>
+														</DrawingGroup>
+													</DrawingGroup>
+												</DrawingGroup>
+												<DrawingGroup Opacity="1">
+													<DrawingGroup Opacity="1">
+														<DrawingGroup Transform="0.7071,-0.7071,0.7071,0.7071,-256.1682,193.8131">
+															<GeometryDrawing Brush="#FF000000">
+																<GeometryDrawing.Geometry>
+																	<RectangleGeometry RadiusX="0" RadiusY="0" Rect="85.448,331.51,40.843,149.239" />
+																</GeometryDrawing.Geometry>
+															</GeometryDrawing>
+														</DrawingGroup>
+													</DrawingGroup>
+												</DrawingGroup>
+											</DrawingGroup>
+										</DrawingImage.Drawing>
+									</DrawingImage>
+								</Image.Source>
+							</Image>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
 	</Application.Resources>
 </Application>

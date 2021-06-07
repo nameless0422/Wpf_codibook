@@ -98,6 +98,43 @@
 									Background="#FFCFCFCF"
 									CornerRadius="10, 0, 0, 10"></Border>
 						</Grid>
+
+						<Grid Grid.Column="1">
+							<Grid.RowDefinitions>
+								<RowDefinition/>
+								<RowDefinition/>
+								<RowDefinition/>
+								<RowDefinition/>
+							</Grid.RowDefinitions>
+
+							<Grid Grid.Row="0">
+								<Button x:Name="editButton"
+							Style="{StaticResource EditButton}"
+							VerticalAlignment="Center"
+							HorizontalAlignment="Right"
+							Margin="0, 4, 7, 0"
+							Height="10" Width="10"/>
+							</Grid>
+
+							<Grid Grid.Row="1">
+								<TextBlock x:Name="nameTextBlock"
+							   Text="name"
+							   FontFamily="{StaticResource AdobeClean-Regular}"
+							   Foreground="#626262"
+							   FontSize="11"
+							   Margin="7, 0, 7, 0" FontWeight="Bold"/>
+							</Grid>
+
+							<Grid Grid.Row="2">
+								<TextBlock x:Name="messageTextBlock"
+							   Text="hello"
+							   FontFamily="{StaticResource AdobeClean-Regular}"
+							   Foreground="#626262"
+							   FontSize="11"
+							   Margin="7, 0, 7, 0"/>
+							</Grid>
+						</Grid>
+
 					</Grid>
 				</Border>
 			</Grid>

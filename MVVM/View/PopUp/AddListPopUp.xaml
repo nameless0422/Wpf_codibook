@@ -180,7 +180,8 @@
 						   VerticalAlignment="Center"
 						   HorizontalAlignment="Left"
 						   Margin="70, 0 ,0 ,0"
-						   FontFamily="AdobeClean-Regular"
+						   FontFamily="{StaticResource AdobeClean-Regular}"
+						   FontWeight="SemiBold"
 						   FontSize="16"
 						   Foreground="#626262"/>
 			</Grid>
@@ -245,6 +246,7 @@
 					   HorizontalAlignment="Left"
 					   Margin="70, 0 ,0 ,0"
 					   FontFamily="AdobeClean-Regular"
+					   FontWeight="SemiBold"
 					   FontSize="16"
 					   Foreground="#626262"/>
 

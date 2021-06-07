@@ -46,8 +46,9 @@
 				<Label x:Name="addItem"
 					   Content="add item"
 					   VerticalAlignment="Center"
-					   FontFamily="AdobeClean-Bold"
-					   FontSize="14"
+					   FontFamily="{StaticResource AdobeClean-Bold}"
+					   FontWeight="SemiBold"
+					   FontSize="15"
 					   Foreground="#626262"
 					   Margin="40, 0, 0, 0"/>
 			</Grid>
@@ -74,7 +75,7 @@
 										    Style="{StaticResource AddButton}"
 											VerticalAlignment="Center"
 											HorizontalAlignment="Center" Canvas.Left="65" Canvas.Top="65"/>
-									
+
 									<!-- 아이템 즐겨찾기 버튼 -->
 									<Button x:Name="itemFavoriteButton"
 											Style="{StaticResource HeartButton}"
@@ -91,16 +92,22 @@
 								<RowDefinition/>
 								<RowDefinition/>
 							</Grid.RowDefinitions>
-							
+
 							<Grid Grid.Row="0">
 								<!-- 수정 버튼 -->
+								<Button x:Name="addItemEditButton"
+										Style="{StaticResource EditButton}"
+										HorizontalAlignment="Right"
+										Margin="0, 0, 8, 0"
+										Width="12" Height="12"/>
 							</Grid>
 
 							<Grid Grid.Row="1">
 								<!-- 아이템 이름 -->
 								<TextBlock x:Name="itemName"
 										   Text="name"
-										   FontFamily="AdobeClean-Bold"
+										   FontFamily="{StaticResource AdobeClean-Bold}"
+										   FontWeight="SemiBold"
 										   FontSize="14"
 										   Foreground="#626262"
 										   VerticalAlignment="Bottom"
@@ -137,6 +144,10 @@
 
 							<Grid Grid.Row="4">
 								<!-- 아이템 태그 -->
+								<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0, 0, 8, 8">
+									<Button x:Name="CategoryButton"
+											Style="{StaticResource CategoryButton}"/>
+								</StackPanel>
 							</Grid>
 						</Grid>
 					</Grid>
@@ -155,17 +166,20 @@
 						</Grid.RowDefinitions>
 
 						<Grid Grid.Row="0">
-							<WrapPanel>
+							<Canvas>
 								<Label x:Name="memoLabel"
 									   Content="memo"
 									   Style="{StaticResource AdobeCleanRegular_label}"
-									   FontSize="14"
+									   FontSize="15"
+									   FontWeight="SemiBold"
 									   Foreground="#626262"
 									   Margin="10, 5, 0, 0"/>
-								
+
 								<!-- 수정 버튼 -->
-								
-							</WrapPanel>
+								<Button x:Name="memoEditButton"
+										Style="{StaticResource EditButton}"
+										Width="12" Height="12" Canvas.Left="498" Canvas.Top="8"/>
+							</Canvas>
 						</Grid>
 					</Grid>
 
