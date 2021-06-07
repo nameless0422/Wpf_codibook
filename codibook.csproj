@@ -178,6 +178,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\View\SearchViewListPages\SearchItemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MVVM\View\SearchViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -230,6 +234,9 @@
     </Compile>
     <Compile Include="MVVM\View\PopUp\UserPopUp.xaml.cs">
       <DependentUpon>UserPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\SearchViewListPages\SearchItemPage.xaml.cs">
+      <DependentUpon>SearchItemPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\SearchViewPage.xaml.cs">
       <DependentUpon>SearchViewPage.xaml</DependentUpon>
