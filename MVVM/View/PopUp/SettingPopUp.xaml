@@ -100,7 +100,7 @@
 						   FontFamily="{StaticResource AdobeClean-Bold}"
 						   FontWeight="ExtraBold"
 						   Foreground="#626262"
-						   FontSize="16" Margin="110,-5,110,5"/>
+						   FontSize="16"/>
 			</Grid>
 
 			<Grid Grid.Row="4">

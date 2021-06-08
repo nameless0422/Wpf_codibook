@@ -27,13 +27,13 @@ namespace codibook.MVVM.View
 
         private void addListButton_Click(object sender, RoutedEventArgs e)
         {
-            PopUp.AddListPopUp addListPopUp = new PopUp.AddListPopUp();
-            addListPopUp.Show();
+
         }
 
-        private void addListButton_Click_1(object sender, RoutedEventArgs e)
+        private void moreButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
     }
 }
