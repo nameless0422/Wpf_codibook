@@ -16,6 +16,7 @@
 	
 	<Window.Resources>
 		<ResourceDictionary>
+            <vm:ItemViewModel x:Key="ItemVM"/>
 			<Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
 				<Setter Property="Template">
 					<Setter.Value>
@@ -218,13 +219,76 @@
 					</Grid>
 
 					<Grid Grid.Column="1" VerticalAlignment="Center">
-						<WrapPanel>
-							<usercontrols:UserControlAddListPopUp/>
-							<usercontrols:UserControlAddListPopUp/>
-							<usercontrols:UserControlAddListPopUp/>
-							<usercontrols:UserControlAddListPopUp/>
-						</WrapPanel>
-					</Grid>
+                        <ItemsControl x:Name="recommandListView" Grid.Column="1" DataContext="{StaticResource ItemVM}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border x:Name="listItem"
+				                               Background="white"
+				                               HorizontalAlignment="Left"
+				                               Margin="20, 10, 20, 10"
+                                               CornerRadius="15, 15, 15, 15"
+                                               MinWidth="140" MinHeight="140"
+                                               MaxWidth="230" MaxHeight="230">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="0.7*"/>
+                                                <RowDefinition Height="0.15*"/>
+                                                <RowDefinition Height="0.15*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Border x:Name="RecommendImage"
+						                        Grid.Row="0"
+						                        Width="Auto"
+						                        Height="Auto" 
+                                                Margin="5"
+                                                CornerRadius="15, 15, 0, 0">
+                                                <Border.Background>
+                                                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Image}"/>
+                                                </Border.Background>
+                                            </Border>
+
+                                            <Grid Grid.Row="1">
+                                                <TextBlock x:Name="listItemName"
+								                       Style="{StaticResource myclotheslist_textblock}"
+								                       VerticalAlignment="Center"
+								                       Margin="10, 5, 0, 0"
+								                       Text="{Binding Name}"
+                                                       FontSize="10"/>
+                                            </Grid>
+
+                                            <Grid Grid.Row="2">
+                                                <TextBlock x:Name="listItemPrice"
+								                       Style="{StaticResource myclotheslist_textblock}"
+								                       VerticalAlignment="Center"
+								                       Margin="10, 0, 0, 8"
+								                       Text="{Binding Price}"
+                                                       FontSize="10"/>
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                    </Grid>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemContainerStyle>
+                                <Style>
+                                    <Style.Setters>
+                                        <Setter Property="Grid.Column" Value="{Binding popup}"/>
+                                    </Style.Setters>
+                                </Style>
+                            </ItemsControl.ItemContainerStyle>
+                        </ItemsControl>
+                    </Grid>
 
 					<Grid Grid.Column="2" VerticalAlignment="Center">
 						<Button x:Name="RightArrowButton" 
@@ -274,13 +338,80 @@
 				</Grid.ColumnDefinitions>
 
 				<ScrollViewer Grid.Column="1">
-					<StackPanel>
-						<usercontrols:UserControlAddListMyColthes/>
-						<usercontrols:UserControlAddListMyColthes/>
-						<usercontrols:UserControlAddListMyColthes/>
-						<usercontrols:UserControlAddListMyColthes/>
-						<usercontrols:UserControlAddListMyColthes/>
-					</StackPanel>
+<ItemsControl x:Name="itemListView" DataContext="{StaticResource ItemVM}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="15" Background="Transparent" Margin="0, 5, 25, 5">
+                                    <Grid>
+                                        <Border x:Name="mclItem"
+							                        Background="White"
+                                                    CornerRadius="15">
+                                            <!--제품 이미지-->
+                                            <Border x:Name="mclImage"
+								                        Width="92"
+							                            HorizontalAlignment="Left"
+                                                        Margin="5"
+                                                        CornerRadius="15, 0, 0, 15">
+                                                <Border.Background>
+                                                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Image}"/>
+                                                </Border.Background>
+                                                <!--Heart Button-->
+                                                <Button Margin="65, 65, 8, 8"
+                                                            Style="{StaticResource HeartButton}">
+                                                </Button>
+                                            </Border>
+                                        </Border>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <!--회사명-->
+                                            <TextBlock x:Name="mclCompany"
+                                                           Text="{Binding Shop_Name}" 
+                                                           Grid.Row="0"
+									                       Style="{StaticResource myclotheslist_textblock}"
+									                       FontSize="15"
+                                                           Margin="105, 5 0, 5">
+                                            </TextBlock>
+                                            <!--제품명-->
+                                            <TextBlock x:Name="mclName"
+                                                           Text="{Binding Name}"
+                                                           Grid.Row="1"
+									                       Style="{StaticResource myclotheslist_textblock}"
+								                           FontSize="15"
+                                                           Margin="105, 5, 0, 5">
+                                            </TextBlock>
+                                            <!--가격-->
+                                            <TextBlock x:Name="mclPrice"
+                                                           Text="{Binding Price}"
+                                                           Grid.Row="2"
+									                       Style="{StaticResource myclotheslist_textblock}"
+							                               FontSize="15"
+                                                           Margin="105, 5, 0, 5">
+                                            </TextBlock>
+                                            <!--해쉬 태그-->
+                                            <TextBlock x:Name="mclTag"
+                                                            Text="{}"
+                                                            Grid.Row="2"
+                                                            VerticalAlignment="Bottom"
+                                                            HorizontalAlignment="Right"
+									                        Style="{StaticResource myclotheslist_textblock}"
+									                        FontSize="15"
+                                                            Margin="105, 5, 15, 5">
+                                            </TextBlock>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
 				</ScrollViewer>
 			</Grid>
 		</Grid>
