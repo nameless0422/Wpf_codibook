@@ -11,8 +11,8 @@
              x:Name="thisWindow"
              d:DesignHeight="720" d:DesignWidth="1280">
     <UserControl.Resources>
-        <ResourceDictionary>
-            <vm:ItemViewModel x:Key="ItemVM"/>
+        <vm:ItemViewModel x:Key="ItemVM"/>
+        <ResourceDictionary x:Key="rd">
             <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
                 <Setter Property="Template">
                     <Setter.Value>
@@ -168,76 +168,77 @@
                     </Button>
                 </Grid>
 
-                <ItemsControl x:Name="recommandListView" Grid.Column="1" DataContext="{StaticResource ItemVM}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Border x:Name="listItem"
+                <Grid Grid.Column="1">
+                    <ItemsControl x:Name="recommandListView" DataContext="{StaticResource ItemVM}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border x:Name="listItem"
 				                        Background="white"
 				                        HorizontalAlignment="Left"
 				                        Margin="20, 10, 20, 10"
                                         CornerRadius="15, 15, 15, 15"
                                         MinWidth="140" MinHeight="140"
-                                        MaxWidth="230" MaxHeight="230"
                                         >
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="0.7*"/>
-                                        <RowDefinition Height="0.15*"/>
-                                        <RowDefinition Height="0.15*"/>
-                                    </Grid.RowDefinitions>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.7*"/>
+                                            <RowDefinition Height="0.15*"/>
+                                            <RowDefinition Height="0.15*"/>
+                                        </Grid.RowDefinitions>
 
-                                    <Border x:Name="RecommendImage"
+                                        <Border x:Name="RecommendImage"
 						                        Grid.Row="0"
 						                        Width="Auto"
 						                        Height="Auto" 
-                                                Margin="5"
+                                                Margin="0, 0, 0, 0.4"
                                                 CornerRadius="15, 15, 0, 0">
-                                        <Border.Background>
-                                            <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Image}"/>
-                                        </Border.Background>
-                                    </Border>
+                                            <Border.Background>
+                                                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Image}"/>
+                                            </Border.Background>
+                                        </Border>
 
-                                    <Grid Grid.Row="1">
-                                        <TextBlock x:Name="listItemName"
+                                        <Grid Grid.Row="1">
+                                            <TextBlock x:Name="listItemName"
 								                       Style="{StaticResource myclotheslist_textblock}"
 								                       VerticalAlignment="Center"
 								                       Margin="10, 5, 0, 0"
 								                       Text="{Binding Name}"
                                                        FontSize="14"/>
-                                    </Grid>
+                                        </Grid>
 
-                                    <Grid Grid.Row="2">
-                                        <TextBlock x:Name="listItemPrice"
+                                        <Grid Grid.Row="2">
+                                            <TextBlock x:Name="listItemPrice"
 								                       Style="{StaticResource myclotheslist_textblock}"
 								                       VerticalAlignment="Center"
 								                       Margin="10, 0, 0, 8"
 								                       Text="{Binding Price}"
                                                        FontSize="14"/>
+                                        </Grid>
                                     </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
                                 </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                            </Grid>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemContainerStyle>
-                        <Style>
-                            <Style.Setters>
-                                <Setter Property="Grid.Column" Value="{Binding x}"/>
-                            </Style.Setters>
-                        </Style>
-                    </ItemsControl.ItemContainerStyle>
-                </ItemsControl>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style>
+                                <Style.Setters>
+                                    <Setter Property="Grid.Column" Value="{Binding x}"/>
+                                </Style.Setters>
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                    </ItemsControl>
+                </Grid>
             </Grid>
 
             <!-- my clothes list 라벨 및 버튼 -->
@@ -271,7 +272,7 @@
             </Grid>
 
             <!-- my clothes list -->
-            <Grid Grid.Row="3">
+            <Grid Grid.Row="3"  DataContext="{StaticResource rd}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="110"/>
                     <ColumnDefinition Width="*"/>
@@ -281,7 +282,7 @@
                 <!-- 구현부 -->
 
                 <!-- 스크롤바 -->
-                <ScrollViewer Grid.Column="1">
+                <ScrollViewer Grid.Column="1" DataContext="{StaticResource rd}">
                     <ItemsControl x:Name="itemListView" DataContext="{StaticResource ItemVM}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
@@ -294,7 +295,6 @@
                                             <Border x:Name="mclImage"
 								                        Width="92"
 							                            HorizontalAlignment="Left"
-                                                        Margin="5"
                                                         CornerRadius="15, 0, 0, 15">
                                                 <Border.Background>
                                                     <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Image}"/>

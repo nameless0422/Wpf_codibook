@@ -35,5 +35,20 @@ namespace codibook.MVVM.View
         {
 
         }
+
+        private void addItemButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CategoryButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void WeatherRecommend4_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
