@@ -104,25 +104,26 @@
 
 							<Grid Grid.Row="1">
 								<!-- 아이템 이름 -->
-								<TextBlock x:Name="itemName"
+                                <TextBlock x:Name="itemName"
 										   Text="name"
 										   FontFamily="{StaticResource AdobeClean-Bold}"
 										   FontWeight="SemiBold"
 										   FontSize="14"
 										   Foreground="#626262"
 										   VerticalAlignment="Bottom"
-										   Margin="20, 0, 20, 0"/>
-							</Grid>
+                                           Margin="20, 0, 0, 0"
+                                           ></TextBlock>
+                            </Grid>
 
 							<Grid Grid.Row="2">
 								<!-- 아이템 가격 -->
-								<TextBlock x:Name="itemPrice"
+                                <TextBlock x:Name="itemPrice"
 										   Text="price"
 										   Style="{StaticResource lookbookList_textblock}"
 										   VerticalAlignment="Center"
 										   FontSize="13"
 										   Margin="20, 0, 20, 0"/>
-							</Grid>
+                                </Grid>
 
 							<Grid Grid.Row="3">
 								<WrapPanel>

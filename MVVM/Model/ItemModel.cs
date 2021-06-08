@@ -67,6 +67,7 @@ namespace codibook.MVVM.Model
                 try
                 {
                     Image = htmlParser.LoadImage(htmlParser.GetOgImage(value));
+                    Shop_Name = htmlParser.GetOgTitle(value);
                 }
                 catch (Exception e) 
                 {
