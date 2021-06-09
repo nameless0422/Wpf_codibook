@@ -23,7 +23,6 @@ namespace codibook.MVVM.View
         public SearchViewPage()
         {
             InitializeComponent();
-            this.listframe.Navigate(new SearchViewListPages.SearchItemPage());
         }
     }
 }
