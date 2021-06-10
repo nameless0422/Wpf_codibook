@@ -71,10 +71,10 @@
 									CornerRadius="10, 0, 0, 10">
 								<Canvas>
 									<!-- 아이템 이미지 추가 버튼 -->
-									<Button x:Name="addItemImageButton"
+									<!--<Button x:Name="addItemImageButton"
 										    Style="{StaticResource AddButton}"
 											VerticalAlignment="Center"
-											HorizontalAlignment="Center" Canvas.Left="65" Canvas.Top="65"/>
+											HorizontalAlignment="Center" Canvas.Left="65" Canvas.Top="65"/>-->
 
 									<!-- 아이템 즐겨찾기 버튼 -->
 									<Button x:Name="itemFavoriteButton"
@@ -103,6 +103,10 @@
 							</Grid>
 
 							<Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.19*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 								<!-- 아이템 이름 -->
 								<TextBlock x:Name="itemName"
 										   Text="name"
@@ -111,18 +115,31 @@
 										   FontSize="14"
 										   Foreground="#626262"
 										   VerticalAlignment="Bottom"
-										   Margin="20, 0, 20, 0"/>
-							</Grid>
+										   Margin="20, 0, 0, 0"
+                                           Grid.Column="0"/>
+                                <TextBox x:Name="inputName"
+                                             Grid.Column="1"
+                                             Margin="3, 14, 75, 2"
+                                             VerticalAlignment="Bottom"/>
+                            </Grid>
 
 							<Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.19*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 								<!-- 아이템 가격 -->
                                 <TextBlock x:Name="itemPrice"
 										   Text="price"
 										   Style="{StaticResource lookbookList_textblock}"
 										   VerticalAlignment="Center"
 										   FontSize="13"
-										   Margin="20, 0, 20, 0"/>
-							</Grid>
+										   Margin="20, 0, 0, 0"
+                                           Grid.Column="0"/>
+                                <TextBox x:Name="inputPrice"
+                                             Margin="3, 8, 75, 7"
+                                             Grid.Column="1"/>
+                            </Grid>
 
 							<Grid Grid.Row="3">
 								<WrapPanel>
@@ -137,7 +154,8 @@
 									<Border x:Name="itemSiteBorder"
 											Background="#f5f5f5"
 											CornerRadius="10"
-											Width="250">
+											Width="250"
+                                            Margin="7, 0, 0, 0">
 									</Border>
 								</WrapPanel>
 							</Grid>
