@@ -23,12 +23,14 @@ namespace codibook.MVVM.ViewModel
 
         public AddItemButtonCommand addItemButtonCommandProperty { get; set; }
 
+        public ItemDoubleClickCommand itemDoubleClickCommandProperty { get; set; }
         public ItemViewModel()
         {
             items = new ObservableCollection<ItemModel>();
             recommand_four = new ObservableCollection<ItemModel>();
             recommandsList = new ObservableCollection<ItemModel>();
             addItemButtonCommandProperty = new AddItemButtonCommand();
+            itemDoubleClickCommandProperty = new ItemDoubleClickCommand();
         }
 
         public void setUser(User U)

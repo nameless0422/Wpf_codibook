@@ -4,13 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:codibook.MVVM.View"
+             xmlns:vm="clr-namespace:codibook.MVVM.ViewModel"
 			 mc:Ignorable="d" 
 			 Background="Transparent"
              d:DesignHeight="608" d:DesignWidth="1052"
 			 MinHeight="550" MinWidth="600">
 	
 	<UserControl.Resources>
-		<ResourceDictionary>
+        <ResourceDictionary>
+            <vm:LookBookViewModel x:Key="lookBookVM"/>
 			<Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
 				<Setter Property="Template">
 					<Setter.Value>
@@ -160,13 +162,154 @@
 							  BorderBrush="#626262"
 							  VerticalScrollBarVisibility="Visible"
 							  >
-					<WrapPanel>
-						<local:UserControlLookBookPage x:Name="listControlFirst"/>
-						<local:UserControlLookBookPage/>
-						<local:UserControlLookBookPage/>
-						<local:UserControlLookBookPage/>
-						<local:UserControlLookBookPage/>
-					</WrapPanel>
+                    <ItemsControl x:Name="LookBookListView" DataContext="{StaticResource lookBookVM}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <!-- 리스트 이름 -->
+                                    <Border x:Name="listNameBorder"
+											Background="White"
+											CornerRadius="10, 10, 0, 0"
+											Width="240"
+											Height="40"
+											HorizontalAlignment="Left"
+											Margin="0, 0, 25, 5">
+                                        <TextBlock x:Name="listName"
+												   Style="{StaticResource lookbookList_textblock}"
+												   FontSize="14"
+												   VerticalAlignment="Center"
+												   HorizontalAlignment="Center"
+												   Text="{Binding Name}">
+                                        </TextBlock>
+                                    </Border>
+
+                                    <ItemsControl x:Name="ItemListINLookBook" ItemsSource="{Binding Top_Three_Item}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <!-- 리스트 아이템 -->
+												<Border x:Name="listItem1"
+														Background="white"
+														Width="240"
+														Height="80"
+														HorizontalAlignment="Left"
+														Margin="0, 5, 25, 5">
+													<Grid>
+														<Grid.ColumnDefinitions>
+															<ColumnDefinition Width="80"/>
+															<ColumnDefinition Width="*"/>
+														</Grid.ColumnDefinitions>
+
+														<Border x:Name="listItem1Image"
+																Grid.Column="0"
+																Width="80"
+																Height="80"
+                                                                HorizontalAlignment="Left"
+                                                                Margin="5"
+                                                                >
+															<Border.Background>
+                                                                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Image}"/>
+															</Border.Background>
+														</Border>
+
+														<Grid Grid.Column="1">
+															<Grid.RowDefinitions>
+																<RowDefinition Height="1.5*"/>
+																<RowDefinition Height="*"/>
+																<RowDefinition Height="*"/>
+																<RowDefinition Height="*"/>
+																<RowDefinition Height="1.5*"/>
+															</Grid.RowDefinitions>
+
+                                                <TextBlock x:Name="listItem1Site"
+														   Grid.Row="1"
+														   Style="{StaticResource lookbookList_textblock}"
+														   VerticalAlignment="Center"
+														   Margin="10,0,10,0"
+														   Text="{Binding Shop_Name}"></TextBlock>
+
+                                                <TextBlock x:Name="listItem1Name"
+														   Grid.Row="2"
+														   Style="{StaticResource lookbookList_textblock}"
+													  	   VerticalAlignment="Center"
+														   Margin="10,0,10,0"
+														   Text="{Binding Name}"></TextBlock>
+
+                                                <TextBlock x:Name="listItem1Price"
+														   Grid.Row="3"
+														   Style="{StaticResource lookbookList_textblock}"
+														   VerticalAlignment="Center"
+														   Margin="10,0,10,0"
+														   Text="{Binding Price}">
+                                                </TextBlock>
+                                                <TextBlock x:Name="listItem1Tag"
+														   Grid.Row="3"
+														   Style="{StaticResource lookbookList_textblock}"
+														   VerticalAlignment="Center"
+														   HorizontalAlignment="Right"
+														   Margin="0,9,10,10"
+														   Text="#tag" Grid.RowSpan="2">
+                                                 </TextBlock>
+                                            </Grid>
+													</Grid>
+												</Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                    </Grid.RowDefinitions>
+                                                </Grid>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemContainerStyle>
+                                            <Style>
+                                                <Style.Setters>
+                                                    <Setter Property="Grid.Row" Value="{Binding x}"/>
+                                                </Style.Setters>
+                                            </Style>
+                                        </ItemsControl.ItemContainerStyle>
+                                    </ItemsControl>
+                                    
+                                    
+
+                                    <!-- 리스트 더보기 버튼 -->
+                                    <Button x:Name="moreButton"
+											Style="{StaticResource MoreButton}"
+											Click="moreButton_Click"
+											Width="20"
+											Height="20"
+											HorizontalAlignment="Center"
+											Margin="0, 5, 25, 5"/>
+
+                                    <!-- 리스트 총액 -->
+                                    <Border x:Name="listTotalPriceBorder"
+											Background="White"
+											CornerRadius="0, 0, 10, 10"
+											Width="240"
+											Height="40"
+											HorizontalAlignment="Left"
+											Margin="0, 5, 25, 25">
+                                        <TextBlock x:Name="listTotalPrice"
+												   Style="{StaticResource lookbookList_textblock}"
+												   FontSize="13"
+												   VerticalAlignment="Center"
+												   HorizontalAlignment="Center"
+												   Text="{Binding TotalPrice}">
+                                        </TextBlock>
+                                    </Border>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
 				</ScrollViewer>
 
 			</Grid>

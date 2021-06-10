@@ -178,7 +178,13 @@
                                         CornerRadius="15, 15, 15, 15"
                                         MinWidth="140" MinHeight="140"
                                         MaxWidth="230" MaxHeight="230"
+                                        
                                         >
+                                <Border.InputBindings>
+                                    <MouseBinding MouseAction="LeftDoubleClick"
+                                                  Command="{Binding itemDoubleClickCommandProperty}"
+                                                  CommandParameter="thisWindow"/>
+                                </Border.InputBindings>
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="0.7*"/>

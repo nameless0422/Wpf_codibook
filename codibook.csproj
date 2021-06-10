@@ -142,6 +142,7 @@
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\SettingPopUpCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\UserPopUpCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\itemViewCommands\AddItemButtonCommand.cs" />
+    <Compile Include="MVVM\ViewModel\Commands\itemViewCommands\ItemDoubleClickCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\loginCommands\loginCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\loginCommands\registerCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\loginCommands\ToMiniCommand.cs" />

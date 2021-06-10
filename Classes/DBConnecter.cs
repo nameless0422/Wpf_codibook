@@ -354,7 +354,7 @@ namespace codibook.Classes
                                 reader.Close();
 
                                 ObservableCollection<string> category = new ObservableCollection<string>();
-                                string query2 = "SELECT CATEGORY FROM category WHERE ITEM_ID-'" + reader["ITEM_ID"] as string + "';";
+                                string query2 = "SELECT CATEGORY FROM category WHERE ITEM_ID='" + result.Item_ID + "';";
                                 MySqlCommand sqlCom2 = new MySqlCommand(query2, con);
                                 MySqlDataReader reader2 = sqlCom2.ExecuteReader();
                                 while (reader2.Read())
@@ -448,7 +448,7 @@ namespace codibook.Classes
         // db에서 모든 아이템을 받아온다.
         public static ObservableCollection<LookBookModel> getLookBookList(User user)
         {
-            ObservableCollection<LookBookModel> result = null;
+            ObservableCollection<LookBookModel> result = new ObservableCollection<LookBookModel>();
 
             try
             {
@@ -483,15 +483,37 @@ namespace codibook.Classes
                                     MySqlCommand sqlCom2 = new MySqlCommand(query2, con);
                                     MySqlDataReader reader2 = sqlCom2.ExecuteReader();
                                     ObservableCollection<ItemModel> items = new ObservableCollection<ItemModel>();
+                                    List<int> item_IDs = new List<int>();
                                     while (reader2.Read())
                                     {
-                                        items.Add(getItem((int)reader2["ITEM_ID"]));
+                                        item_IDs.Add((int)reader2["ITEM_ID"]);
+                                    }
+                                    reader2.Close();
+                                    con.Close();
+                                    client.Disconnect();
+                                    for (int j = 0; j < item_IDs.Count(); j++)
+                                    {
+                                        items.Add(getItem(item_IDs[j]));
                                     }
                                     result[i].ItemList = items;
-                                    reader2.Close();
+                                    result[i].setTotalPrice();
+                                    if (result[i].ItemList.Count() >= 3)
+                                    {
+                                        for(int j = 0; j < 3; j++)
+                                        {
+                                            result[i].ItemList[j].x = j;
+                                            result[i].Top_Three_Item.Add(result[i].ItemList[j]);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for(int j = 0; j < result[i].ItemList.Count(); j++)
+                                        {
+                                            result[i].ItemList[j].x = j;
+                                            result[i].Top_Three_Item.Add(result[i].ItemList[j]);
+                                        }
+                                    }
                                 }
-                                con.Close();
-                                client.Disconnect();
                             }
                         }
                         catch (Exception ex)

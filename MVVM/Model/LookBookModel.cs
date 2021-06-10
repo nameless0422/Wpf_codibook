@@ -21,6 +21,17 @@ namespace codibook.MVVM.Model
             }
         }
 
+        public int X;
+        private int x
+        {
+            get { return X; }
+            set
+            {
+                X = value;
+                OnPropertyChanged("x");
+            }
+        }
+
         private string name;
         public string Name
         {
@@ -31,11 +42,28 @@ namespace codibook.MVVM.Model
                 OnPropertyChanged("Name");
             }
         }
-        public ObservableCollection<ItemModel> ItemList;
+
+        private int totalprice; 
+        public string TotalPrice 
+        { 
+            get { return "Total Price : " + totalprice.ToString(); }
+            set
+            {
+                totalprice = int.Parse(value);
+                OnPropertyChanged("TotalPrice");
+            } 
+        }
+
+        public ObservableCollection<ItemModel> ItemList { get; set; }
+        public ObservableCollection<ItemModel> Top_Three_Item { get; set; }
+
         public LookBookModel(int id,string name)
         {
             IDX = id;
             Name = name;
+            ItemList = new ObservableCollection<ItemModel>();
+            Top_Three_Item = new ObservableCollection<ItemModel>();
+            TotalPrice = "0";
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -47,5 +75,12 @@ namespace codibook.MVVM.Model
             }
         }
 
+        public void setTotalPrice()
+        {
+            for(int i=0; i< ItemList.Count(); i++)
+            {
+                totalprice += ItemList[i].Price;
+            }
+        }
     }
 }

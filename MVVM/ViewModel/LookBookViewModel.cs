@@ -1,4 +1,5 @@
-﻿using codibook.MVVM.Model;
+﻿using codibook.Classes;
+using codibook.MVVM.Model;
 using codibook.MVVM.ViewModel.Commands.lookbookCommands;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,11 @@ namespace codibook.MVVM.ViewModel
         public void addItem(LookBookModel L)
         {
             lookBookItems.Add(L);
+        }
+
+        public void setLookBookList()
+        {
+            lookBookItems = DBConnecter.getLookBookList(user);
         }
 
     }

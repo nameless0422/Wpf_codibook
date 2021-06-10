@@ -108,7 +108,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 								<!-- 아이템 이름 -->
-								<TextBlock x:Name="itemName"
+                                <TextBlock x:Name="itemName"
 										   Text="name"
 										   FontFamily="{StaticResource AdobeClean-Bold}"
 										   FontWeight="SemiBold"
