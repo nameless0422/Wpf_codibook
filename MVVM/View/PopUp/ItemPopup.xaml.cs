@@ -15,24 +15,13 @@ using System.Windows.Shapes;
 namespace codibook.MVVM.View.PopUp
 {
     /// <summary>
-    /// AddItemPopUp.xaml에 대한 상호 작용 논리
+    /// ItemPopup.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class AddItemPopUp : Window
+    public partial class ItemPopup : Window
     {
-        public AddItemPopUp()
+        public ItemPopup()
         {
             InitializeComponent();
-        }
-
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        // 타이틀바 드래그
-        private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
         }
     }
 }

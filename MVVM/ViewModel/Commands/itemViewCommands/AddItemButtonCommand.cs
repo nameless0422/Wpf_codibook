@@ -15,15 +15,14 @@ namespace codibook.MVVM.ViewModel.Commands.itemViewCommands
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            ItemViewModel vm = parameter as ItemViewModel;
+            return vm == null ? true : !(vm.IsItemPopup);
         }
 
         public void Execute(object parameter)
         {
             ItemViewModel vm = parameter as ItemViewModel;
-            AddItemPopUp popUp = new AddItemPopUp();
-            popUp.Show();
-
+            vm.IsItemPopup = true;
         }
     }
 }

@@ -137,6 +137,7 @@
     </Compile>
     <Compile Include="Classes\DBConnecter.cs" />
     <Compile Include="Classes\htmlParser.cs" />
+    <Compile Include="MVVM\ViewModel\Commands\closeCommands\ItemPopupCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\LoginCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\MainCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\SettingPopUpCloseCommand.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="MVVM\ViewModel\ItemViewModel.cs" />
     <Compile Include="MVVM\ViewModel\LoginViewModel.cs" />
     <Compile Include="MVVM\ViewModel\LookBookViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\PopUpViewModel\ItemPopupViewModel.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\PopUpCommands\settingCommands\SettingButtonCommand.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\SettingPopUpViewModel.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\UserPopUpViewModel.cs" />
@@ -178,11 +180,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\PopUp\AddItemPopUp.xaml">
+    <Page Include="MVVM\View\PopUp\AddListPopUp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\PopUp\AddListPopUp.xaml">
+    <Page Include="MVVM\View\PopUp\ItemPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -239,11 +241,11 @@
     <Compile Include="MVVM\View\LookBookPage.xaml.cs">
       <DependentUpon>LookBookPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\View\PopUp\AddItemPopUp.xaml.cs">
-      <DependentUpon>AddItemPopUp.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MVVM\View\PopUp\AddListPopUp.xaml.cs">
       <DependentUpon>AddListPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\PopUp\ItemPopup.xaml.cs">
+      <DependentUpon>ItemPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\PopUp\SettingPopUp.xaml.cs">
       <DependentUpon>SettingPopUp.xaml</DependentUpon>

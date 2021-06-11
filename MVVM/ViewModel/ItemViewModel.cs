@@ -23,8 +23,6 @@ namespace codibook.MVVM.ViewModel
 
         public AddItemButtonCommand addItemButtonCommandProperty { get; set; }
 
-        public ItemDoubleClickCommand itemDoubleClickCommandProperty { get; set; }
-
         public bool IsItemPopup;
         public ItemViewModel()
         {
@@ -32,7 +30,6 @@ namespace codibook.MVVM.ViewModel
             recommand_four = new ObservableCollection<ItemModel>();
             recommandsList = new ObservableCollection<ItemModel>();
             addItemButtonCommandProperty = new AddItemButtonCommand();
-            itemDoubleClickCommandProperty = new ItemDoubleClickCommand();
             IsItemPopup = false;
         }
 
