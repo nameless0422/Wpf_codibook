@@ -162,6 +162,7 @@
     <Compile Include="MVVM\ViewModel\LoginViewModel.cs" />
     <Compile Include="MVVM\ViewModel\LookBookViewModel.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\ItemPopupViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\PopUpViewModel\PopUpCommands\settingCommands\SaveButtonCommand.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\PopUpCommands\settingCommands\SettingButtonCommand.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\SettingPopUpViewModel.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\UserPopUpViewModel.cs" />

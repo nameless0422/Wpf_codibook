@@ -1,14 +1,14 @@
-﻿using System;
+﻿using codibook.MVVM.View.PopUp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 
 namespace codibook.MVVM.ViewModel.PopUpViewModel.PopUpCommands.settingCommands
 {
-    public class SettingButtonCommand : ICommand
+    public class SaveButtonCommand : ICommand
     {
         private string cityName;
         public string CityName
@@ -22,15 +22,14 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel.PopUpCommands.settingCommands
                 cityName = value;
             }
         }
-
         public WeatherAPI WeatherAPI { get; set; }
 
-        public event EventHandler CanExecuteChanged;
-
-        public SettingButtonCommand(WeatherAPI weatherAPI)
+        public SaveButtonCommand(WeatherAPI weatherAPI)
         {
             WeatherAPI = weatherAPI;
         }
+
+        public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
         {
@@ -40,7 +39,10 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel.PopUpCommands.settingCommands
         public void Execute(object parameter)
         {
             cityName = parameter.ToString();
-            MessageBox.Show(WeatherAPI.cityname);
+            WeatherAPI.Changecityname(cityName);
+            SettingPopUp settingPopUp = parameter as SettingPopUp;
+            settingPopUp.viewModel.SettingCheck = false;
+            settingPopUp.Close();
         }
     }
 }

@@ -17,6 +17,7 @@
         Title="SettingPopUp" Height="220" Width="320">
     <Window.Resources>
 		<puvm:SettingPopUpViewModel x:Key="VM"></puvm:SettingPopUpViewModel>
+		<vm:MainViewModel x:Key="MainVM"/>
 		<vm:WeatherAPI x:Key="WeatherAPI"/>
 	</Window.Resources>
 	
@@ -64,7 +65,7 @@
 			</Grid>
 
 			<Grid Grid.Row="2">
-				<WrapPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
+				<WrapPanel HorizontalAlignment="Left" VerticalAlignment="Bottom">
 					<Image Height="18.5" Width="13.5" Margin="10, 0, 0, 11">
 						<Image.Source>
 							<DrawingImage x:Name="placeholderDrawingImage">
@@ -90,12 +91,18 @@
 					       FontFamily="{StaticResource AdobeClean-Regular}"
 					       Foreground="#626262"
 						   FontSize="12"/>
+
+					<TextBox x:Name="inputCityTextBox"
+							 Width="150"
+							 Height="20"
+							 />
 				</WrapPanel>
 			</Grid>
 
-			<Grid Grid.Row="3">
+			<Grid Grid.Row="3" DataContext="{StaticResource VM}">
 				<!-- weather api data binding -->
-				<TextBlock Text="{Binding Source={StaticResource WeatherAPI}, Path=cityname}"
+				<TextBlock x:Name="cityName"
+						   Text="{Binding Source={StaticResource VM}, Path=CityName}"
 						   HorizontalAlignment="Center"
 						   FontFamily="{StaticResource AdobeClean-Bold}"
 						   FontWeight="ExtraBold"
@@ -115,7 +122,9 @@
                             BorderThickness="0"
 							Margin="0, 0, 5, 0"
                             Width="120"
-                            Height="40">
+                            Height="40"
+							Command="{Binding Source={StaticResource VM}, Path=settingButtonCommand}"
+							CommandParameter="{Binding ElementName=inputCityTextBox, Path=Text}">
 						<Button.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="10"/>
@@ -132,7 +141,9 @@
                             BorderThickness="0"
 							Margin="5, 0, 0, 0"
                             Width="120"
-                            Height="40">
+                            Height="40"
+							Command="{Binding Source={StaticResource VM}, Path=saveButtonCommand}"
+							CommandParameter="{Binding ElementName=cityName, Path=Text}">
 						<Button.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="15"/>
