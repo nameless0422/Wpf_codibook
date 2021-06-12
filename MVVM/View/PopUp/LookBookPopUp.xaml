@@ -183,7 +183,7 @@
                                     Margin="20, -15, 0, 0" 
                                     Width="530"
                                     Foreground="#FF535353"
-                                    Text="{Binding Search_Text, UpdateSourceTrigger=PropertyChanged}" RenderTransformOrigin="1.015,0.668">
+                                    Text="{Binding Search_Text, UpdateSourceTrigger=PropertyChanged}">
                             <TextBox.InputBindings>
                                 <KeyBinding Command="{Binding searchCommandProperty}"
                                                     CommandParameter="{Binding ElementName=thisWindow}"
