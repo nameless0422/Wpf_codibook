@@ -142,7 +142,7 @@
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\MainCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\SettingPopUpCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\UserPopUpCloseCommand.cs" />
-    <Compile Include="MVVM\ViewModel\Commands\itemViewCommands\AddItemButtonCommand.cs" />
+    <Compile Include="MVVM\ViewModel\Commands\itemViewCommands\OpenItemCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\loginCommands\loginCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\loginCommands\registerCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\loginCommands\ToMiniCommand.cs" />
@@ -155,6 +155,7 @@
     <Compile Include="MVVM\ViewModel\Commands\mainCommands\ToMaxOrNormalCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\mainCommands\ToMiniCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\mainCommands\UserCommand.cs" />
+    <Compile Include="MVVM\ViewModel\Commands\titlebarCommands\ItemPopupTitleBarCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\titlebarCommands\LoginTitleBarCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\titlebarCommands\MainTitleBarCommand.cs" />
     <Compile Include="MVVM\ViewModel\ItemViewModel.cs" />

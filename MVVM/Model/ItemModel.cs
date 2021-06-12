@@ -139,6 +139,11 @@ namespace codibook.MVVM.Model
             }
         }
 
+        public ItemModel()
+        {
+
+        }
+
         public ItemModel(int idx, string name, int price, int temp, string link, int liked)
         {
             Item_ID = idx;

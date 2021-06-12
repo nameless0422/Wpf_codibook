@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace codibook.MVVM.ViewModel.Commands.itemViewCommands
 {
-    public class AddItemButtonCommand : ICommand
+    public class OpenItemCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
@@ -23,6 +23,8 @@ namespace codibook.MVVM.ViewModel.Commands.itemViewCommands
         {
             ItemViewModel vm = parameter as ItemViewModel;
             vm.IsItemPopup = true;
+            ItemPopup popup = new ItemPopup();
+            popup.Show();
         }
     }
 }

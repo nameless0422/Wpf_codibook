@@ -21,7 +21,7 @@ namespace codibook.MVVM.ViewModel
 
         public ObservableCollection<ItemModel> items { get; set; }
 
-        public AddItemButtonCommand addItemButtonCommandProperty { get; set; }
+        public OpenItemCommand OpenItemCommandProperty { get; set; }
 
         public bool IsItemPopup;
         public ItemViewModel()
@@ -29,7 +29,7 @@ namespace codibook.MVVM.ViewModel
             items = new ObservableCollection<ItemModel>();
             recommand_four = new ObservableCollection<ItemModel>();
             recommandsList = new ObservableCollection<ItemModel>();
-            addItemButtonCommandProperty = new AddItemButtonCommand();
+            OpenItemCommandProperty = new OpenItemCommand();
             IsItemPopup = false;
         }
 
