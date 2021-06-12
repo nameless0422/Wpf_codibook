@@ -29,8 +29,8 @@ namespace codibook.MVVM.ViewModel.Commands.lookbookCommands
         public void Execute(object parameter)
         {
             LookBookViewModel lookBookViewModel = parameter as LookBookViewModel;
-            AddListPopUp addListPopUp = new AddListPopUp(lookBookViewModel);
-            addListPopUp.Show();
+            LookBookPopUp lookBookPopUp = new LookBookPopUp(lookBookViewModel);
+            lookBookPopUp.Show();
             lookBookViewModel.MoreListCheck = true;
         }
     }

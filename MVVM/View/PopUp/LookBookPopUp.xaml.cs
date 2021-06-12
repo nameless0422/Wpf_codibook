@@ -18,16 +18,16 @@ namespace codibook.MVVM.View.PopUp
     /// <summary>
     /// AddListPopUp.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class AddListPopUp : Window
+    public partial class LookBookPopUp : Window
     {
         private LookBookViewModel lookBookViewModel;
 
-        public AddListPopUp()
+        public LookBookPopUp()
         {
             InitializeComponent();
         }
 
-        public AddListPopUp(LookBookViewModel lookBookViewModel)
+        public LookBookPopUp(LookBookViewModel lookBookViewModel)
         {
             this.lookBookViewModel = lookBookViewModel;
         }

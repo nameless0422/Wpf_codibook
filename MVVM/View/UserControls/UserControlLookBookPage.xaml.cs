@@ -43,8 +43,8 @@ namespace codibook.MVVM.View
 
         private void moreButton_Click(object sender, RoutedEventArgs e)
         {
-            PopUp.AddListPopUp addListPopUp = new PopUp.AddListPopUp();
-            addListPopUp.Show();
+            PopUp.LookBookPopUp lookBookPopUp = new PopUp.LookBookPopUp();
+            lookBookPopUp.Show();
         }
     }
 
