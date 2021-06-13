@@ -12,6 +12,20 @@ namespace codibook.MVVM.ViewModel.Commands.mainCommands
 {
     public class SettingCommand : ICommand
     {
+        string configCityName;
+        public string ConfigCityName
+        {
+            get
+            {
+                return configCityName;
+            }
+
+            set
+            {
+                configCityName = value;
+            }
+        }
+
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
@@ -35,7 +49,16 @@ namespace codibook.MVVM.ViewModel.Commands.mainCommands
             LoadConfiguration();
             if (settingCityValue != string.Empty)
             {
+                configCityName = settingCityValue;
+            }
 
+            else
+            {
+                WeatherAPI weatherAPI = new WeatherAPI();
+                settingCityValue = weatherAPI.cityname;
+                SaveConfiguration();
+
+                configCityName = settingCityValue;
             }
 
             SettingPopUp settingPopUp = new SettingPopUp(mainViewModel);

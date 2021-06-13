@@ -57,7 +57,7 @@ namespace codibook.MVVM.ViewModel
         public WeatherAPI()
         {
             kakaoLocal = new KakaoLocal();
-            cityname = "전북대학교"; // 기본 장소
+            cityname = "전북대학교"; // 기본 이름
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
