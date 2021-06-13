@@ -266,7 +266,7 @@
                                                Foreground="#FF535353"
                                                FontFamily="{StaticResource AdobeClean-Bold}"
                                                FontWeight="Bold"
-                                               Text="{Binding }">
+                                               Text="{Binding}">
                                 </TextBlock>
                             </Grid>
                         </Grid>

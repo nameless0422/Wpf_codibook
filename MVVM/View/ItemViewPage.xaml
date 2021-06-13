@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:codibook.MVVM.View"
              xmlns:usercontrols="clr-namespace:codibook.MVVM.View.UserControls"
              xmlns:vm="clr-namespace:codibook.MVVM.ViewModel"
+             xmlns:classes="clr-namespace:codibook.Classes"
              mc:Ignorable="d" 
              Background="Transparent"
              x:Name="thisWindow"
@@ -13,6 +14,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <vm:ItemViewModel x:Key="ItemVM"/>
+            <classes:ParamToIDItemViewModelConverter x:Key="ID_ItemPage_Con"/>
             <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
                 <Setter Property="Template">
                     <Setter.Value>
@@ -179,6 +181,18 @@
                                         MinWidth="140" MinHeight="140"
                                         MaxWidth="230" MaxHeight="230"
                                         >
+                                <Border.InputBindings>
+                                    <MouseBinding MouseAction="leftDoubleClick"
+                                                  Command="{Binding OpenItemCommandProperty, Source={StaticResource ItemVM}}"
+                                                  >
+                                        <MouseBinding.CommandParameter>
+                                            <MultiBinding Converter="{StaticResource ID_ItemPage_Con}">
+                                                <Binding Path="Item_ID"/>
+                                                <Binding ElementName="thisWindow"/>
+                                            </MultiBinding>
+                                        </MouseBinding.CommandParameter>
+                                    </MouseBinding>
+                                </Border.InputBindings>
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="0.7*"/>
@@ -237,11 +251,6 @@
                             </Style.Setters>
                         </Style>
                     </ItemsControl.ItemContainerStyle>
-                    <ItemsControl.InputBindings>
-                        <MouseBinding MouseAction="LeftDoubleClick" 
-                                      Command="{Binding }"
-                                      CommandParameter="{Binding }"/>
-                    </ItemsControl.InputBindings>
                 </ItemsControl>
             </Grid>
 
@@ -291,6 +300,18 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border CornerRadius="15" Background="Transparent" Margin="0, 5, 25, 5">
+                                    <Border.InputBindings>
+                                        <MouseBinding MouseAction="leftDoubleClick"
+                                                  Command="{Binding OpenItemCommandProperty, Source={StaticResource ItemVM}}"
+                                                  >
+                                            <MouseBinding.CommandParameter>
+                                                <MultiBinding Converter="{StaticResource ID_ItemPage_Con}">
+                                                    <Binding Path="Item_ID"/>
+                                                    <Binding ElementName="thisWindow"/>
+                                                </MultiBinding>
+                                            </MouseBinding.CommandParameter>
+                                        </MouseBinding>
+                                    </Border.InputBindings>
                                     <Grid>
                                         <Border x:Name="mclItem"
 							                        Background="White"

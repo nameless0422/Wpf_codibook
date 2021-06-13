@@ -1,4 +1,6 @@
-﻿using System;
+﻿using codibook.MVVM.View.PopUp;
+using codibook.MVVM.ViewModel.PopUpViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +19,10 @@ namespace codibook.MVVM.ViewModel.Commands.closeCommands
         }
         public void Execute(object parameter)
         {
-            
+            ItemPopup popup = parameter as ItemPopup;
+            ItemViewModel vm = popup.Resources["ItemVM"] as ItemViewModel;
+            vm.IsItemPopup = false;
+            popup.Close();
         }
     }
 }
