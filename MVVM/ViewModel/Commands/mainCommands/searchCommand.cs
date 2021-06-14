@@ -31,6 +31,7 @@ namespace codibook.MVVM.ViewModel.Commands.mainCommands
             MainViewModel vm = window.Resources["MainVM"] as MainViewModel;
             SearchViewPage searchPage = new SearchViewPage();
             SearchItemPage searchItemPage = new SearchItemPage();
+            searchItemPage.Resources["ItemVM"] = vm.itemVM;
             searchPage.DataContext = vm;
             searchItemPage.DataContext = vm.itemVM;
             vm.itemVM.setItemlist(vm.Search_Text,0);

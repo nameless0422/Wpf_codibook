@@ -22,7 +22,10 @@
         <vm:MainViewModel x:Key="MainVM"/>
     </Window.Resources>
 
-	<Border Background="#F5F5F5" CornerRadius="15">
+	<Border Background="#F5F5F5" CornerRadius="15" Margin="10">
+		<Border.Effect>
+			<DropShadowEffect ShadowDepth="0" BlurRadius="10" Color="Gray" />
+		</Border.Effect>
 
 		<Grid>
             <Grid.RowDefinitions>
