@@ -41,31 +41,21 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
         public User user { get; set; }
         public UserPopUpCloseCommand closeCommand { get; set; }
         public searchCommand SearchCommandProperty { get; set; }
+        private EditMessageCommand editMessageCommand { get; set; }
         public ObservableCollection<FriendsModel> userFriendsList { get; set; }
         public UserPopUp userPopUp { get; set; }
-        public UserPopUpViewModel userVM;
         public UserPopUpViewModel UserVM { get; set; }
 
-        private bool isreadonly;
-        public bool IsReadOnly
+        public UserPopUpViewModel()
         {
-            get { return isreadonly; }
-            set
-            {
-                isreadonly = value;
-                OnPropertyChanged("IsReadOnly");
-            }
+            isreadonly = true;
+            closeCommand = new UserPopUpCloseCommand();
+            SearchCommandProperty = new searchCommand();
+            editMessageCommand = new EditMessageCommand();
+            userFriendsList = new ObservableCollection<FriendsModel>();
         }
 
-        public UserPopUpViewModel()
-    {
-        isreadonly = true;
-        closeCommand = new UserPopUpCloseCommand();
-        SearchCommandProperty = new searchCommand();
-        userFriendsList = new ObservableCollection<FriendsModel>();
-    }
-
-    public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)
         {
@@ -73,18 +63,11 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
 
-            public UserPopUpViewModel()
-            {
-                isreadonly = true;
-                closeCommand = new UserPopUpCloseCommand();
-                SearchCommandProperty = new searchCommand();
-                editMessageCommand = new EditMessageCommand();
-            }
         public void userFriendslist()
         {
 
         }
-
     }
 }
