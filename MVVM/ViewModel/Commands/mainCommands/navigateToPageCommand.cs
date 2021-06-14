@@ -30,10 +30,12 @@ namespace codibook.MVVM.ViewModel.Commands.mainCommands
                 ItemViewPage itemView = new ItemViewPage();
                 ItemViewModel itemVM = itemView.Resources["ItemVM"] as ItemViewModel;
                 MainVM.itemVM = itemVM;
+                itemVM.itemViewPage = itemView;
                 itemVM.setUser(MainVM.user);
                 itemVM.setItemlist();
                 string temp_str = (window.Resources["WeatherAPI"] as WeatherAPI).T3H;
                 int temp = int.Parse(temp_str.Replace("°", ""));
+                itemVM.Temp = temp;
                 itemVM.updateWeatherRecommands(temp);
                 if (itemVM.recommandsList.Count() > 4)
                 {
