@@ -1,8 +1,10 @@
 ﻿using codibook.MVVM.Model;
+using codibook.MVVM.View.PopUp;
 using codibook.MVVM.ViewModel.Commands.closeCommands;
 using codibook.MVVM.ViewModel.Commands.mainCommands;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -23,16 +25,29 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
             }
         }
 
+        private bool isreadonly;
+        public bool IsReadOnly
+        {
+            get { return isreadonly; }
+            set
+            {
+                isreadonly = value;
+                OnPropertyChanged("IsReadOnly");
+            }
+        }
+
+        public User user { get; set; }
         public UserPopUpCloseCommand closeCommand { get; set; }
         public searchCommand SearchCommandProperty { get; set; }
-
-        public UserPopUpViewModel userVM;
-        public UserPopUpViewModel UserVM { get; set; }
+        public ObservableCollection<FriendsModel> userFriendsList { get; set; }
+        public UserPopUp userPopUp { get; set; }
 
         public UserPopUpViewModel()
         {
+            isreadonly = true;
             closeCommand = new UserPopUpCloseCommand();
             SearchCommandProperty = new searchCommand();
+            userFriendsList = new ObservableCollection<FriendsModel>();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -44,5 +59,11 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        public void userFriendslist()
+        {
+            
+        }
+
     }
 }

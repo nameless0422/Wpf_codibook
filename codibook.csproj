@@ -139,6 +139,7 @@
     <Compile Include="Classes\DBConnecter.cs" />
     <Compile Include="Classes\htmlParser.cs" />
     <Compile Include="Classes\ItemID_ItemPage_Class.cs" />
+    <Compile Include="MVVM\Model\FriendsModel.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\CategoryPopupCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\ItemPopupCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\LoginCloseCommand.cs" />
