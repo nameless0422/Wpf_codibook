@@ -85,7 +85,7 @@
                                     Margin="17, -13, 0, 0" 
                                     Width="215"
                                     Foreground="#FF535353"
-                                    Text="{Binding Search_Text, UpdateSourceTrigger=PropertyChanged}">
+                                    Text="{Binding Search_User_Text, UpdateSourceTrigger=PropertyChanged}">
                             <TextBox.InputBindings>
                                 <KeyBinding Command="{Binding searchCommandProperty}"
                                                  CommandParameter="{Binding ElementName=userpopup}"
@@ -173,13 +173,81 @@
 					<ColumnDefinition Width="30"/>
 				</Grid.ColumnDefinitions>
 
-				<Grid Grid.Column="1">
-					<StackPanel>
-						<usercontrols:UserControlFriends/>
-						<usercontrols:UserControlFriends/>
-						<usercontrols:UserControlFriends/>
-					</StackPanel>
-				</Grid>
+                <ScrollViewer Grid.Column="1" Visibility="Hidden">
+                    <ItemsControl x:Name="NameListView">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="10" Background="Transparent" Margin="0, 5, 0, 5">
+                                    <Grid>
+                                        <Border x:Name="UserFriend"
+							                        Background="White"
+                                                    CornerRadius="10">
+                                            <!--User Image-->
+                                            <Border x:Name="UserImage"
+								                        Width="56"
+                                                        Margin="5"
+                                                        CornerRadius="10, 0, 0, 10">
+                                                <Border.Background>
+                                                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Image}"/>
+                                                </Border.Background>
+                                            </Border>
+                                        </Border>
+                                        
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <!--More Button-->
+                                            <Grid Grid.Row="0">
+                                                <Button x:Name="moreButton"
+							                               Style="{StaticResource MoreButton}"
+							                               VerticalAlignment="Center"
+							                               HorizontalAlignment="Right"
+							                               Margin="0, 2, 7, 0"
+							                               Height="10" Width="10">
+                                                </Button>
+                                            </Grid>
+
+                                            <!--User Name-->
+                                            <Grid Grid.Row="1">
+                                                <TextBlock x:Name="nameTextBlock"
+							                                   Text="{Binding User_Name}"
+							                                   FontFamily="{StaticResource AdobeClean-Regular}"
+							                                   Foreground="#626262"
+							                                   FontSize="11"
+							                                   FontWeight="Bold"
+                                                               Margin="7, 0, 7, 0">
+                                                </TextBlock>
+                                            </Grid>
+
+                                            <!--소개-->
+                                            <Grid Grid.Row="2">
+                                                <TextBlock x:Name="messageTextBlock"
+							                                   Text="{Binding Message}"
+							                                   FontFamily="{StaticResource AdobeClean-Regular}"
+							                                   Foreground="#626262"
+							                                   FontSize="11"
+							                                   Margin="7, 0, 7, 0">
+                                                </TextBlock>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
+                
 			</Grid>
         </Grid>
     </Border>

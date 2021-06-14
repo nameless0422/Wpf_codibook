@@ -22,26 +22,17 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
                 OnPropertyChanged("Search_User");
             }
         }
-        public string User_Inrto { get; set; }
 
         public UserPopUpCloseCommand closeCommand { get; set; }
         public searchCommand SearchCommandProperty { get; set; }
-        public UserPopUpViewModel userVM { get; set; }
+
+        public UserPopUpViewModel userVM;
+        public UserPopUpViewModel UserVM { get; set; }
 
         public UserPopUpViewModel()
         {
             closeCommand = new UserPopUpCloseCommand();
             SearchCommandProperty = new searchCommand();
-        }
-
-        public void userNamelist()
-        {
-           
-        }
-
-        public void userNamelist(string username, string userintro)
-        {
-           
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
