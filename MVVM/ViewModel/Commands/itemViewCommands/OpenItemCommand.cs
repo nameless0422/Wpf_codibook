@@ -37,7 +37,13 @@ namespace codibook.MVVM.ViewModel.Commands.itemViewCommands
             popUpVM.Link = model.Link;
             popUpVM.Item_ID = model.Item_ID;
             popUpVM.Price = model.Price;
-            popUpVM.Liked = model.Liked;
+            if(model.Liked == 1)
+            {
+                popUpVM.Liked = true;
+            }else
+            {
+                popUpVM.Liked = false;
+            }
             popUpVM.Temp = model.Temp;
             popUpVM.Image = model.Image;
             popUpVM.Category = model.Category;
