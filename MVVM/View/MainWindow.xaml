@@ -13,8 +13,7 @@
         ResizeMode="CanResizeWithGrip"
         Background="Transparent"
         Title="MainWindow" Height="720" Width="1280"
-        MinHeight="650" MinWidth="1180"
-        >
+        MinHeight="650" MinWidth="1180">
 
 
     <Window.Resources>
@@ -22,7 +21,10 @@
         <vm:MainViewModel x:Key="MainVM"/>
     </Window.Resources>
 
-	<Border Background="#F5F5F5" CornerRadius="15">
+	<Border Background="#F5F5F5" CornerRadius="15" Margin="10">
+		<Border.Effect>
+			<DropShadowEffect ShadowDepth="0" BlurRadius="10" Color="Gray" />
+		</Border.Effect>
 
 		<Grid>
             <Grid.RowDefinitions>

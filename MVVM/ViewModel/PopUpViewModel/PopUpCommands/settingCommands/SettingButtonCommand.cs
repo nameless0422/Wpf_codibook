@@ -40,7 +40,7 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel.PopUpCommands.settingCommands
         public void Execute(object parameter)
         {
             cityName = parameter.ToString();
-            MessageBox.Show(WeatherAPI.cityname);
+            WeatherAPI.Changecityname(cityName);
         }
     }
 }
