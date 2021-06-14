@@ -1,6 +1,8 @@
 ﻿using codibook.MVVM.Model;
 using codibook.MVVM.ViewModel.Commands.closeCommands;
 using codibook.MVVM.ViewModel.Commands.mainCommands;
+using codibook.MVVM.ViewModel.PopUpViewModel;
+using codibook.MVVM.ViewModel.PopUpViewModel.PopUpCommands;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,14 +27,20 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
 
         public UserPopUpCloseCommand closeCommand { get; set; }
         public searchCommand SearchCommandProperty { get; set; }
+        public EditMessageCommand editMessageCommand { get; set; }
 
         public UserPopUpViewModel userVM;
         public UserPopUpViewModel UserVM { get; set; }
 
-        public UserPopUpViewModel()
+        private bool isreadonly;
+        public bool IsReadOnly
         {
-            closeCommand = new UserPopUpCloseCommand();
-            SearchCommandProperty = new searchCommand();
+            get { return isreadonly; }
+            set
+            {
+                isreadonly = value;
+                OnPropertyChanged("IsReadOnly");
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -43,6 +51,14 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        public UserPopUpViewModel()
+        {
+            isreadonly = true;
+            closeCommand = new UserPopUpCloseCommand();
+            SearchCommandProperty = new searchCommand();
+            editMessageCommand = new EditMessageCommand();
         }
     }
 }

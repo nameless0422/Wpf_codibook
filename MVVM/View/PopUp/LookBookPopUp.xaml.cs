@@ -32,11 +32,6 @@ namespace codibook.MVVM.View.PopUp
             this.lookBookViewModel = lookBookViewModel;
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         // 타이틀바 드래그
         private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
         {

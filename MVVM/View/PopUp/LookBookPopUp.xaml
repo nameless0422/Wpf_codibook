@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:codibook.MVVM.View.PopUp"
 		xmlns:usercontrols="clr-namespace:codibook.MVVM.View.UserControls"
 		xmlns:vm ="clr-namespace:codibook.MVVM.ViewModel"
+		xmlns:puvm="clr-namespace:codibook.MVVM.ViewModel.PopUpViewModel"
 		WindowStyle="None" 
 		AllowsTransparency="True"
         BorderThickness="1"
@@ -19,7 +20,8 @@
         <ResourceDictionary>
             <vm:ItemViewModel x:Key="ItemVM"/>
             <vm:ItemViewModel x:Key="MainVM"/>
-            <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+			<puvm:LookBookPopUpViewModel x:Key="VM"/>
+			<Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate>
@@ -140,13 +142,14 @@
                            RadiusX="15" RadiusY="15"
                            >
                 </Rectangle>
-                <DockPanel HorizontalAlignment="Right" Margin="0, 0, 5, 0">
+                <DockPanel HorizontalAlignment="Right" Margin="0, 0, 5, 0" DataContext="{StaticResource VM}">
                     <Button x:Name="CloseButton" 
-                        Click="CloseButton_Click"
-                        Width="20"
-                        Height="20"
-                        Margin="0, 1, 2, 0"
-                        Style="{StaticResource redRoundButtonStyle}"></Button>
+                            Width="20"
+                            Height="20"
+                            Margin="0, 1, 2, 0"
+                            Style="{StaticResource redRoundButtonStyle}"
+						    Command="{Binding closeCommand}"
+							CommandParameter="{Binding ElementName=thisWindow}"></Button>
                 </DockPanel>
             </Grid>
 
@@ -195,16 +198,18 @@
             </Grid>
 
             <Grid Grid.Row="2">
-                <TextBlock x:Name="addLookBookName"
-						   Text="black coordination"
-						   VerticalAlignment="Center"
-						   HorizontalAlignment="Left"
-						   Margin="70, 0 ,0 ,0"
-						   FontFamily="{StaticResource AdobeClean-Regular}"
-						   FontWeight="SemiBold"
-						   FontSize="16"
-						   Foreground="#626262"/>
-            </Grid>
+				<TextBox x:Name="addLookBookName"
+						 Text="black coordination"
+						 VerticalAlignment="Center"
+						 HorizontalAlignment="Left"
+						 Margin="70, 0 ,0 ,0"
+						 FontFamily="{StaticResource AdobeClean-Regular}"
+						 FontWeight="SemiBold"
+						 FontSize="16"
+						 Foreground="#626262"
+						 Background="Transparent"
+						 IsReadOnly="{Binding IsReadOnly}"/>
+			</Grid>
 
             <Grid Grid.Row="3">
                 <Grid HorizontalAlignment="Right" Width="698">
