@@ -170,7 +170,6 @@
     <Compile Include="MVVM\ViewModel\PopUpViewModel\CategoryViewModel.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\ItemPopupViewModel.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\PopUpCommands\ItemPopupCategoryCommand.cs" />
-    <Compile Include="MVVM\ViewModel\PopUpViewModel\PopUpCommands\settingCommands\SaveButtonCommand.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\PopUpCommands\settingCommands\SettingButtonCommand.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\SettingPopUpViewModel.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\UserPopUpViewModel.cs" />

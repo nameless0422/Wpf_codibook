@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -8,6 +9,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
+using System.Windows;
 using codibook.MVVM.Model;
 using Newtonsoft.Json;
 
@@ -57,7 +59,9 @@ namespace codibook.MVVM.ViewModel
         public WeatherAPI()
         {
             kakaoLocal = new KakaoLocal();
-            cityname = "전북대학교"; // 기본 이름
+
+            LoadConfiguration();
+            cityname = settingCityValue;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -73,7 +77,53 @@ namespace codibook.MVVM.ViewModel
         public void Changecityname(string name)
         {
             cityname = name;
+            settingCityValue = cityname;
+            SaveConfiguration();
         }
+
+        /* 낮
+        //공공 API 호출밑 WeatherModel 컨버트
+        public WeatherModel GetWetherInformation(string cityname)
+        {
+
+            WeatherModel result = new WeatherModel();
+
+            if (cityname.Length == 0)
+            {
+                return result;
+            }
+
+            
+            //현재 날짜와 시간을 바탕으로 데이터 호출
+            int time = int.Parse(DateTime.Now.ToString("HH"));
+            string nowDate;
+            if (time <= 2)
+            {
+                nowDate = DateTime.Now.AddDays(-1).ToString("yyyyMMdd");
+                TimeTogle = true;
+            }
+            else
+            {
+                nowDate = DateTime.Now.ToString("yyyyMMdd");
+                TimeTogle = false;
+            }
+
+            string base_time = "0200";
+
+            List<int> xy = kakaoLocal.kakao(cityname);
+
+            string url = string.Format(BASE_URL, API_KEY, nowDate, base_time, xy[0], xy[1]);
+
+            using (HttpClient client = new HttpClient())
+            {
+                var response = client.GetAsync(url);
+                string json = response.Result.Content.ReadAsStringAsync().Result;
+
+                result = JsonConvert.DeserializeObject<WeatherModel>(json);
+            }
+
+            return result;
+        } */
 
         //공공 API 호출밑 WeatherModel 컨버트
         public WeatherModel GetWetherInformation(string cityname)
@@ -85,6 +135,7 @@ namespace codibook.MVVM.ViewModel
             {
                 return result;
             }
+
             //현재 날짜와 시간을 바탕으로 데이터 호출
             int time = int.Parse(DateTime.Now.ToString("HH"));
             string nowDate;
@@ -100,8 +151,6 @@ namespace codibook.MVVM.ViewModel
                 nowDate = DateTime.Now.ToString("yyyyMMdd");
                 TimeTogle = false;
             }
-
-           
 
             List<int> xy = kakaoLocal.kakao(cityname);
 
@@ -186,7 +235,7 @@ namespace codibook.MVVM.ViewModel
 
                     if (model.Response.body.items.item[i].baseDate.Equals(DateTime.Now.AddDays(-1).ToString("yyyyMMdd")) && model.Response.body.items.item[i].category.Equals("TMN"))
                     {
-                        for(int j = 0; j < result.Response.body.items.item.Count(); j++)
+                        for (int j = 0; j < result.Response.body.items.item.Count(); j++)
                         {
                             if (result.Response.body.items.item[j].category.Equals("TMN"))
                             {
@@ -223,7 +272,7 @@ namespace codibook.MVVM.ViewModel
                 {
                     if (model.Response.body.items.item[i].baseDate.Equals(DateTime.Now.ToString("yyyyMMdd")) && model.Response.body.items.item[i].category.Equals("TMN"))
                     {
-                        for(int j = 0; j < result.Response.body.items.item.Count(); j++)
+                        for (int j = 0; j < result.Response.body.items.item.Count(); j++)
                         {
                             if (result.Response.body.items.item[j].category.Equals("TMN"))
                             {
@@ -234,7 +283,7 @@ namespace codibook.MVVM.ViewModel
                         ProcessingByCategory(model.Response.body.items.item[i]);
                     }
 
-                    if(model.Response.body.items.item[i].baseDate.Equals(DateTime.Now.ToString("yyyyMMdd")) && model.Response.body.items.item[i].category.Equals("TMX"))
+                    if (model.Response.body.items.item[i].baseDate.Equals(DateTime.Now.ToString("yyyyMMdd")) && model.Response.body.items.item[i].category.Equals("TMX"))
                     {
                         for (int j = 0; j < result.Response.body.items.item.Count(); j++)
                         {
@@ -258,14 +307,14 @@ namespace codibook.MVVM.ViewModel
 
 
 
-                
+
             }
-                return result;
+            return result;
         }
 
         protected void ProcessingByCategory(Item i)
         {
-            if (i.category.Equals("POP")) 
+            if (i.category.Equals("POP"))
             {
                 this.POP = i.fcstValue;
             }
@@ -281,7 +330,7 @@ namespace codibook.MVVM.ViewModel
             {
                 this.PTY = i.fcstValue;
             }
-            else if(i.category.Equals("TMX"))
+            else if (i.category.Equals("TMX"))
             {
                 this.TMX = "max " + i.fcstValue.Substring(0, i.fcstValue.Length - 2) + "°";
             }
@@ -398,5 +447,61 @@ namespace codibook.MVVM.ViewModel
             }
         }
 
+        // using configurationManager
+        public string settingCityValue = string.Empty;
+
+        public void SaveConfiguration()
+        {
+            try
+            {
+                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                var appSettings = configFile.AppSettings.Settings;
+
+                if (appSettings["PropertyName"] == null)
+                {
+                    appSettings.Add("PropertyName", settingCityValue);
+                }
+
+                else
+                {
+                    appSettings.Remove("PropertyName");
+                    appSettings.Add("PropertyName", settingCityValue);
+                }
+
+                configFile.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
+            }
+
+            catch (ConfigurationErrorsException)
+            {
+                Console.WriteLine("configuration error exception occur!");
+            }
+        }
+
+        public void LoadConfiguration()
+        {
+            try
+            {
+                var appSettings = ConfigurationManager.AppSettings;
+                string result;
+
+                result = appSettings["PropertyName"] ?? string.Empty;
+
+                if (result != string.Empty)
+                {
+                    settingCityValue = result;
+                }
+
+                else
+                {
+                    settingCityValue = "전북대학교"; // 기본 이름
+                }
+            }
+
+            catch (ConfigurationErrorsException)
+            {
+                Console.WriteLine("configuration error exception occur!");
+            }
+        }
     }
 }

@@ -15,45 +15,43 @@
         ResizeMode="NoResize"
         Background="Transparent"
         Title="SettingPopUp" Height="220" Width="320">
-    <Window.Resources>
-		<puvm:SettingPopUpViewModel x:Key="VM"></puvm:SettingPopUpViewModel>
-		<vm:MainViewModel x:Key="MainVM"/>
+	<Window.Resources>
+		<puvm:SettingPopUpViewModel x:Key="VM"/>
 		<vm:WeatherAPI x:Key="WeatherAPI"/>
 	</Window.Resources>
-	
-    <Border Background="#F5F5F5" CornerRadius="15"
+
+	<Border Background="#F5F5F5" CornerRadius="15"
 			Height="200" Width="300">
-		
+
 		<Border.Effect>
 			<DropShadowEffect ShadowDepth="0" BlurRadius="10" Color="Gray" />
 		</Border.Effect>
-		
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30" />
-                <RowDefinition Height="*"/>
+
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="30" />
+				<RowDefinition Height="*"/>
 				<RowDefinition Height="*"/>
 				<RowDefinition Height="*"/>
 				<RowDefinition Height="2*"/>
-            </Grid.RowDefinitions>
-            <!-- 타이틀바 -->
-            <Grid Grid.Row="0">
-                <Rectangle MouseLeftButtonDown="Rectangle_MouseDown" 
+			</Grid.RowDefinitions>
+			<!-- 타이틀바 -->
+			<Grid Grid.Row="0">
+				<Rectangle MouseLeftButtonDown="Rectangle_MouseDown" 
                        Fill="#F5F5F5"
-                           RadiusX="15" RadiusY="15"
-                           >
-                </Rectangle>
-                <DockPanel HorizontalAlignment="Right" Margin="0, 0, 5, 0" DataContext="{StaticResource VM}">
-                    <Button x:Name="CloseButton" 
+                           RadiusX="15" RadiusY="15">
+				</Rectangle>
+				<DockPanel HorizontalAlignment="Right" Margin="0, 0, 5, 0" DataContext="{StaticResource VM}">
+					<Button x:Name="CloseButton" 
                         Command="{Binding closeCommand}"
                         CommandParameter="{Binding ElementName=thisWindow}"
                         Width="20"
                         Height="20"
                         Margin="0, 1, 2, 0"
                         Style="{StaticResource redRoundButtonStyle}"></Button>
-                </DockPanel>
-            </Grid>
-			
+				</DockPanel>
+			</Grid>
+
 			<!-- label -->
 			<Grid Grid.Row="1">
 				<Label Content="where are you?"
@@ -65,8 +63,8 @@
 			</Grid>
 
 			<Grid Grid.Row="2">
-				<WrapPanel HorizontalAlignment="Left" VerticalAlignment="Bottom">
-					<Image Height="18.5" Width="13.5" Margin="10, 0, 0, 11">
+				<WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+					<Image Height="19" Width="14" Margin="10, 0, 0, 1">
 						<Image.Source>
 							<DrawingImage x:Name="placeholderDrawingImage">
 								<DrawingImage.Drawing>
@@ -92,17 +90,28 @@
 					       Foreground="#626262"
 						   FontSize="12"/>
 
-					<TextBox x:Name="inputCityTextBox"
-							 Width="150"
-							 Height="20"
-							 />
+					<Border CornerRadius="10"
+                            Background="white"
+							Width="150">
+						<TextBox x:Name="inputCityTextBox"
+                                 MinWidth="100"
+                                 MaxWidth="130"
+                                 Margin="10,0,10,3"
+                                 FontFamily="{StaticResource AdobeClean-Regular}"
+                                 FontSize="14"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Foreground="#626262"
+								 VerticalContentAlignment="Center">
+						</TextBox>
+					</Border>
 				</WrapPanel>
 			</Grid>
 
-			<Grid Grid.Row="3" DataContext="{StaticResource VM}">
+			<Grid Grid.Row="3" DataContext="{StaticResource WeatherAPI}">
 				<!-- weather api data binding -->
 				<TextBlock x:Name="cityName"
-						   Text="{Binding Source={StaticResource VM}, Path=CityName}"
+						   Text="{Binding cityname}"
 						   HorizontalAlignment="Center"
 						   FontFamily="{StaticResource AdobeClean-Bold}"
 						   FontWeight="ExtraBold"
@@ -121,7 +130,7 @@
 							FontWeight="SemiBold"
                             BorderThickness="0"
 							Margin="0, 0, 5, 0"
-                            Width="120"
+                            Width="150"
                             Height="40"
 							Command="{Binding Source={StaticResource VM}, Path=settingButtonCommand}"
 							CommandParameter="{Binding ElementName=inputCityTextBox, Path=Text}">
@@ -131,27 +140,8 @@
 							</Style>
 						</Button.Resources>
 					</Button>
-					
-					<Button x:Name="saveButton"
-                            Background="white"
-                            Content="save"
-                            Foreground="#FF535353"
-                            FontFamily="{StaticResource AdobeClean-Regular}"
-							FontWeight="SemiBold"
-                            BorderThickness="0"
-							Margin="5, 0, 0, 0"
-                            Width="120"
-                            Height="40"
-							Command="{Binding Source={StaticResource VM}, Path=saveButtonCommand}"
-							CommandParameter="{Binding ElementName=cityName, Path=Text}">
-						<Button.Resources>
-							<Style TargetType="Border">
-								<Setter Property="CornerRadius" Value="15"/>
-							</Style>
-						</Button.Resources>
-					</Button>
 				</StackPanel>
 			</Grid>
 		</Grid>
-    </Border>
+	</Border>
 </Window>

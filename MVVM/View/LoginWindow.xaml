@@ -13,14 +13,19 @@
         ResizeMode="NoResize"
         Background="Transparent"
         x:Name="thisWindow"
-        Title="LoginWindow" Height="720" Width="1280">
+       Title="LoginWindow" Height="740" Width="1300">
 
-    <Window.Resources>
-        <vm:LoginViewModel x:Key="loginViewModel"/>
-    </Window.Resources>
-    <Grid>
-        <Border Background="#F5F5F5" CornerRadius="15">
-            <Grid>
+	<Window.Resources>
+		<vm:LoginViewModel x:Key="loginViewModel"/>
+	</Window.Resources>
+	<Grid>
+		<Border Background="#F5F5F5" CornerRadius="15"
+				Height="720" Width="1280">
+			<Border.Effect>
+				<DropShadowEffect ShadowDepth="0" BlurRadius="10" Color="Gray" />
+			</Border.Effect>
+			
+			<Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
                     <RowDefinition Height="*" />
