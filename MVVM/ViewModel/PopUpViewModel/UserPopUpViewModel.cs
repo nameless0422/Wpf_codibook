@@ -2,6 +2,8 @@
 using codibook.MVVM.View.PopUp;
 using codibook.MVVM.ViewModel.Commands.closeCommands;
 using codibook.MVVM.ViewModel.Commands.mainCommands;
+using codibook.MVVM.ViewModel.PopUpViewModel;
+using codibook.MVVM.ViewModel.PopUpViewModel.PopUpCommands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -41,16 +43,29 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
         public searchCommand SearchCommandProperty { get; set; }
         public ObservableCollection<FriendsModel> userFriendsList { get; set; }
         public UserPopUp userPopUp { get; set; }
+        public UserPopUpViewModel userVM;
+        public UserPopUpViewModel UserVM { get; set; }
 
-        public UserPopUpViewModel()
+        private bool isreadonly;
+        public bool IsReadOnly
         {
-            isreadonly = true;
-            closeCommand = new UserPopUpCloseCommand();
-            SearchCommandProperty = new searchCommand();
-            userFriendsList = new ObservableCollection<FriendsModel>();
+            get { return isreadonly; }
+            set
+            {
+                isreadonly = value;
+                OnPropertyChanged("IsReadOnly");
+            }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public UserPopUpViewModel()
+    {
+        isreadonly = true;
+        closeCommand = new UserPopUpCloseCommand();
+        SearchCommandProperty = new searchCommand();
+        userFriendsList = new ObservableCollection<FriendsModel>();
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)
         {
@@ -58,11 +73,17 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
-        }
 
+            public UserPopUpViewModel()
+            {
+                isreadonly = true;
+                closeCommand = new UserPopUpCloseCommand();
+                SearchCommandProperty = new searchCommand();
+                editMessageCommand = new EditMessageCommand();
+            }
         public void userFriendslist()
         {
-            
+
         }
 
     }

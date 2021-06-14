@@ -143,6 +143,7 @@
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\CategoryPopupCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\ItemPopupCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\LoginCloseCommand.cs" />
+    <Compile Include="MVVM\ViewModel\Commands\closeCommands\LookBookPopUpCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\MainCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\SettingPopUpCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\UserPopUpCloseCommand.cs" />
@@ -171,6 +172,8 @@
     <Compile Include="MVVM\ViewModel\LookBookViewModel.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\CategoryViewModel.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\ItemPopupViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\PopUpViewModel\LookBookPopUpViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\PopUpViewModel\PopUpCommands\EditMessageCommand.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\PopUpCommands\ItemPopupCategoryCommand.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\PopUpCommands\settingCommands\SettingButtonCommand.cs" />
     <Compile Include="MVVM\ViewModel\PopUpViewModel\SettingPopUpViewModel.cs" />

@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:codibook.MVVM.View.PopUp"
-        xmlns:vm ="clr-namespace:codibook.MVVM.ViewModel.PopUpViewModel" xmlns:usercontrols="clr-namespace:codibook.MVVM.View.UserControls"
+        xmlns:vm ="clr-namespace:codibook.MVVM.ViewModel.PopUpViewModel" 
+		xmlns:usercontrols="clr-namespace:codibook.MVVM.View.UserControls"
 		x:Name="thisWindow"
         WindowStyle="None" 
         AllowsTransparency="True"
@@ -24,7 +25,7 @@
 			<DropShadowEffect ShadowDepth="0" BlurRadius="10" Color="Gray" />
 		</Border.Effect>
 		
-        <Grid>
+        <Grid DataContext="{StaticResource VM}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="30"/>
@@ -125,11 +126,13 @@
 
 							<Grid Grid.Row="0">
 								<Button x:Name="editButton"
-							Style="{StaticResource EditButton}"
-							VerticalAlignment="Center"
-							HorizontalAlignment="Right"
-							Margin="0, 4, 7, 0"
-							Height="10" Width="10"/>
+							            Style="{StaticResource EditButton}"
+							            VerticalAlignment="Center"
+							            HorizontalAlignment="Right"
+							            Margin="0, 4, 7, 0"
+							            Height="10" Width="10"
+										Command="{Binding editMessageCommand}"
+										CommandParameter="{Binding ElementName=thisWindow}"/>
 							</Grid>
 
 							<Grid Grid.Row="1">
@@ -142,12 +145,22 @@
 							</Grid>
 
 							<Grid Grid.Row="2">
-								<TextBlock x:Name="messageTextBlock"
-							   Text="hello"
-							   FontFamily="{StaticResource AdobeClean-Regular}"
-							   Foreground="#626262"
-							   FontSize="11"
-							   Margin="7, 0, 7, 0"/>
+								<Border CornerRadius="5"
+                                        Background="#f5f5f5"
+							            Width="170"
+										Margin="7,0,7,0">
+									<TextBox x:Name="messageTextBox"
+                                             MinWidth="100"
+                                             MaxWidth="150"
+                                             FontFamily="{StaticResource AdobeClean-Regular}"
+                                             FontSize="11"
+                                             Background="#f5f5f5"
+                                             BorderThickness="0"
+                                             Foreground="#626262"
+                                             VerticalContentAlignment="Center"
+											 IsReadOnly="{Binding IsReadOnly}">
+									</TextBox>
+								</Border>
 							</Grid>
 						</Grid>
 
