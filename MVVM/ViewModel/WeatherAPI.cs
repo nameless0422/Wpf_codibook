@@ -97,11 +97,9 @@ namespace codibook.MVVM.ViewModel
             //현재 날짜와 시간을 바탕으로 데이터 호출
             int time = int.Parse(DateTime.Now.ToString("HH"));
             string nowDate;
-            string base_time = "0200";
-            if (time < 4)
+            if (time <= 2)
             {
                 nowDate = DateTime.Now.AddDays(-1).ToString("yyyyMMdd");
-                base_time = "2300";
                 TimeTogle = true;
             }
             else
@@ -110,7 +108,7 @@ namespace codibook.MVVM.ViewModel
                 TimeTogle = false;
             }
 
-           
+            string base_time = "0200";
 
             List<int> xy = kakaoLocal.kakao(cityname);
 

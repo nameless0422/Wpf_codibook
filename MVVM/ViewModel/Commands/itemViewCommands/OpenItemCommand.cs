@@ -33,7 +33,6 @@ namespace codibook.MVVM.ViewModel.Commands.itemViewCommands
             ItemPopupViewModel popUpVM = popup.Resources["PopUpVM"] as ItemPopupViewModel;
             ItemModel model = DBConnecter.getItem(data.ItemID);
             popUpVM.Shop_Name = model.Shop_Name;
-            popUpVM.Memo = model.Memo;
             popUpVM.Name = model.Name;
             popUpVM.Link = model.Link;
             popUpVM.Item_ID = model.Item_ID;

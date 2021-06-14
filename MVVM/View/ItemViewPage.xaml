@@ -328,9 +328,7 @@
                                                 <!--Heart Button-->
                                                 <ToggleButton x:Name="HeartTogle"
                                                               Margin="65, 65, 8, 8"
-                                                              Style="{StaticResource HeartButton}"
-                                                              IsChecked="{Binding Liked_}"
-                                                              IsEnabled="False">
+                                                              Style="{StaticResource HeartButton}">
                                                 </ToggleButton>
                                             </Border>
                                         </Border>

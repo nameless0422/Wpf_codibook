@@ -4,16 +4,12 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:codibook.MVVM.View.SearchViewListPages"
-      xmlns:classes="clr-namespace:codibook.Classes"
-      xmlns:vm="clr-namespace:codibook.MVVM.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       >
 
     <UserControl.Resources>
         <ResourceDictionary>
-            <vm:ItemViewModel x:Key="ItemVM"/>
-            <classes:ParamToIDItemViewModelConverter x:Key="ID_ItemPage_Con"/>
             <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
                 <Setter Property="Template">
                     <Setter.Value>
@@ -121,13 +117,6 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border CornerRadius="15" Background="Transparent" Margin="0, 5, 25, 5">
-                            <Border.InputBindings>
-                                <MouseBinding MouseAction="leftDoubleClick"
-                                                  Command=""
-                                                  CommandParameter="{Binding Item_ID}"      
-                                              >
-                                </MouseBinding>
-                            </Border.InputBindings>
                             <Grid>
                                 <Border x:Name="mclItem"
 							                        Background="White"
@@ -143,9 +132,7 @@
                                         </Border.Background>
                                         <!--Heart Button-->
                                         <ToggleButton Margin="65, 65, 8, 8"
-                                                      Style="{StaticResource HeartButton}"
-                                                      IsChecked="{Binding Liked_}"
-                                                      IsEnabled="False">
+                                                            Style="{StaticResource HeartButton}">
                                         </ToggleButton>
                                     </Border>
                                 </Border>

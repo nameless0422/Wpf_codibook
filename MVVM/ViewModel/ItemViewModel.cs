@@ -9,12 +9,10 @@ using System.Windows;
 using System.Collections.ObjectModel;
 using codibook.Classes;
 using codibook.MVVM.ViewModel.Commands.itemViewCommands;
-using System.ComponentModel;
-using codibook.MVVM.View;
 
 namespace codibook.MVVM.ViewModel
 {
-    public class ItemViewModel : INotifyPropertyChanged
+    public class ItemViewModel
     {
         public User user { get; set; }
         public ObservableCollection<ItemModel> recommand_four { get; set; }
@@ -25,31 +23,7 @@ namespace codibook.MVVM.ViewModel
 
         public OpenItemCommand OpenItemCommandProperty { get; set; }
 
-        public ItemViewPage itemViewPage { get; set; }
-
-        private int temp;
-        public int Temp
-        {
-            get { return temp; }
-            set
-            {
-                temp = value;
-                OnPropertyChanged("Temp");
-            }
-        }
-
         public bool IsItemPopup;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
         public ItemViewModel()
         {
             items = new ObservableCollection<ItemModel>();

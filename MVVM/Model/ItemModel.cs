@@ -75,17 +75,6 @@ namespace codibook.MVVM.Model
             }
         }
 
-        private string memo;
-        public string Memo
-        {
-            get { return memo; }
-            set
-            {
-                memo = value;
-                OnPropertyChanged("Memo");
-            }
-        }
-
         private int price;
         public int Price
         {
@@ -105,26 +94,6 @@ namespace codibook.MVVM.Model
             {
                 liked = value;
                 OnPropertyChanged("Liked");
-            }
-        }
-
-        public bool Liked_
-        {
-            get 
-            {
-                return liked == 1;
-            }
-            set
-            {
-                if (value)
-                {
-                    Liked = 1;
-                }
-                else
-                {
-                    Liked = 0;
-                }
-                OnPropertyChanged("Liked_");
             }
         }
 
@@ -175,16 +144,14 @@ namespace codibook.MVVM.Model
 
         }
 
-        public ItemModel(int idx, string name, string shop_name, int price, int temp, string link, string memo, int liked)
+        public ItemModel(int idx, string name, int price, int temp, string link, int liked)
         {
             Item_ID = idx;
             Name = name;
             Price = price;
             Temp = temp;
             Link = link;
-            Memo = memo;
             Liked = liked;
-            Shop_Name = shop_name;
         }
 
         public void setNameByLink()
