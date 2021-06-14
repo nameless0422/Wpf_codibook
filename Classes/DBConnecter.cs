@@ -421,6 +421,12 @@ namespace codibook.Classes
                                     item.Item_ID = (int)reader["ITEM_ID"];
                                 }
                                 reader.Close();
+                                for(int i = 0; i < item.Category.Count(); i++)
+                                {
+                                    query1 = "INSERT INTO category (ITEM_ID,USER_ID,CATEGORY) VALUES (" + item.Item_ID + ", " + user.User_ID + ", '" + item.Category[i] + "'";
+                                    sqlCom = new MySqlCommand(query1, con);
+                                    sqlCom.ExecuteNonQuery();
+                                }
                                 con.Close();
                                 client.Disconnect();
                             }
@@ -443,6 +449,65 @@ namespace codibook.Classes
             return item;
         }
 
+        public static void updateItem(ItemModel item)
+        {
+
+            try
+            {
+                // ssh 접속
+                using (var client = new SshClient("106.10.57.242", 5000, "root", "qawzsx351"))
+                {
+                    client.Connect();
+                    if (client.IsConnected)
+                    {
+                        try
+                        {
+                            // 내부 db 접속을 위한 포트포워딩
+                            var portForwarded = new ForwardedPortLocal("127.0.0.1", 3306, "127.0.0.1", 3306);
+                            client.AddForwardedPort(portForwarded);
+                            portForwarded.Start();
+
+                            // db 접속
+                            using (MySqlConnection con = new MySqlConnection("SERVER=localhost;PORT=3306;UID=root;PASSWORD=qawzsx351;DATABASE=codibook;SslMode=None"))
+                            {
+                                con.Open();
+                                string query1 = "UPDATE item SET NAME='" + item.Name 
+                                                           + "', LINK='" + item.Link 
+                                                           + "', PRICE=" + item.Price 
+                                                            + ", LIKED=" + item.Liked
+                                                             + ", TEMP=" + item.Temp
+                                                     + " WHERE ITEM_ID=" + item.Item_ID;
+                                MySqlCommand sqlCom = new MySqlCommand(query1, con);
+                                sqlCom.ExecuteNonQuery();
+
+                                for(int i = 0; i < item.Category.Count(); i++)
+                                {
+                                    query1 = "UPDATE category SET CATEGORY='" + item.Category[i]
+                                                        + "' WHERE ITEM_ID=" + item.Item_ID;
+                                    sqlCom = new MySqlCommand(query1, con);
+                                    sqlCom.ExecuteNonQuery();
+                                }
+
+                                con.Close();
+                                client.Disconnect();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Client cannot be reached...");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
         // User 데이터를 받는다.
         // db에서 모든 아이템을 받아온다.
@@ -741,6 +806,64 @@ namespace codibook.Classes
                 MessageBox.Show(ex.Message);
             }
             return LB;
+        }
+
+        public static void updateLookBook(LookBookModel LB)
+        {
+            try
+            {
+                // ssh 접속
+                using (var client = new SshClient("106.10.57.242", 5000, "root", "qawzsx351"))
+                {
+                    client.Connect();
+                    if (client.IsConnected)
+                    {
+                        try
+                        {
+                            // 내부 db 접속을 위한 포트포워딩
+                            var portForwarded = new ForwardedPortLocal("127.0.0.1", 3306, "127.0.0.1", 3306);
+                            client.AddForwardedPort(portForwarded);
+                            portForwarded.Start();
+
+                            // db 접속
+                            using (MySqlConnection con = new MySqlConnection("SERVER=localhost;PORT=3306;UID=root;PASSWORD=qawzsx351;DATABASE=codibook;SslMode=None"))
+                            {
+                                con.Open();
+                                string query1 = "UPDATE LookBook SET NAME='" + LB.Name 
+                                                    + "' WHERE LOOKBOOK_ID=" + LB.IDX;
+                                MySqlCommand sqlCom = new MySqlCommand(query1, con);
+                                sqlCom.ExecuteNonQuery();
+
+                                query1 = "DELETE FROM LookBook_item WHERE LOOKBOOK_ID=" + LB.IDX;
+                                sqlCom = new MySqlCommand(query1, con);
+                                sqlCom.ExecuteNonQuery();
+
+                                for (int i = 0; i < LB.ItemList.Count(); i++)
+                                {
+                                    query1 = "INSERT INTO LookBook_item (ITEM_ID, LOOKBOOK_ID) VALUES (" + LB.ItemList[i].Item_ID + "," + LB.IDX + ")";
+                                    sqlCom = new MySqlCommand(query1, con);
+                                    sqlCom.ExecuteNonQuery();
+                                }
+
+                                con.Close();
+                                client.Disconnect();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Client cannot be reached...");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
     }
