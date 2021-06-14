@@ -1,6 +1,7 @@
 ﻿using codibook.Classes;
 using codibook.MVVM.Model;
 using codibook.MVVM.ViewModel.Commands.closeCommands;
+using codibook.MVVM.ViewModel.Commands.itemViewCommands;
 using codibook.MVVM.ViewModel.Commands.titlebarCommands;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
     {
         public ItemPopupCloseCommand ItemPopupCloseCommandProperty { get; set; }
         public ItemPopupTitleBarCommand ItemPopupTitleBarCommandProperty { get; set; }
+
+        public EditItemCommand editItemCommandProperty { get; set; }
 
         private BitmapImage image;
         public BitmapImage Image
@@ -81,8 +84,8 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
             }
         }
 
-        private int liked;
-        public int Liked
+        private bool liked;
+        public bool Liked
         {
             get { return liked; }
             set
@@ -114,6 +117,17 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
             }
         }
 
+        private string memo;
+        public string Memo
+        {
+            get { return memo; }
+            set 
+            {
+                memo = value;
+                OnPropertyChanged("Memo");
+            }
+        }
+
         private ObservableCollection<string> category;
         public ObservableCollection<string> Category
         {
@@ -122,6 +136,17 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
             {
                 category = value;
                 OnPropertyChanged("Category");
+            }
+        }
+
+        private bool isreadonly;
+        public bool IsReadOnly
+        {
+            get { return isreadonly; }
+            set
+            {
+                isreadonly = value;
+                OnPropertyChanged("IsReadOnly");
             }
         }
 
@@ -136,8 +161,10 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
 
         public ItemPopupViewModel()
         {
+            isreadonly = true;
             ItemPopupCloseCommandProperty = new ItemPopupCloseCommand();
             ItemPopupTitleBarCommandProperty = new ItemPopupTitleBarCommand();
+            editItemCommandProperty = new EditItemCommand();
         }
     }
 }

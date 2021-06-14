@@ -60,17 +60,20 @@
 
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="103*"/>
-                    <ColumnDefinition Width="47*"/>
+                    <ColumnDefinition Width="110*"/>
+                    <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="Name"
-					   Text="{Binding Name, Source={StaticResource PopUpVM}}"
-					   VerticalAlignment="Center"
+                <TextBox x:Name="Name"
+					   Text="{Binding Name, Source={StaticResource PopUpVM}, Mode=TwoWay}"
+                       IsReadOnly="{Binding IsReadOnly}"
+                       VerticalAlignment="Center"
 					   FontFamily="{StaticResource AdobeClean-Bold}"
 					   FontWeight="SemiBold"
 					   FontSize="24"
+                       BorderThickness="0"
+                       Background="Transparent"
 					   Foreground="#626262"
-					   Margin="40,0,0,10" Grid.ColumnSpan="2"/>
+					   Margin="40,-2,0,10"/>
             </Grid>
 
             <Grid Grid.Row="2">
@@ -102,6 +105,7 @@
                                     <!-- 아이템 즐겨찾기 버튼 -->
                                     <ToggleButton x:Name="itemFavoriteButton"
 											Style="{StaticResource HeartButton}"
+                                            IsChecked="{Binding Path=Liked, Mode=TwoWay}"
 											VerticalAlignment="Bottom" Canvas.Left="110" Canvas.Top="110">
                                     </ToggleButton>
                                 </Canvas>
@@ -120,7 +124,9 @@
 										Style="{StaticResource EditButton}"
 										HorizontalAlignment="Right"
 										Margin="0, 0, 8, 0"
-										Width="12" Height="12"/>
+										Width="16" Height="16"
+                                        Command="{Binding editItemCommandProperty}"
+                                        CommandParameter="{Binding ElementName=thisWindow}"/>
                             </Grid>
                             <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
@@ -146,13 +152,20 @@
                                         Margin="0,3,0,3"
                                         Background="#f5f5f5"
                                        >
-                                    <TextBlock Margin="10,0,0,3"
+                                    <TextBox
+                                           MinWidth="100"
+                                           MaxWidth="250"
+                                           x:Name="Shop_name"
+                                           Margin="10,0,0,3"
                                            FontFamily="{StaticResource AdobeClean-Regular}"
                                            FontSize="14"
+                                           BorderThickness="0"
                                            Foreground="Black"
+                                           Background="Transparent"
                                            VerticalAlignment="Bottom"
                                            HorizontalAlignment="Left"
-                                           Text="{Binding Shop_Name}"/>
+                                           IsReadOnly="{Binding IsReadOnly}"
+                                           Text="{Binding Shop_Name, Mode=TwoWay}"/>
                                 </Border>
                                 <Label Grid.Row="1"
                                        Grid.Column="1"
@@ -166,13 +179,26 @@
                                         Margin="0,3,0,3"
                                         Background="#f5f5f5"
                                        >
-                                    <TextBlock Margin="10,0,0,3"
+                                    <TextBox 
+                                           x:Name="Price"
+                                           MinWidth="100"
+                                           MaxWidth="250"
+                                           Margin="10,0,0,3"
                                            FontFamily="{StaticResource AdobeClean-Regular}"
                                            FontSize="14"
+                                           Background="Transparent"
+                                           BorderThickness="0"
                                            Foreground="Black"
                                            VerticalAlignment="Bottom"
                                            HorizontalAlignment="Left"
-                                           Text="{Binding Price, Source={StaticResource PopUpVM}}"/>
+                                           IsReadOnly="{Binding IsReadOnly}"
+                                           Text="{Binding Price, Source={StaticResource PopUpVM}, Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="TextBox">
+                                                <EventSetter Event="PreviewTextInput" Handler="FrameworkElement_PreviewTextInput"/>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
                                 </Border>
                                 <Label Grid.Row="2"
                                        Grid.Column="1"
@@ -186,13 +212,20 @@
                                         Margin="0,3,0,3"
                                         Background="#f5f5f5"
                                        >
-                                    <TextBlock Margin="10,0,10,3"
+                                    <TextBox
+                                           x:Name="Link"
+                                           Margin="10,0,10,3"
+                                           MinWidth="100"
+                                           MaxWidth="250"
                                            FontFamily="{StaticResource AdobeClean-Regular}"
                                            FontSize="14"
                                            Foreground="Black"
+                                           Background="Transparent"
+                                           BorderThickness="0"
                                            VerticalAlignment="Bottom"
                                            HorizontalAlignment="Left"
-                                           Text="{Binding Link}"/>
+                                           IsReadOnly="{Binding IsReadOnly}"
+                                           Text="{Binding Link, Mode=TwoWay}"/>
                                 </Border>
                             </Grid>
                         </Grid>
@@ -224,9 +257,27 @@
                                 <!-- 수정 버튼 -->
                                 <Button x:Name="memoEditButton"
 										Style="{StaticResource EditButton}"
-										Width="12" Height="12" Canvas.Left="498" Canvas.Top="8"/>
+										Width="16" Height="16" Canvas.Left="498" Canvas.Top="8"/>
                             </Canvas>
                         </Grid>
+                        <TextBox Grid.Row="1"
+                                 Margin="15,0,15,0"
+                                 MinWidth="490"
+                                 MaxWidth="490"
+                                 MinHeight="100"
+                                 MaxHeight="100"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 FontSize="14"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Top"
+                                 FontFamily="{StaticResource AdobeClean-Regular}"
+                                 Text="{Binding Memo, Mode=TwoWay}"
+                                 IsReadOnly="False"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 >
+                        </TextBox>
                     </Grid>
 
                 </Border>
