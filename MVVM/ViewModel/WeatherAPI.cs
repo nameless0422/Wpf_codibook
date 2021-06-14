@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -9,7 +8,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
-using System.Windows;
 using codibook.MVVM.Model;
 using Newtonsoft.Json;
 
@@ -59,9 +57,7 @@ namespace codibook.MVVM.ViewModel
         public WeatherAPI()
         {
             kakaoLocal = new KakaoLocal();
-
-            LoadConfiguration();
-            cityname = settingCityValue;
+            cityname = "전북대학교"; // 기본 이름
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -77,11 +73,8 @@ namespace codibook.MVVM.ViewModel
         public void Changecityname(string name)
         {
             cityname = name;
-            settingCityValue = cityname;
-            SaveConfiguration();
         }
 
-        /* 낮
         //공공 API 호출밑 WeatherModel 컨버트
         public WeatherModel GetWetherInformation(string cityname)
         {
@@ -92,50 +85,6 @@ namespace codibook.MVVM.ViewModel
             {
                 return result;
             }
-
-            
-            //현재 날짜와 시간을 바탕으로 데이터 호출
-            int time = int.Parse(DateTime.Now.ToString("HH"));
-            string nowDate;
-            if (time <= 2)
-            {
-                nowDate = DateTime.Now.AddDays(-1).ToString("yyyyMMdd");
-                TimeTogle = true;
-            }
-            else
-            {
-                nowDate = DateTime.Now.ToString("yyyyMMdd");
-                TimeTogle = false;
-            }
-
-            string base_time = "0200";
-
-            List<int> xy = kakaoLocal.kakao(cityname);
-
-            string url = string.Format(BASE_URL, API_KEY, nowDate, base_time, xy[0], xy[1]);
-
-            using (HttpClient client = new HttpClient())
-            {
-                var response = client.GetAsync(url);
-                string json = response.Result.Content.ReadAsStringAsync().Result;
-
-                result = JsonConvert.DeserializeObject<WeatherModel>(json);
-            }
-
-            return result;
-        } */
-
-        //공공 API 호출밑 WeatherModel 컨버트
-        public WeatherModel GetWetherInformation(string cityname)
-        {
-
-            WeatherModel result = new WeatherModel();
-
-            if (cityname.Length == 0)
-            {
-                return result;
-            }
-
             //현재 날짜와 시간을 바탕으로 데이터 호출
             int time = int.Parse(DateTime.Now.ToString("HH"));
             string nowDate;
@@ -152,6 +101,8 @@ namespace codibook.MVVM.ViewModel
                 TimeTogle = false;
             }
 
+           
+
             List<int> xy = kakaoLocal.kakao(cityname);
 
             string url = string.Format(BASE_URL, API_KEY, nowDate, base_time, xy[0], xy[1]);
@@ -167,8 +118,8 @@ namespace codibook.MVVM.ViewModel
             return result;
         }
 
-            //데이터 정리용
-            public WeatherModel OrganizeWeatherModel(WeatherModel model)
+        //데이터 정리용
+        public WeatherModel OrganizeWeatherModel(WeatherModel model)
         {
             WeatherModel result = new WeatherModel(model.Response.body.items);
 
@@ -447,61 +398,5 @@ namespace codibook.MVVM.ViewModel
             }
         }
 
-        // using configurationManager
-        public string settingCityValue = string.Empty;
-
-        public void SaveConfiguration()
-        {
-            try
-            {
-                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                var appSettings = configFile.AppSettings.Settings;
-
-                if (appSettings["PropertyName"] == null)
-                {
-                    appSettings.Add("PropertyName", settingCityValue);
-                }
-
-                else
-                {
-                    appSettings.Remove("PropertyName");
-                    appSettings.Add("PropertyName", settingCityValue);
-                }
-
-                configFile.Save(ConfigurationSaveMode.Modified);
-                ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
-            }
-
-            catch (ConfigurationErrorsException)
-            {
-                Console.WriteLine("configuration error exception occur!");
-            }
-        }
-
-        public void LoadConfiguration()
-        {
-            try
-            {
-                var appSettings = ConfigurationManager.AppSettings;
-                string result;
-
-                result = appSettings["PropertyName"] ?? string.Empty;
-
-                if (result != string.Empty)
-                {
-                    settingCityValue = result;
-                }
-
-                else
-                {
-                    settingCityValue = "전북대학교"; // 기본 이름
-                }
-            }
-
-            catch (ConfigurationErrorsException)
-            {
-                Console.WriteLine("configuration error exception occur!");
-            }
-        }
     }
 }
