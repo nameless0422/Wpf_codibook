@@ -78,7 +78,7 @@
                                 </DrawingImage>
                             </Image.Source>
                         </Image>
-                        <TextBox x:Name="Search_Box"
+                        <TextBox x:Name="Search_User"
                                     BorderThickness="0"
                                     FontSize="12"
                                     Style="{StaticResource TmonyBold_textbox}"
@@ -88,8 +88,8 @@
                                     Text="{Binding Search_Text, UpdateSourceTrigger=PropertyChanged}">
                             <TextBox.InputBindings>
                                 <KeyBinding Command="{Binding searchCommandProperty}"
-                                                    CommandParameter="{Binding ElementName=thisWindow}"
-                                                    Key="Enter"/>
+                                                 CommandParameter="{Binding ElementName=userpopup}"
+                                                 Key="Enter"/>
                             </TextBox.InputBindings>
                         </TextBox>
                     </StackPanel>
