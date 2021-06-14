@@ -3,6 +3,7 @@ using codibook.MVVM.Model;
 using codibook.MVVM.ViewModel.Commands.closeCommands;
 using codibook.MVVM.ViewModel.Commands.itemViewCommands;
 using codibook.MVVM.ViewModel.Commands.titlebarCommands;
+using codibook.MVVM.ViewModel.PopUpViewModel.PopUpCommands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,6 +21,10 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
         public ItemPopupTitleBarCommand ItemPopupTitleBarCommandProperty { get; set; }
 
         public EditItemCommand editItemCommandProperty { get; set; }
+
+        public EditItemMemoCommand editItemMemoCommandProperty { get; set; }
+
+        public ItemPopupCategoryCommand itemPopupCategoryCommandProperty { get; set; }
 
         private BitmapImage image;
         public BitmapImage Image
@@ -150,6 +155,19 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
             }
         }
 
+        private bool isreadonly_memo;
+        public bool IsReadOnly_Memo
+        {
+            get { return isreadonly_memo; }
+            set
+            {
+                isreadonly_memo = value;
+                OnPropertyChanged("IsReadOnly_Memo");
+            }
+        }
+
+        public bool IsCategoryPopup;
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
         {
@@ -162,9 +180,13 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
         public ItemPopupViewModel()
         {
             isreadonly = true;
+            isreadonly_memo = true;
+            IsCategoryPopup = false;
             ItemPopupCloseCommandProperty = new ItemPopupCloseCommand();
             ItemPopupTitleBarCommandProperty = new ItemPopupTitleBarCommand();
             editItemCommandProperty = new EditItemCommand();
+            editItemMemoCommandProperty = new EditItemMemoCommand();
+            itemPopupCategoryCommandProperty = new ItemPopupCategoryCommand();
         }
     }
 }

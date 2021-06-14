@@ -46,7 +46,7 @@ namespace codibook.Classes
 
                                 while (reader1.Read())
                                 {
-                                    itemlist.Add(new ItemModel((int)reader1["ITEM_ID"],reader1["NAME"] as string, (int)reader1["PRICE"], (int)reader1["TEMP"], reader1["LINK"] as string, (int)reader1["LIKED"]));
+                                    itemlist.Add(new ItemModel((int)reader1["ITEM_ID"],reader1["NAME"] as string, reader1["SHOP"] as string, (int)reader1["PRICE"], (int)reader1["TEMP"], reader1["LINK"] as string, reader1["MEMO"] as string, (int)reader1["LIKED"]));
                                 }
                                 reader1.Close();
                                 for (int i = 0; i < itemlist.Count; i++)
@@ -120,7 +120,7 @@ namespace codibook.Classes
                                     
                                     if ((int)reader1["TEMP"] <= temp + 3 || (int)reader1["TEMP"] >= temp - 3) {
                                        
-                                        itemlist.Add(new ItemModel((int)reader1["ITEM_ID"], reader1["NAME"] as string, (int)reader1["PRICE"], (int)reader1["TEMP"], reader1["LINK"] as string, (int)reader1["LIKED"]));
+                                        itemlist.Add(new ItemModel((int)reader1["ITEM_ID"], reader1["NAME"] as string, reader1["SHOP"] as string, (int)reader1["PRICE"], (int)reader1["TEMP"], reader1["LINK"] as string, reader1["MEMO"] as string, (int)reader1["LIKED"]));
                                     } 
                                 }
                                 reader1.Close();
@@ -195,7 +195,7 @@ namespace codibook.Classes
 
                                     while (reader1.Read())
                                     {
-                                        itemlist.Add(new ItemModel((int)reader1["ITEM_ID"], reader1["NAME"] as string, (int)reader1["PRICE"], (int)reader1["TEMP"], reader1["LINK"] as string, (int)reader1["LIKED"]));
+                                        itemlist.Add(new ItemModel((int)reader1["ITEM_ID"], reader1["NAME"] as string, reader1["SHOP"] as string, (int)reader1["PRICE"], (int)reader1["TEMP"], reader1["LINK"] as string, reader1["MEMO"] as string, (int)reader1["LIKED"]));
                                     }
 
                                     reader1.Close();
@@ -276,7 +276,7 @@ namespace codibook.Classes
                                         MySqlDataReader reader2 = sqlCom2.ExecuteReader();
                                         while (reader2.Read())
                                         { 
-                                            itemlist.Add(new ItemModel(int.Parse(user.User_ID), reader2["NAME"] as string, (int)reader2["PRICE"], (int)reader2["TEMP"], reader2["LINK"] as string, (int)reader2["LIKED"]));
+                                            itemlist.Add(new ItemModel(int.Parse(user.User_ID), reader2["NAME"] as string, reader2["SHOP"] as string, (int)reader2["PRICE"], (int)reader2["TEMP"], reader2["LINK"] as string, reader2["MEMO"] as string, (int)reader2["LIKED"]));
                                         }
                                         reader2.Close();
                                     }
@@ -349,7 +349,7 @@ namespace codibook.Classes
                                 MySqlDataReader reader = sqlCom.ExecuteReader();
                                 while (reader.Read())
                                 {
-                                    result = new ItemModel((int)reader["ITEM_ID"], reader["NAME"] as string, (int)reader["PRICE"], (int)reader["TEMP"], reader["LINK"] as string, (int)reader["LIKED"]);
+                                    result = new ItemModel((int)reader["ITEM_ID"], reader["NAME"] as string, reader["SHOP"] as string, (int)reader["PRICE"], (int)reader["TEMP"], reader["LINK"] as string, reader["MEMO"] as string, (int)reader["LIKED"]);
                                 }
                                 reader.Close();
 
@@ -473,6 +473,8 @@ namespace codibook.Classes
                                 con.Open();
                                 string query1 = "UPDATE item SET NAME='" + item.Name 
                                                            + "', LINK='" + item.Link 
+                                                           + "', MEMO='" + item.Memo
+                                                           + "', SHOP='" + item.Shop_Name
                                                            + "', PRICE=" + item.Price 
                                                             + ", LIKED=" + item.Liked
                                                              + ", TEMP=" + item.Temp
