@@ -28,6 +28,8 @@ namespace codibook.MVVM.ViewModel
 
         public OpenSearchItemCommand OpenSearchItemCommandProperty { get; set; }
 
+        public AddItemCommand AddItemCommandProperty { get; set; }
+
         public SearchItemPage searchItemPage { get; set; }
 
         public ItemViewPage itemViewPage { get; set; }
@@ -62,6 +64,7 @@ namespace codibook.MVVM.ViewModel
             recommandsList = new ObservableCollection<ItemModel>();
             OpenItemCommandProperty = new OpenItemCommand();
             OpenSearchItemCommandProperty = new OpenSearchItemCommand();
+            AddItemCommandProperty = new AddItemCommand();
             IsItemPopup = false;
         }
 

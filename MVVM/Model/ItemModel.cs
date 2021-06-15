@@ -172,7 +172,15 @@ namespace codibook.MVVM.Model
 
         public ItemModel()
         {
-
+            Item_ID = 0;
+            Name = "";
+            Price = 0;
+            Temp = 0;
+            Link = "";
+            Memo = "";
+            Liked = 0;
+            Shop_Name = "";
+            Category = new ObservableCollection<string>();
         }
 
         public ItemModel(int idx, string name, string shop_name, int price, int temp, string link, string memo, int liked)

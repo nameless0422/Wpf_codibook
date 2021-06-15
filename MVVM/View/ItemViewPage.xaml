@@ -279,7 +279,7 @@
 						   HorizontalAlignment="Right"
 					       VerticalAlignment="Bottom"
 						   Style="{StaticResource AddButton}"
-						   Command="{Binding addItemButtonCommandProperty}"
+						   Command="{Binding AddItemCommandProperty}"
                            CommandParameter="{Binding ElementName=thisWindow}"
                         />
             </Grid>

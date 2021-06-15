@@ -149,6 +149,7 @@
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\SearchItemPopupCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\SettingPopUpCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\UserPopUpCloseCommand.cs" />
+    <Compile Include="MVVM\ViewModel\Commands\itemViewCommands\AddItemCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\itemViewCommands\EditItemCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\itemViewCommands\EditItemMemoCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\itemViewCommands\OpenItemCommand.cs" />
@@ -194,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\View\LookBookPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\PopUp\AddItemPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -265,6 +270,9 @@
     </Compile>
     <Compile Include="MVVM\View\LookBookPage.xaml.cs">
       <DependentUpon>LookBookPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\PopUp\AddItemPopup.xaml.cs">
+      <DependentUpon>AddItemPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\PopUp\ItemPopupCategoryPopup.xaml.cs">
       <DependentUpon>ItemPopupCategoryPopup.xaml</DependentUpon>

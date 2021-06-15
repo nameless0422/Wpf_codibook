@@ -27,6 +27,10 @@ namespace codibook.MVVM.ViewModel.Commands.titlebarCommands
             {
                 SearchItemPopup searchItemPopup = parameter as SearchItemPopup;
                 searchItemPopup.DragMove();
+            }else if (parameter.GetType() == typeof(AddItemPopup))
+            {
+                AddItemPopup addItemPopup = parameter as AddItemPopup;
+                addItemPopup.DragMove();
             }
         }
     }
