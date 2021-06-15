@@ -20,6 +20,8 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
         public ItemPopupCloseCommand ItemPopupCloseCommandProperty { get; set; }
         public ItemPopupTitleBarCommand ItemPopupTitleBarCommandProperty { get; set; }
 
+        public SearchItemPopupCloseCommand SearchItemPopupCloseProperty { get; set; }
+
         public EditItemCommand editItemCommandProperty { get; set; }
 
         public EditItemMemoCommand editItemMemoCommandProperty { get; set; }
@@ -187,6 +189,7 @@ namespace codibook.MVVM.ViewModel.PopUpViewModel
             editItemCommandProperty = new EditItemCommand();
             editItemMemoCommandProperty = new EditItemMemoCommand();
             itemPopupCategoryCommandProperty = new ItemPopupCategoryCommand();
+            SearchItemPopupCloseProperty = new SearchItemPopupCloseCommand();
         }
     }
 }

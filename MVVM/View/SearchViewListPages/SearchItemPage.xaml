@@ -7,13 +7,14 @@
       xmlns:classes="clr-namespace:codibook.Classes"
       xmlns:vm="clr-namespace:codibook.MVVM.ViewModel"
       mc:Ignorable="d" 
+      x:Name="thisWindow"
       d:DesignHeight="450" d:DesignWidth="800"
       >
 
     <UserControl.Resources>
         <ResourceDictionary>
             <vm:ItemViewModel x:Key="ItemVM"/>
-            <classes:ParamToIDItemViewModelConverter x:Key="ID_ItemPage_Con"/>
+            <classes:ParamToIDSearchPageConverter x:Key="Con"/>
             <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
                 <Setter Property="Template">
                     <Setter.Value>
@@ -117,15 +118,20 @@
     <Grid>
         <!-- 스크롤바 -->
         <ScrollViewer>
-            <ItemsControl x:Name="itemListView">
+            <ItemsControl x:Name="itemListView" DataContext="{StaticResource ItemVM}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border CornerRadius="15" Background="Transparent" Margin="0, 5, 25, 5">
                             <Border.InputBindings>
                                 <MouseBinding MouseAction="leftDoubleClick"
-                                                  Command=""
-                                                  CommandParameter="{Binding Item_ID}"      
+                                              Command="{Binding OpenSearchItemCommandProperty, Source={StaticResource ItemVM} }"
                                               >
+                                    <MouseBinding.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource Con}">
+                                            <Binding Path="Item_ID"/>
+                                            <Binding ElementName="thisWindow"/>
+                                        </MultiBinding>
+                                    </MouseBinding.CommandParameter>
                                 </MouseBinding>
                             </Border.InputBindings>
                             <Grid>

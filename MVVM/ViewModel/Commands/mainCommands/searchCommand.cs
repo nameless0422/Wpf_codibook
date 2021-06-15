@@ -20,9 +20,6 @@ namespace codibook.MVVM.ViewModel.Commands.mainCommands
         {
             MainWindow window = parameter as MainWindow;
             return window.Search_Box.Text.Length >= 3;
-
-            UserPopUp userpopup = parameter as UserPopUp;
-            return userpopup.Search_User.Text.Length >= 1;
         }
 
         public void Execute(object parameter)
@@ -32,15 +29,13 @@ namespace codibook.MVVM.ViewModel.Commands.mainCommands
             SearchViewPage searchPage = new SearchViewPage();
             SearchItemPage searchItemPage = new SearchItemPage();
             searchItemPage.Resources["ItemVM"] = vm.itemVM;
+            vm.itemVM.searchItemPage = searchItemPage;
             searchPage.DataContext = vm;
             searchItemPage.DataContext = vm.itemVM;
             vm.itemVM.setItemlist(vm.Search_Text,0);
             searchItemPage.itemListView.ItemsSource = vm.itemVM.items;
             searchPage.listframe.Navigate(searchItemPage);
             window.Mainframe.Navigate(searchPage);
-
-            UserPopUp userpopup = parameter as UserPopUp;
-            UserPopUpViewModel uservm = userpopup.Resources["UserVM"] as UserPopUpViewModel;
         }
     }
 }

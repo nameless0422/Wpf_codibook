@@ -20,17 +20,35 @@ namespace codibook.MVVM.ViewModel.Commands.itemViewCommands
 
         public void Execute(object parameter)
         {
-            ItemPopup itemPopup = parameter as ItemPopup;
-            ItemPopupViewModel vm = itemPopup.Resources["PopUpVM"] as ItemPopupViewModel;
-            //true
-            if (vm.IsReadOnly_Memo)
+            if (parameter.GetType() == typeof(ItemPopup))
             {
-                vm.IsReadOnly_Memo = false;
+                ItemPopup itemPopup = parameter as ItemPopup;
+                ItemPopupViewModel vm = itemPopup.Resources["PopUpVM"] as ItemPopupViewModel;
+                //true
+                if (vm.IsReadOnly_Memo)
+                {
+                    vm.IsReadOnly_Memo = false;
+                }
+                else
+                //false
+                {
+                    vm.IsReadOnly_Memo = true;
+                }
             }
-            else
-            //false
+            else if (parameter.GetType() == typeof(SearchItemPopup))
             {
-                vm.IsReadOnly_Memo = true;
+                SearchItemPopup itemPopup = parameter as SearchItemPopup;
+                ItemPopupViewModel vm = itemPopup.Resources["PopUpVM"] as ItemPopupViewModel;
+                //true
+                if (vm.IsReadOnly_Memo)
+                {
+                    vm.IsReadOnly_Memo = false;
+                }
+                else
+                //false
+                {
+                    vm.IsReadOnly_Memo = true;
+                }
             }
         }
     }

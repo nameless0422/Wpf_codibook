@@ -19,8 +19,15 @@ namespace codibook.MVVM.ViewModel.Commands.titlebarCommands
 
         public void Execute(object parameter)
         {
-            ItemPopup itemPopup = parameter as ItemPopup;
-            itemPopup.DragMove();
+            if (parameter.GetType() == typeof(ItemPopup))
+            {
+                ItemPopup itemPopup = parameter as ItemPopup;
+                itemPopup.DragMove();
+            } else if (parameter.GetType() == typeof(SearchItemPopup))
+            {
+                SearchItemPopup searchItemPopup = parameter as SearchItemPopup;
+                searchItemPopup.DragMove();
+            }
         }
     }
 }

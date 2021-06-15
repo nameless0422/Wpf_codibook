@@ -139,17 +139,20 @@
     <Compile Include="Classes\DBConnecter.cs" />
     <Compile Include="Classes\htmlParser.cs" />
     <Compile Include="Classes\ItemID_ItemPage_Class.cs" />
+    <Compile Include="Classes\ItemID_SearchPage_Class.cs" />
     <Compile Include="MVVM\Model\FriendsModel.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\CategoryPopupCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\ItemPopupCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\LoginCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\LookBookPopUpCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\MainCloseCommand.cs" />
+    <Compile Include="MVVM\ViewModel\Commands\closeCommands\SearchItemPopupCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\SettingPopUpCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\closeCommands\UserPopUpCloseCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\itemViewCommands\EditItemCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\itemViewCommands\EditItemMemoCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\itemViewCommands\OpenItemCommand.cs" />
+    <Compile Include="MVVM\ViewModel\Commands\itemViewCommands\OpenSearchItemCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\loginCommands\loginCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\loginCommands\registerCommand.cs" />
     <Compile Include="MVVM\ViewModel\Commands\loginCommands\ToMiniCommand.cs" />
@@ -203,6 +206,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\View\PopUp\ItemPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\PopUp\SearchItemPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -267,6 +274,9 @@
     </Compile>
     <Compile Include="MVVM\View\PopUp\ItemPopup.xaml.cs">
       <DependentUpon>ItemPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\PopUp\SearchItemPopup.xaml.cs">
+      <DependentUpon>SearchItemPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\PopUp\SettingPopUp.xaml.cs">
       <DependentUpon>SettingPopUp.xaml</DependentUpon>

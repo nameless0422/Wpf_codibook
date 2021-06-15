@@ -11,6 +11,7 @@ using codibook.Classes;
 using codibook.MVVM.ViewModel.Commands.itemViewCommands;
 using System.ComponentModel;
 using codibook.MVVM.View;
+using codibook.MVVM.View.SearchViewListPages;
 
 namespace codibook.MVVM.ViewModel
 {
@@ -24,6 +25,10 @@ namespace codibook.MVVM.ViewModel
         public ObservableCollection<ItemModel> items { get; set; }
 
         public OpenItemCommand OpenItemCommandProperty { get; set; }
+
+        public OpenSearchItemCommand OpenSearchItemCommandProperty { get; set; }
+
+        public SearchItemPage searchItemPage { get; set; }
 
         public ItemViewPage itemViewPage { get; set; }
 
@@ -56,6 +61,7 @@ namespace codibook.MVVM.ViewModel
             recommand_four = new ObservableCollection<ItemModel>();
             recommandsList = new ObservableCollection<ItemModel>();
             OpenItemCommandProperty = new OpenItemCommand();
+            OpenSearchItemCommandProperty = new OpenSearchItemCommand();
             IsItemPopup = false;
         }
 
