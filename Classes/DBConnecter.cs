@@ -410,7 +410,7 @@ namespace codibook.Classes
                             using (MySqlConnection con = new MySqlConnection("SERVER=localhost;PORT=3306;UID=root;PASSWORD=qawzsx351;DATABASE=codibook;SslMode=None"))
                             {
                                 con.Open();
-                                string query1 = "INSERT INTO item (USER_ID, NAME, LINK, PRICE, LIKED, TEMP) VALUES (" + user.User_ID + ", '" + item.Name + "', '" + item.Link + "', " + item.Price + ", " + item.Liked + ", " + item.Temp + ");";
+                                string query1 = "INSERT INTO item (USER_ID, NAME, SHOP, LINK, PRICE, LIKED, MEMO, TEMP) VALUES (" + user.User_ID + ", '" + item.Name + "', '" + item.Shop_Name + "','" + item.Link + "', " + item.Price + ", " + item.Liked + ", '" + item.Memo + "', " + item.Temp + ");";
                                 MySqlCommand sqlCom = new MySqlCommand(query1, con);
                                 sqlCom.ExecuteNonQuery();
                                 query1 = "SELECT * FROM item WHERE USER_ID=" + user.User_ID +" AND LINK='" + item.Link + "';";
